@@ -3,4 +3,6 @@
 
 echo "ciao";
 
+echo "ciao";
+
 ?>
