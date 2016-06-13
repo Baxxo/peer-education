@@ -64,10 +64,14 @@ function Login(){
     
     $email = $_POST['mail'];
     $pass = $_POST['pass'];
-    
     $carica = mysqli_query($mysqli, "SELECT nome AS Nome, email, password, id FROM Utente WHERE email = '$email' AND password = '$pass'");
-    $log = mysqli_fetch_object($carica);
-    echo $log->Nome;
+    if(!$carica){
+    	echo $failed;
+    } else {
+    	$log = mysqli_fetch_object($carica);
+    	echo $log->Nome;
+    }
+    
 }
 
 ?>

@@ -45,7 +45,10 @@
             'pass': document.getElementById("passLog").value,
             'request':'login'
         };
-        Login(dati);
+        if(dati['mail'] != "" && dati['pass'] != "")
+        	Login(dati);
+        else
+            alert("Inserisci la mail e/o password");
     }
 
 </script>
