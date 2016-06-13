@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
+<title>Peer Education</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
@@ -8,6 +9,7 @@
 <script src="peer_Education/functionsJs.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	
 <title>Peer Education</title>
 
 <!-- CSS  -->
@@ -65,7 +67,7 @@
 			<i class="material-icons">menu</i></a>
 		</div>
 	</nav>
-		
+
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
 	<div id="registrazione">
 		<div class="mask" onclick="TogliReg()"></div>
@@ -90,7 +92,6 @@
 	<div id="login">
 		<div class="mask" onclick="TogliLogin()"></div>
 		<div class="LogReg col l3 s12">
-		
 			E-mail: <input id="mailLog" type="text"><br> 
 			Password: <input id="passLog" type="password"><br>
 			
@@ -99,9 +100,11 @@
 			</button>
 		</div>
 	</div>
-	
+
 	<div>
-		<center><img src="peer-education1.png" class="brand-logo" /></center>
+		<center>
+			<img src="peer-education1.png" class="brand-logo" />
+		</center>
 	</div>
 
 	<footer class="page-footer orange">
@@ -122,15 +125,14 @@
 								un bug</a></li>
 						<li><a class="white-text"
 							href="#http://www.iiseinaudiscarpa.gov.it/">Sito della scuola</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Made by <a class="orange-text text-lighten-3">Basso Matteo e Oleksandr Demian</a>
+				Made by <a class="orange-text text-lighten-3">Basso Matteo e
+					Oleksandr Demian</a>
 			</div>
 		</div>
 	</footer>
