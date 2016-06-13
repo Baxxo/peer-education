@@ -21,20 +21,29 @@
 
 <script>
 	/*	La funzione per prendere i dati inseriti nella dialog della registrazione	*/
-    function GetUtente(){
-        var form = document.getElementById("test");
+    function GetUtenteReg(){
+        
         var utente = {
-            'nome': document.getElementById("nome").value,
-            'cognome': document.getElementById("cognome").value,
-            'classe': document.getElementById("classe").value,
-            'scuola': document.getElementById("scuola").value,
-            'mail': document.getElementById("mail").value,
-            'tel': document.getElementById("tel").value,
-            'data': document.getElementById("data").value,
-            'pass': document.getElementById("pass").value,
+            'nome': document.getElementById("nomeR").value,
+            'cognome': document.getElementById("cognomeR").value,
+            'classe': document.getElementById("classeR").value,
+            'scuola': document.getElementById("scuolaR").value,
+            'mail': document.getElementById("mailR").value,
+            'tel': document.getElementById("telR").value,
+            'data': document.getElementById("dataR").value,
+            'pass': document.getElementById("passR").value,
             'request':'registrati'
         };
         registrati(utente);
+    }
+    
+    function GetUtenteLog(){
+        var dati = {
+            'mail': document.getElementById("mailLog").value,
+            'pass': document.getElementById("passLog").value,
+            'request':'login'
+        };
+        Login(dati);
     }
 
 </script>
@@ -44,13 +53,13 @@
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
-				<li><a class="waves-effect waves-light btn" onclick="LoginOpen()">Login</a></li>
-				<li><a class="waves-effect waves-light btn" onclick="RegOpen()">Registrati</a></li>
+				<li><a class="waves-effect light-blue btn" onclick="LoginOpen()">Login</a></li>
+				<li><a class="waves-effect light-blue btn" onclick="RegOpen()">Registrati</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a class="waves-effect waves-light btn" onclick="LoginOpen()">Login</a></li>
-				<li><a class="waves-effect waves-light btn" onclick="RegOpen()">Registrati</a></li>
+				<li><a class="waves-effect light-blue btn" onclick="LoginOpen()">Login</a></li>
+				<li><a class="waves-effect light-blue btn" onclick="RegOpen()">Registrati</a></li>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse">
 			<i class="material-icons">menu</i></a>
@@ -62,14 +71,16 @@
 		<div class="mask" onclick="TogliReg()"></div>
 
 		<div class="LogReg col l3 s24">
-			Nome: <input id="nome" type="text"><br> Cognome: <input id="cognome"
-				type="text"><br> Classe: <input id="classe" type="text"><br> Scuola:
-			<input id="scuola" type="text"><br> E-mail: <input id="mail"
-				type="text"><br> Telefono: <input id="tel" type="text"><br> Data
-			nascita: <input id="data" type="date"><br> Password: <input id="pass"
-				type="password"><br>
-			<button class="btn waves-effect waves-light" onclick="GetUtente()">
-				Registrati
+			Nome: <input id="nomeR" type="text"><br>
+			Cognome: <input id="cognomeR" type="text"><br>
+			Classe: <input id="classe" type="text"><br>
+			Scuola: <input id="scuolaR" type="text"><br>
+			E-mail: <input id="mailR" type="text"><br>
+			Telefono: <input id="telR" type="text"><br>
+			Data nascita: <input id="dataR" type="date"><br>
+			Password: <input id="passR" type="password"><br>
+			<button class="btn waves-effect light-blue" onclick="GetUtenteReg()">
+				<i class="material-icons right">send</i>Registrati
 			</button>
 
 		</div>
@@ -79,10 +90,12 @@
 	<div id="login">
 		<div class="mask" onclick="TogliLogin()"></div>
 		<div class="LogReg col l3 s12">
-			E-mail: <input id="mail" type="text"><br> Password: <input id="pass"
-				type="password"><br>
-			<button class="btn waves-effect waves-light" onclick="Login()">
-				Login
+		
+			E-mail: <input id="mailLog" type="text"><br> 
+			Password: <input id="passLog" type="password"><br>
+			
+			<button class="btn waves-effect light-blue" onclick="GetUtenteLog()">
+				<i class="material-icons right">send</i>Login
 			</button>
 		</div>
 	</div>

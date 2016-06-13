@@ -32,12 +32,11 @@ function registrati(utente){
 	});
 }
 
-function Login(){
-	alert("Ciaone");
+function Login(dati){
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
-		data: ({ request:'login' }),
+		data: (dati),
 		success: function (response) {
 			alert(response);
 		}
