@@ -39,7 +39,7 @@
                 utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" &&utente['pass'] != "")
         	registrati(utente);
         else
-            alert("Ci sono dei campi mancanti!");
+        	Materialize.toast('Ci sono dei campi mancanti!', 1500);
     }
     
     function GetUtenteLog(){
@@ -51,7 +51,7 @@
         if(dati['mail'] != "" && dati['pass'] != "")
         	Login(dati);
         else
-            alert("Inserisci la mail e/o password");
+        	Materialize.toast('Inserisci la mail e/o password', 1500);
     }
 
 </script>
