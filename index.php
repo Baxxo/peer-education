@@ -9,7 +9,7 @@
 <script src="peer_Education/functionsJs.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	
+
 <title>Peer Education</title>
 
 <!-- CSS  -->
@@ -66,8 +66,8 @@
 				<li><a class="waves-effect light-blue btn" onclick="LoginOpen()">Login</a></li>
 				<li><a class="waves-effect light-blue btn" onclick="RegOpen()">Registrati</a></li>
 			</ul>
-			<a href="#" data-activates="nav-mobile" class="button-collapse">
-			<i class="material-icons">menu</i></a>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
+				class="material-icons">menu</i></a>
 		</div>
 	</nav>
 
@@ -104,17 +104,16 @@
 		</div>
 	</div>
 
-	<div>
-		<center>
-			<img src="peer-education1.png" class="brand-logo" />
-		</center>
-	</div>
+	<!-- pagina -->
+	<img src="peer-education1.png" class="brand-logo" />
 
-	<footer class="page-footer orange">
+	<div></div>
+
+	<!-- <footer class="page-footer orange">
 		<div class="container">
 			<div class="row">
 				<div class="col l6 s12">
-					<h5 class="white-text">Company Bio</h5>
+					<h5 class="white-text">Ciaone</h5>
 					<p class="grey-text text-lighten-4">Qui viene scritto qualcosa su
 						noi sviluppatori troppo bravi e carini che hanno fatto questi
 						sito. vi piace!.</p>
@@ -138,7 +137,7 @@
 					Oleksandr Demian</a>
 			</div>
 		</div>
-	</footer>
+	</footer>-->
 
 
 	<!--  Scripts-->
