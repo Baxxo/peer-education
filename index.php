@@ -90,6 +90,9 @@
 				onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
 			</button>
+			<button type="submit" class="btn waves-effect light-blue" onclick="TogliReg()">
+				Annula
+			</button>
 
 		</div>
 	</div>
@@ -106,11 +109,14 @@
 
 				<i class="material-icons right">send</i>Login
 			</button>
+			<button type="submit" class="btn waves-effect light-blue" onclick="TogliLogin()">
+				Annula
+			</button>
 		</div>
 	</div>
 
 	<!-- pagina -->
-	<img src="peer-education1.png" class="brand-logo" />
+	<img src="img/peer-education1.png" class="brand-logo" />
 	<br />
 
 	<!-- da inserire nel database -->
@@ -119,7 +125,7 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 				<p>
-					<img alt="freccia" src="freccia.png" height=52px>
+					<img alt="freccia" src="img/freccia.png" height=52px>
 				</p>
 
 				<h5 class="center">Aumenta i tuoi voti</h5>
@@ -141,7 +147,7 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 				<p>
-				<img alt="ingranaggio" src="ingr.png" height=52px>
+				<img alt="ingranaggio" src="img/ingr.png" height=52px>
 				</p>
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 

@@ -48,6 +48,12 @@ table {
 	opacity: 0.6;
 	z-index: 1000;
 }
+#registrazione{
+    display:none;
+}
+#login{
+    display:none;
+}
 
 #registrazione {
 	display: none;
