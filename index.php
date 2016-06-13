@@ -20,7 +20,6 @@
 </head>
 
 <script>
-	
 	/*	La funzione per prendere i dati inseriti nella dialog della registrazione	*/
     function GetUtente(){
         var form = document.getElementById("test");
@@ -44,7 +43,6 @@
 
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
-			<img src="peer-education1.png" href="#" class="brand-logo" />
 			<ul class="right hide-on-med-and-down">
 				<li><a class="waves-effect waves-light btn" onclick="LoginOpen()">Login</a></li>
 				<li><a class="waves-effect waves-light btn" onclick="RegOpen()">Registrati</a></li>
@@ -58,7 +56,7 @@
 				class="material-icons">menu</i></a>
 		</div>
 	</nav>
-	
+		
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
 	<div id="registrazione">
 		<div class="mask" onclick="TogliReg()"></div>
@@ -77,19 +75,22 @@
 		</div>
 	</div>
 
-	<!-- Il div di login che appare quando premi il tasto Login -->
+	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
 	<div id="login">
 		<div class="mask" onclick="TogliLogin()"></div>
 		<div class="LogReg col l3 s12">
 			E-mail: <input id="mail" type="text"><br> Password: <input id="pass"
 				type="password"><br>
-			<button class="btn waves-effect waves-light" onclick="Login(2)">
+			<button class="btn waves-effect waves-light" onclick="Login()">
 				Login
 			</button>
 		</div>
 	</div>
 	
-	
+	<div>
+		<center><img src="peer-education1.png" class="brand-logo" /></center>
+	</div>
+
 	<footer class="page-footer orange">
 		<div class="container">
 			<div class="row">
@@ -116,7 +117,7 @@
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Made by <a class="orange-text text-lighten-3">Basso Matteo & Oleksandr Demian</a>
+				Made by <a class="orange-text text-lighten-3">Basso Matteo e Oleksandr Demian</a>
 			</div>
 		</div>
 	</footer>

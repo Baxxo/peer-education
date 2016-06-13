@@ -1,6 +1,9 @@
 <?php
 
-$request = $_POST['request'];
+$request = $_GET['request'];
+echo $request;
+$success = "SUCCESS";
+$failed = "FAILED";
 switch($request){
     case 'caricaUtenti':
         caricaUtenti();
@@ -14,7 +17,6 @@ switch($request){
     default:
         echo "Richiesta strana: " .$request;
         break;
-
 }
 
 function caricaUtenti(){
@@ -40,26 +42,31 @@ function caricaUtenti(){
 
 function registrati(){  	
     $mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
-    $nome = $_POST['nome'];
+    /*$nome = $_POST['nome'];
     $cognome = $_POST['cognome'];
     $classe = $_POST['classe'];
     $scuola = $_POST['scuola'];
     $data = $_POST['data'];
     $pass = $_POST['pass'];
     $tel = $_POST['tel'];
-    $mail = $_POST['mail'];
+    $mail = $_POST['mail'];*/
 
-    $sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
-
-    $carica = mysqli_query($mysqli, $sql);
+    //$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
+    /*if($carica = mysqli_query($mysqli, $sql)){
+    	echo $success;
+    } else {
+    	echo $failed;
+    }*/
+    echo "Ciao";
 }
 
 function LogIn(){
     $mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
-    $email = $_POST['email'];
+    /*$email = $_GET['email'];
     $carica = mysqli_query($mysqli, "SELECT nome, password, id FROM Utente WHERE id = 1");
     $log = mysqli_fetch_object($carica);
-    echo $log->nome;
+    echo $log->nome;*/
+    echo "Ciaone";
 }
 
 ?>
