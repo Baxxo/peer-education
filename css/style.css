@@ -35,13 +35,14 @@ table{
 }	
 
 .mask {
-    background: #000;
+    background: white;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.6;
+    /*Log Reg background opacity*/
+    /*opacity: 0.8;*/
     z-index: 1000;
 }
 #registrazione{

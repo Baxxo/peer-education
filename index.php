@@ -92,6 +92,9 @@
 			<button type="submit" class="btn waves-effect light-blue" onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
 			</button>
+			<button type="submit" class="btn waves-effect light-blue" onclick="TogliReg()">
+				Annula
+			</button>
 
 		</div>
 	</div>
@@ -105,6 +108,9 @@
 			
 			<button type="submit" class="btn waves-effect light-blue" onclick="GetUtenteLog()">
 				<i class="material-icons right">send</i>Login
+			</button>
+			<button type="submit" class="btn waves-effect light-blue" onclick="TogliLogin()">
+				Annula
 			</button>
 		</div>
 	</div>
