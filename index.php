@@ -18,63 +18,78 @@
 <link href="css/style.css" type="text/css" rel="stylesheet"
 	media="screen,projection" />
 </head>
-<body>
 
+<script>
+	
+	/*	La funzione per prendere i dati inseriti nella dialog della registrazione	*/
+    function GetUtente(){
+        var form = document.getElementById("test");
+        var utente = {
+            'nome': document.getElementById("nome").value,
+            'cognome': document.getElementById("cognome").value,
+            'classe': document.getElementById("classe").value,
+            'scuola': document.getElementById("scuola").value,
+            'mail': document.getElementById("mail").value,
+            'tel': document.getElementById("tel").value,
+            'data': document.getElementById("data").value,
+            'pass': document.getElementById("pass").value,
+            'request':'registrati'
+        };
+        registrati(utente);
+    }
+
+</script>
+
+<body>
 
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<img src="peer-education1.png" href="#" class="brand-logo" />
 			<ul class="right hide-on-med-and-down">
-				<li><a class="waves-effect waves-light btn" onclick ="LoginOpen()">Login</a></li>
-				<li><a class="waves-effect waves-light btn" onclick ="RegOpen()">Registrati</a></li>
+				<li><a class="waves-effect waves-light btn" onclick="LoginOpen()">Login</a></li>
+				<li><a class="waves-effect waves-light btn" onclick="RegOpen()">Registrati</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a class="waves-effect waves-light btn" onclick ="LoginOpen()">Login</a></li>
-				<li><a class="waves-effect waves-light btn" onclick ="RegOpen()">Registrati</a></li>
+				<li><a class="waves-effect waves-light btn" onclick="LoginOpen()">Login</a></li>
+				<li><a class="waves-effect waves-light btn" onclick="RegOpen()">Registrati</a></li>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse"><i
 				class="material-icons">menu</i></a>
 		</div>
 	</nav>
-
-	<div class="art">
-	<?php
-	$page = 'home.php';
-	if (isset ( $_GET ["p"] ) && $_GET ["p"] == "login") {
-		$page = 'login.php';
-	}
 	
-	include $page;
-	
-	?>
-
-    </div>
-
+	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
 	<div id="registrazione">
 		<div class="mask" onclick="TogliReg()"></div>
 
-		<div class = "LogReg col l3 s24">
+		<div class="LogReg col l3 s24">
 			Nome: <input id="nome" type="text"><br> Cognome: <input id="cognome"
 				type="text"><br> Classe: <input id="classe" type="text"><br> Scuola:
 			<input id="scuola" type="text"><br> E-mail: <input id="mail"
 				type="text"><br> Telefono: <input id="tel" type="text"><br> Data
 			nascita: <input id="data" type="date"><br> Password: <input id="pass"
 				type="password"><br>
-			<button type="button" onclick="GetUtente()">Registrati</button>
+			<button class="btn waves-effect waves-light" onclick="GetUtente()">
+				Registrati
+			</button>
 
 		</div>
 	</div>
 
+	<!-- Il div di login che appare quando premi il tasto Login -->
 	<div id="login">
 		<div class="mask" onclick="TogliLogin()"></div>
-		<div class = "LogReg col l3 s12">
+		<div class="LogReg col l3 s12">
 			E-mail: <input id="mail" type="text"><br> Password: <input id="pass"
 				type="password"><br>
-			<button type="button" onclick="Login(2)">Login</button>
+			<button class="btn waves-effect waves-light" onclick="Login(2)">
+				Login
+			</button>
 		</div>
 	</div>
-
+	
+	
 	<footer class="page-footer orange">
 		<div class="container">
 			<div class="row">
@@ -101,8 +116,7 @@
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Made by <a class="orange-text text-lighten-3"
-					href="http://materializecss.com">Basso Matteo & Oleksandr Demian</a>
+				Made by <a class="orange-text text-lighten-3">Basso Matteo & Oleksandr Demian</a>
 			</div>
 		</div>
 	</footer>

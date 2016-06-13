@@ -16,7 +16,6 @@ function registrati(utente){
     	url: 'database.php',
 		data: (utente),
         success: function (response) {
-        	$("#Tabella").remove();
         	$("body").append(response);
         }
    });
