@@ -61,12 +61,13 @@ function registrati(){
 
 function Login(){
     $mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
-    $email = $_GET['email'];
-    $pass = $_GET[''];
-    $carica = mysqli_query($mysqli, "SELECT nome, password, id FROM Utente WHERE id = 1");
+    
+    $email = $_POST['mail'];
+    $pass = $_POST['pass'];
+    
+    $carica = mysqli_query($mysqli, "SELECT nome AS Nome, email, password, id FROM Utente WHERE email = '$email' AND password = '$pass'");
     $log = mysqli_fetch_object($carica);
-    echo $log->nome;
+    echo $log->Nome;
 }
 
 ?>
-
