@@ -3,8 +3,8 @@ var failed = "FAILED";
 
 function caricaDataTabella(){
 	$.ajax({
-		type: 'get',
-		url: 'database.php',
+		type: 'post',
+		url: 'peer_Education/database.php',
 		data: ({request:'caricaUtenti'}),
 		success: function (response) {
 			$("#Tabella").remove();
@@ -15,14 +15,12 @@ function caricaDataTabella(){
 
 function registrati(utente){
 	alert("Registrazione");
-	var c = failed;
 	$.ajax({
-		type: 'get',
-		url: 'database.php',
+		type: 'post',
+		url: 'peer_Education/database.php',
 		data: (utente),
 		success: function (response) {
 			alert(response);
-			c = response;
 			if(response == succes){
 				alert("Uguale vale suc");
 			} else if(response == failed){
@@ -32,15 +30,13 @@ function registrati(utente){
 			}
 		}
 	});
-	alert(c);
-	alert("Fine");
 }
 
 function Login(){
 	alert("Ciaone");
 	$.ajax({
-		type: 'get',
-		url: 'database.php',
+		type: 'post',
+		url: 'peer_Education/database.php',
 		data: ({ request:'login' }),
 		success: function (response) {
 			alert(response);
