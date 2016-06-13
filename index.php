@@ -23,7 +23,6 @@
 <script>
 	/*	La funzione per prendere i dati inseriti nella dialog della registrazione	*/
     function GetUtenteReg(){
-        
         var utente = {
             'nome': document.getElementById("nomeR").value,
             'cognome': document.getElementById("cognomeR").value,
@@ -35,7 +34,11 @@
             'pass': document.getElementById("passR").value,
             'request':'registrati'
         };
-        registrati(utente);
+        if(utente['nome'] != "" && utente['cognome'] != "" && utente['classe'] != "" && utente['scuola'] != "" && 
+                utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" &&utente['pass'] != "")
+        	registrati(utente);
+        else
+            alert("Ci sono dei campi mancanti!");
     }
     
     function GetUtenteLog(){
@@ -44,7 +47,10 @@
             'pass': document.getElementById("passLog").value,
             'request':'login'
         };
-        Login(dati);
+        if(dati['mail'] != "" && dati['pass'] != "")
+        	Login(dati);
+        else
+            alert("Inserisci la mail e/o password");
     }
 
 </script>
@@ -54,8 +60,10 @@
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
-				<li><a class="waves-effect light-blue btn" onclick="LoginOpen()">Login</a></li>
-				<li><a class="waves-effect light-blue btn" onclick="RegOpen()">Registrati</a></li>
+				<li><a class="light-blue btn" onclick="LoginOpen()">Login</a></li>
+				<li><a class="light-blue btn" onclick="RegOpen()">Registrati</a></li>
+				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
+
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
@@ -73,12 +81,13 @@
 
 		<div class="LogReg col l3 s24">
 			Nome: <input id="nomeR" type="text"><br> Cognome: <input
-				id="cognomeR" type="text"><br> Classe: <input id="classe"
+				id="cognomeR" type="text"><br> Classe: <input id="classeR"
 				type="text"><br> Scuola: <input id="scuolaR" type="text"><br>
 			E-mail: <input id="mailR" type="text"><br> Telefono: <input id="telR"
 				type="text"><br> Data nascita: <input id="dataR" type="date"><br>
 			Password: <input id="passR" type="password"><br>
-			<button class="btn waves-effect light-blue" onclick="GetUtenteReg()">
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
 			</button>
 
@@ -92,7 +101,9 @@
 			E-mail: <input id="mailLog" type="text"><br> Password: <input
 				id="passLog" type="password"><br>
 
-			<button class="btn waves-effect light-blue" onclick="GetUtenteLog()">
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="GetUtenteLog()">
+
 				<i class="material-icons right">send</i>Login
 			</button>
 		</div>
@@ -107,9 +118,9 @@
 	<div class="row">
 		<div class="col s12 m4">
 			<div class="icon-block">
-				<h2 class="center light-blue-text">
-					<i class="material-icons">flash_on</i>
-				</h2>
+				<p>
+					<img alt="freccia" src="freccia.png" height=52px>
+				</p>
 
 				<h5 class="center">Aumenta i tuoi voti</h5>
 
@@ -122,17 +133,16 @@
 					economico)<br /> E' andato tutto bene <br /> E' stato utile per
 					conoscere un po' le materie nelle quali avevo più difficoltà <br />
 					Ho avuto due tutor preparati e bravi<br /> Aiutando gli altri si
-					fanno anche nuove amicizie<br /> Mi è stato molto utile, sono
-					riuscito a recuperare<br />
+					fanno anche nuove amicizie<br />
 				</p>
 			</div>
 		</div>
 
 		<div class="col s12 m4">
 			<div class="icon-block">
-				<h2 class="center light-blue-text">
-					<i class="material-icons">flash_on</i>
-				</h2>
+				<p>
+				<img alt="ingranaggio" src="ingr.png" height=52px>
+				</p>
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 
 				<p class="light">
@@ -140,17 +150,23 @@
 					mangia al bar e poi si fa una cosa carina con gli amici imparando
 					assieme<br /> Sapeva tutti gli argomenti e anche quali compiti
 					erano stati assegnati <br /> E' stata un'esperienza nuova e
-					interessante (tutor)<br />
+					interessante (tutor)<br />Ha fatto un gran lavoro, si è dimostrato
+					professionale <br />Sono riuscita a capire quello che in classe non
+					era chiaro<br /> Ho capito un po' di più di quando ero in classe
+					con il prof<br /> Ho imparato nuove strategie di studio Il mio
+					tutor è simpatico, serio e competente<br /> Grazie per la
+					pazienza, la bravura, la serietà <br />
 				</p>
 			</div>
 		</div>
 
 		<div class="col s12 m4">
 			<div class="icon-block">
-				<h2 class="center light-blue-text">
-					<i class="material-icons">flash_on</i>
-				</h2>
-				<h5 class="center">Lavora con i tuoi compagni di classe</h5>
+
+				<p class="center light-blue-text">
+					<i class="material-icons" style="font-size: 52px;">group</i>
+				</p>
+				<h5 class="center">Lavora con i tuoi compagni</h5>
 
 				<p class="light">
 					Sei stato molto d'aiuto<br /> Il mio tutor era proprio disponibile,
@@ -158,12 +174,8 @@
 					una mano a chi ha bisogno (tutor)<br /> Mettersi alla prova come
 					insegnante (tutor) <br /> Ha saputo chiarirmi i dubbi che avevo <br />
 					Con un compagno si è più spontanei e si fanno quelle domande che
-					non si riesce a fare all'insegnante <br />Ha fatto un gran lavoro,
-					si è dimostrato professionale <br />Sono riuscita a capire quello
-					che in classe non era chiaro<br /> Ho capito un po' di più di
-					quando ero in classe con il prof<br /> Ho imparato nuove strategie
-					di studio Il mio tutor è simpatico, serio e competente<br />
-					Grazie per la pazienza, la bravura, la serietà <br />
+					non si riesce a fare all'insegnante <br /> Mi è stato molto utile,
+					sono riuscito a recuperare<br />
 				</p>
 			</div>
 		</div>
@@ -177,7 +189,8 @@
 			<div>
 				<div class="col l3 s12">
 					<ul>
-						<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi agli sviluppatori</a></li>
+						<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
+								agli sviluppatori</a></li>
 						<li><a class="white-text"
 							href="#http://www.iiseinaudiscarpa.gov.it/">IIS Einaudi - Scarpa</a></li>
 					</ul>

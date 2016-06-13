@@ -3,6 +3,7 @@
 $request = $_POST['request'];
 $success = "SUCCESS";
 $failed = "FAILED";
+
 switch($request){
     case "caricaUtenti":
         caricaUtenti();
@@ -19,6 +20,9 @@ switch($request){
 }
 
 function caricaUtenti(){
+	global $failed;
+	global $success;
+	
     $mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
     $carica = mysqli_query($mysqli, 'SELECT * FROM Utente');
 
@@ -39,7 +43,10 @@ function caricaUtenti(){
     echo "</table>";
 }
 
-function registrati(){  	
+function registrati(){
+	global $failed;
+	global $success;
+	
     $mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
     $nome = $_POST['nome'];
     $cognome = $_POST['cognome'];
@@ -56,18 +63,24 @@ function registrati(){
     } else {
     	echo $failed;
     }
-    echo "Ciao";
 }
 
 function Login(){
+	global $failed;
+	global $success;
+	
     $mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
     
     $email = $_POST['mail'];
     $pass = $_POST['pass'];
-    
     $carica = mysqli_query($mysqli, "SELECT nome AS Nome, email, password, id FROM Utente WHERE email = '$email' AND password = '$pass'");
-    $log = mysqli_fetch_object($carica);
-    echo $log->Nome;
+    
+    $res = mysqli_fetch_object($carica);
+    if($res)
+    	echo $success;
+    else
+    	echo $failed;
+    
 }
 
 ?>

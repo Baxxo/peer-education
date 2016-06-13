@@ -2,19 +2,21 @@ var succes = "SUCCESS";
 var failed = "FAILED";
 
 function caricaDataTabella(){
-	$.ajax({
-		type: 'post',
-		url: 'peer_Education/database.php',
-		data: ({request:'caricaUtenti'}),
-		success: function (response) {
-			$("#Tabella").remove();
-			$("body").append(response);
-		}
-	});
+	if($("#Tabella").length){
+		$("#Tabella").remove();
+	} else {
+		$.ajax({
+			type: 'post',
+			url: 'peer_Education/database.php',
+			data: ({request:'caricaUtenti'}),
+			success: function (response) {
+				$("body").append(response);
+			}
+		});
+	}
 }
 
 function registrati(utente){
-	alert("Registrazione");
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
@@ -22,11 +24,11 @@ function registrati(utente){
 		success: function (response) {
 			alert(response);
 			if(response == succes){
-				alert("Uguale vale suc");
+				alert("Grazie per la registrazione");
 			} else if(response == failed){
-				alert("Uguale vale fai");
+				alert("Registrazione fallita");
 			} else {
-				alert("Uguale non vale");
+				alert("C'è qualcosa che non va");
 			}
 		}
 	});
@@ -43,7 +45,7 @@ function Login(dati){
 	});
 }
 
-function RegOpen(){
+function RegOpen(){	
 	$( "#registrazione" ).fadeIn(250);
 }
 function LoginOpen(){
