@@ -90,9 +90,8 @@
 				onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
 			</button>
-			<button type="submit" class="btn waves-effect light-blue" onclick="TogliReg()">
-				Annula
-			</button>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="TogliReg()">Annula</button>
 
 		</div>
 	</div>
@@ -109,9 +108,8 @@
 
 				<i class="material-icons right">send</i>Login
 			</button>
-			<button type="submit" class="btn waves-effect light-blue" onclick="TogliLogin()">
-				Annula
-			</button>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="TogliLogin()">Annula</button>
 		</div>
 	</div>
 
@@ -125,7 +123,7 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 				<p>
-					<img alt="freccia" src="img/freccia.png" height=52px>
+					<img alt="freccia" src="img/freccia.png" height=52px width=40px>
 				</p>
 
 				<h5 class="center">Aumenta i tuoi voti</h5>
@@ -147,7 +145,7 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 				<p>
-				<img alt="ingranaggio" src="img/ingr.png" height=52px>
+					<img alt="ingranaggio" src="img/ingr.png" height=52px witdh=49px>
 				</p>
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 
