@@ -1,4 +1,4 @@
-var succes = "SUCCESS";
+var success = "SUCCESS";
 var failed = "FAILED";
 
 function caricaDataTabella(){
@@ -22,7 +22,6 @@ function registrati(utente){
 		url: 'peer_Education/database.php',
 		data: (utente),
 		success: function (response) {
-			alert(response);
 			if(response == succes){
 				Materialize.toast('Grazie per la registrazione', 1500);
 			} else if(response == failed){
@@ -41,9 +40,26 @@ function Login(dati){
 		data: (dati),
 		success: function (response) {
 			if(response == failed){ Materialize.toast("L'email e/o la password sono sbagliati", 1500); }
-			if(response == success){ /* carica la pagina utente */ }
+			if(response == success){ LoadPage("utente.php"); }
 		}
 	});
+}
+
+function LogOut(){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({request:'logOut'}),
+		success: function (response) {
+			LoadPage("index.php");
+		}
+	});
+}
+
+function LoadPage(dir){
+	
+	window.location.href = dir;
+	
 }
 
 function RegOpen(){

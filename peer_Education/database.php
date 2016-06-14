@@ -14,6 +14,9 @@ switch($request){
     case "login":
         Login();
         break;
+    case "logOut":
+    	LogOut();
+    	break;
     default:
         echo "Richiesta strana: " .$request;
         break;
@@ -85,6 +88,17 @@ function Login(){
     	echo $failed; 
     }
     
+}
+
+function LogOut(){
+	global $failed;
+	global $success;
+	
+	session_start();
+	unset($_SESSION["user_id"]);
+	unset($_SESSION["user_name"]);
+	
+	echo $succes;
 }
 
 ?>
