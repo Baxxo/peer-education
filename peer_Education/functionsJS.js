@@ -24,11 +24,11 @@ function registrati(utente){
 		success: function (response) {
 			alert(response);
 			if(response == succes){
-				alert("Grazie per la registrazione");
+				Materialize.toast('Grazie per la registrazione', 1500);
 			} else if(response == failed){
-				alert("Registrazione fallita");
+				Materialize.toast('Registrazione fallita', 1500);
 			} else {
-				alert("C'è qualcosa che non va");
+				Materialize.toast("C'è qualcosa che non va", 1500);
 			}
 		}
 	});
@@ -40,7 +40,8 @@ function Login(dati){
 		url: 'peer_Education/database.php',
 		data: (dati),
 		success: function (response) {
-			alert(response);
+			if(response == failed)
+				Materialize.toast("L'email e/o la password sono sbagliati", 1500);
 		}
 	});
 }
