@@ -49,15 +49,6 @@ table {
 	z-index: 1000;
 }
 
-#registrazione {
-	display: none;
-}
-
-#login {
-	display: none;
-	
-}
-
 .LogReg {
 	background-color: white;
 	z-index: 1001;

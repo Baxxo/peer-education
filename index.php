@@ -19,6 +19,19 @@
 	media="screen,projection" />
 </head>
 
+<style>
+
+	#registrazione {
+		display: none;
+	}
+	
+	#login {
+		display: none;
+		
+	}
+
+</style>
+
 <script>
 	/*	La funzione per prendere i dati inseriti nella dialog della registrazione	*/
     function GetUtenteReg(){

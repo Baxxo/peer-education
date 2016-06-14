@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $request = $_POST['request'];
 $success = "SUCCESS";
 $failed = "FAILED";
@@ -17,11 +17,15 @@ switch($request){
     case "logOut":
     	LogOut();
     	break;
+    case "creaCorso":
+    	CreaCorso();
+    	break;
     default:
         echo "Richiesta strana: " .$request;
         break;
 }
 
+/*	Index functions	*/
 function caricaUtenti(){
 	global $failed;
 	global $success;
@@ -80,15 +84,15 @@ function Login(){
     
     $res = mysqli_fetch_object($carica);
     if($res){
-    	session_start();
     	$_SESSION["user_id"] = $res->id;
     	$_SESSION["user_name"] = $res->Nome;
     	echo $success;
     } else {
     	echo $failed; 
     }
-    
 }
+
+/*	Utente functions	*/
 
 function LogOut(){
 	global $failed;
@@ -99,6 +103,31 @@ function LogOut(){
 	unset($_SESSION["user_name"]);
 	
 	echo $succes;
+}
+
+function CreaCorso(){
+	global $failed;
+	global $success;
+	
+	$mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
+	
+	$idTutor = $_SESSION["user_id"];
+	$scuola = $_POST['scuola'];
+	$mat = $_POST['materia'];
+	$giorno = $_POST['giorno'];
+	$ora = $_POST['ora'];
+	
+	$sql = "INSERT INTO corso VALUES (null, ''$idTutor', '$scuola', '$mat', '$giorno', '$ora')";
+	if($carica = mysqli_query($mysqli, $sql)){
+		echo $success;
+	} else {
+		echo $failed;
+	}
+}
+
+function CaricaMieiCorsi(){
+	$mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
+	//Finisci questa funzione!!!!!!
 }
 
 ?>

@@ -1,21 +1,12 @@
 var success = "SUCCESS";
 var failed = "FAILED";
 
-function caricaDataTabella(){
-	if($("#Tabella").length){
-		$("#Tabella").remove();
-	} else {
-		$.ajax({
-			type: 'post',
-			url: 'peer_Education/database.php',
-			data: ({request:'caricaUtenti'}),
-			success: function (response) {
-				$("body").append(response);
-			}
-		});
-	}
+function LoadPage(dir){
+	window.location.href = dir;
 }
 
+
+/*	Functions Index	*/
 function registrati(utente){
 	$.ajax({
 		type: 'post',
@@ -45,23 +36,6 @@ function Login(dati){
 	});
 }
 
-function LogOut(){
-	$.ajax({
-		type: 'post',
-		url: 'peer_Education/database.php',
-		data: ({request:'logOut'}),
-		success: function (response) {
-			LoadPage("index.php");
-		}
-	});
-}
-
-function LoadPage(dir){
-	
-	window.location.href = dir;
-	
-}
-
 function RegOpen(){
 	$( "#registrazione" ).fadeIn(250);
 	$(" #footer ").fadeOut(250);
@@ -78,5 +52,40 @@ function TogliReg(){
 }
 function TogliLogin(){
 	$( "#login" ).fadeOut(250);
+	$(" #footer ").fadeIn(250);
+}
+
+/*	Functions Utente	*/
+
+function LogOut(){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({request:'logOut'}),
+		success: function (response) {
+			LoadPage("index.php");
+		}
+	});
+}
+
+function CreaCorso(corso){
+	alert("Inizio");
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: (corso),
+		success: function (response) {
+			alert(response);
+		}
+	});
+}
+
+function CreaCorsoOpen(){
+	$( "#creaCorso" ).fadeIn(250);
+	$(" #footer ").fadeOut(250);
+}
+
+function TogliCreaCorso(){
+	$( "#creaCorso" ).fadeOut(250);
 	$(" #footer ").fadeIn(250);
 }
