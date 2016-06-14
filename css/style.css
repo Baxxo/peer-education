@@ -39,20 +39,14 @@ table {
 }
 
 .mask {
-	background: #000;
+	background: white;
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	opacity: 0.6;
+	/*opacity: 0.6;*/
 	z-index: 1000;
-}
-#registrazione{
-    display:none;
-}
-#login{
-    display:none;
 }
 
 #registrazione {
@@ -74,10 +68,10 @@ table {
 	top: 10%;
 	left: 40%;
 }
-footer {
-	height:130px;
-	width:100%;
+.footer {
 	position:fixed;
+	height:98px;
+	width:100%;
 	bottom:0;
 	left:0;
 }
