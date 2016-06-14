@@ -183,6 +183,7 @@
 					Con un compagno si è più spontanei e si fanno quelle domande che
 					non si riesce a fare all'insegnante <br /> Mi è stato molto utile,
 					sono riuscito a recuperare<br />
+					ciaone
 				</p>
 			</div>
 		</div>
