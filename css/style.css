@@ -68,10 +68,10 @@ table {
 	top: 10%;
 	left: 40%;
 }
-.footer {
-	position:fixed;
-	height:98px;
+footer {
+	height:130px;
 	width:100%;
+	position:fixed;
 	bottom:0;
 	left:0;
 }
