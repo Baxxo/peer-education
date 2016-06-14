@@ -40,7 +40,7 @@ table {
 
 .mask {
 	background: white;
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -68,6 +68,7 @@ table {
 	top: 10%;
 	left: 40%;
 }
+
 footer {
 	height:130px;
 	width:100%;
