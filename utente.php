@@ -6,7 +6,6 @@ session_start();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="peer_Education/functionsJs.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -23,16 +22,19 @@ session_start();
 </head>
 
 <body>
-
+	
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
+		
 			<ul class="right hide-on-med-and-down">
-				<li><a class="light-blue btn" onclick="LogOut()">LogOut</a></li>
+				<li><a class="waves-effect light-blue btn" onclick="LogOut()">Logout</a></li>
+				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a class="waves-effect light-blue btn" onclick="LogOut()">LogOut</a></li>
+				<li><a class="waves-effect light-blue btn" onclick="LogOut()">Logout</a></li>			
 			</ul>
+			
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
 				class="material-icons">menu</i></a>
 		</div>

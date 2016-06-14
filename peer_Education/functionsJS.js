@@ -22,7 +22,6 @@ function registrati(utente){
 		url: 'peer_Education/database.php',
 		data: (utente),
 		success: function (response) {
-			alert(response);
 			if(response == succes){
 				Materialize.toast('Grazie per la registrazione', 1500);
 			} else if(response == failed){
@@ -52,7 +51,7 @@ function LogOut(){
 		url: 'peer_Education/database.php',
 		data: ({request:'logOut'}),
 		success: function (response) {
-			LoadPage("index.html");
+			LoadPage("index.php");
 		}
 	});
 }

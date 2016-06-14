@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+
 <html lang="it">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="peer_Education/functionsJs.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -80,11 +79,13 @@
 		<div class="mask" onclick="TogliReg()"></div>
 
 		<div class="LogReg col l3 s24">
-			Nome: <input id="nomeR" type="text"><br> Cognome: <input
-				id="cognomeR" type="text"><br> Classe: <input id="classeR"
-				type="text"><br> Scuola: <input id="scuolaR" type="text"><br>
-			E-mail: <input id="mailR" type="text"><br> Telefono: <input id="telR"
-				type="text"><br> Data nascita: <input id="dataR" type="date"><br>
+			Nome: <input id="nomeR" type="text"><br>
+			Cognome: <input id="cognomeR" type="text"><br>
+			Classe: <input id="classeR" type="text"><br>
+			Scuola: <input id="scuolaR" type="text"><br>
+			E-mail: <input id="mailR" type="text"><br>
+			Telefono: <input id="telR" type="text"><br>
+			Data nascita: <input id="dataR" type="date"><br>
 			Password: <input id="passR" type="password"><br>
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="GetUtenteReg()">
@@ -134,10 +135,10 @@
 					I tutor sono molto disponibili, cercano sempre di darti una mano<br />
 					Grazie per il tuo aiuto, mi è stato utile<br /> Si capiscono
 					meglio gli argomenti e tra tutor e "alunni" ci si aiuta
-					reciprocamente<br /> Sono soddisfatto di questa esperienza, sÃ¬,
-					aiutarsi tra alunni conviene (qualcuno ha scritto che Ã¨ piÃ¹
+					reciprocamente<br /> Sono soddisfatto di questa esperienza, sì,
+					aiutarsi tra alunni conviene (qualcuno ha scritto che è più
 					economico)<br /> E' andato tutto bene <br /> E' stato utile per
-					conoscere un po' le materie nelle quali avevo piÃ¹ difficoltÃ  <br />
+					conoscere un po' le materie nelle quali avevo più difficoltà <br />
 					Ho avuto due tutor preparati e bravi<br /> Aiutando gli altri si
 					fanno anche nuove amicizie<br />
 				</p>
@@ -152,16 +153,16 @@
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 
 				<p class="light">
-					E' bello poter aiutare chi Ã¨ in difficoltÃ  <br /> SÃ¬ dai, si
+					E' bello poter aiutare chi è in difficoltà <br /> Sì dai, si
 					mangia al bar e poi si fa una cosa carina con gli amici imparando
 					assieme<br /> Sapeva tutti gli argomenti e anche quali compiti
 					erano stati assegnati <br /> E' stata un'esperienza nuova e
-					interessante (tutor)<br />Ha fatto un gran lavoro, si Ã¨ dimostrato
+					interessante (tutor)<br />Ha fatto un gran lavoro, si è dimostrato
 					professionale <br />Sono riuscita a capire quello che in classe non
-					era chiaro<br /> Ho capito un po' di piÃ¹ di quando ero in classe
+					era chiaro<br /> Ho capito un po' di più di quando ero in classe
 					con il prof<br /> Ho imparato nuove strategie di studio Il mio
-					tutor Ã¨ simpatico, serio e competente<br /> Grazie per la
-					pazienza, la bravura, la serietÃ  <br />
+					tutor è simpatico, serio e competente<br /> Grazie per la
+					pazienza, la bravura, la serietà <br />
 				</p>
 			</div>
 		</div>
@@ -179,8 +180,8 @@
 					glielo farei rifare <br /> Utile anche al tutor per ripassare dando
 					una mano a chi ha bisogno (tutor)<br /> Mettersi alla prova come
 					insegnante (tutor) <br /> Ha saputo chiarirmi i dubbi che avevo <br />
-					Con un compagno si Ã¨ piÃ¹ spontanei e si fanno quelle domande che
-					non si riesce a fare all'insegnante <br /> Mi Ã¨ stato molto utile,
+					Con un compagno si è più spontanei e si fanno quelle domande che
+					non si riesce a fare all'insegnante <br /> Mi è stato molto utile,
 					sono riuscito a recuperare<br />
 				</p>
 			</div>
@@ -188,13 +189,12 @@
 
 
 	</div>
-	
 	<div style="height: 130px; clear: both;">&nbsp;</div>
-	
+
 	<footer id = "footer" class="page-footer orange">
 		<div class="container">
 			<div>
-				<div class="col l3 s12">
+				<div class="col l6 s12">
 					<ul>
 						<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
 								agli sviluppatori</a></li>
@@ -211,6 +211,7 @@
 			</div>
 		</div>
 	</footer>
+
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
