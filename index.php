@@ -123,7 +123,7 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 				<p>
-					<img alt="freccia" src="img/freccia.png" height=52px width=40px>
+					<img alt="freccia" src="img/freccia.png" height=52px width=40px style="clear:both">
 				</p>
 
 				<h5 class="center">Aumenta i tuoi voti</h5>
@@ -145,7 +145,7 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 				<p>
-					<img alt="ingranaggio" src="img/ingr.png" height=52px witdh=49px>
+					<img alt="ingranaggio" src="img/ingr.png" height=52px witdh=49px style="clear:both">
 				</p>
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 
@@ -168,7 +168,7 @@
 			<div class="icon-block">
 
 				<p class="center light-blue-text">
-					<i class="material-icons" style="font-size: 52px;">group</i>
+					<i class="material-icons" style="font-size: 52px; clear: both;">group</i>
 				</p>
 				<h5 class="center">Lavora con i tuoi compagni</h5>
 
