@@ -1,4 +1,4 @@
-var succes = "SUCCESS";
+var success = "SUCCESS";
 var failed = "FAILED";
 
 function caricaDataTabella(){
@@ -41,9 +41,27 @@ function Login(dati){
 		data: (dati),
 		success: function (response) {
 			if(response == failed){ Materialize.toast("L'email e/o la password sono sbagliati", 1500); }
-			if(response == success){ /* carica la pagina utente */ }
+			if(response == success){ LoadPage("utente.php"); }
 		}
 	});
+}
+
+function LogOut(){
+	alert("LogOut");
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({request:'logOut'}),
+		success: function (response) {
+			alert(response);
+		}
+	});
+}
+
+function LoadPage(dir){
+	
+	window.location.href = dir;
+	
 }
 
 function RegOpen(){
