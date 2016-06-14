@@ -90,11 +90,15 @@ function Login(){
     
 }
 
-function LogOut(){	
+function LogOut(){
+	global $failed;
+	global $success;
+	
 	session_start();
 	unset($_SESSION["user_id"]);
 	unset($_SESSION["user_name"]);
-	header("Location:index.php");
+	
+	echo $succes;
 }
 
 ?>

@@ -47,13 +47,12 @@ function Login(dati){
 }
 
 function LogOut(){
-	alert("LogOut");
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
 		data: ({request:'logOut'}),
 		success: function (response) {
-			alert(response);
+			LoadPage("index.html");
 		}
 	});
 }
