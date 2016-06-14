@@ -1,6 +1,8 @@
+
 <?php 
-session_start();
+	session_start();
 ?>
+
 <html lang="it">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
