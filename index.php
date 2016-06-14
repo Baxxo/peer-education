@@ -93,7 +93,7 @@
 				<i class="material-icons right">send</i>Registrati
 			</button>
 			<button type="submit" class="btn waves-effect light-blue"
-				onclick="TogliReg()">Annula</button>
+				onclick="TogliReg()">Annulla</button>
 
 		</div>
 	</div>
@@ -111,7 +111,7 @@
 				<i class="material-icons right">send</i>Login
 			</button>
 			<button type="submit" class="btn waves-effect light-blue"
-				onclick="TogliLogin()">Annula</button>
+				onclick="TogliLogin()">Annulla</button>
 		</div>
 	</div>
 

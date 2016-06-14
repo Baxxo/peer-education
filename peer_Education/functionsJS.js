@@ -24,7 +24,7 @@ function registrati(utente) {
 		url : 'peer_Education/database.php',
 		data : (utente),
 		success : function(response) {
-			if (response == succes) {
+			if (response == success) {
 				Materialize.toast('Grazie per la registrazione', 1500);
 			} else if (response == failed) {
 				Materialize.toast('Registrazione fallita', 1500);

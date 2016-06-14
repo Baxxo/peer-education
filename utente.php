@@ -29,7 +29,7 @@
 		<div class="nav-wrapper container">
 		
 			<ul class="right hide-on-med-and-down">
-				<li><a class="waves-effect light-blue btn" onclick="LogOut()">Logout</a></li>
+				<li><a class="waves-effect light-blue btn" onclick="LogOut()" style="margin-top: 6%;">Logout</a></li>
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 			</ul>
 
