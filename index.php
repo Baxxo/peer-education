@@ -72,9 +72,11 @@
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
-				<li><a class="light-blue btn" onclick="LoginOpen()" style="margin-top:6%;">Login</a></li>
-				<li><a class="light-blue btn" onclick="RegOpen()" style="margin-top:6%;">Registrati</a></li>
-				
+				<li><a class="light-blue btn" onclick="LoginOpen()"
+					style="margin-top: 6%;">Login</a></li>
+				<li><a class="light-blue btn" onclick="RegOpen()"
+					style="margin-top: 5%;">Registrati</a></li>
+
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 
 			</ul>
@@ -93,21 +95,18 @@
 		<div class="mask" onclick="TogliReg()"></div>
 
 		<div class="LogReg col l3 s24">
-			Nome: <input id="nomeR" type="text"><br>
-			Cognome: <input id="cognomeR" type="text"><br>
-			Classe: <input id="classeR" type="text"><br>
-			Scuola: <input id="scuolaR" type="text"><br>
-			E-mail: <input id="mailR" type="text"><br>
-			Telefono: <input id="telR" type="text"><br>
-			Data nascita: <input id="dataR" type="date"><br>
+			Nome: <input id="nomeR" type="text"><br> Cognome: <input
+				id="cognomeR" type="text"><br> Classe: <input id="classeR"
+				type="text"><br> Scuola: <input id="scuolaR" type="text"><br>
+			E-mail: <input id="mailR" type="text"><br> Telefono: <input id="telR"
+				type="text"><br> Data nascita: <input id="dataR" type="date"><br>
 			Password: <input id="passR" type="password"><br>
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
 			</button>
-			<button type="submit" class="btn waves-effect light-blue" onclick="TogliReg()">
-				Annula
-			</button>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="TogliReg()">Annulla</button>
 
 		</div>
 	</div>
@@ -124,9 +123,8 @@
 
 				<i class="material-icons right">send</i>Login
 			</button>
-			<button type="submit" class="btn waves-effect light-blue" onclick="TogliLogin()">
-				Annula
-			</button>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="TogliLogin()">Annulla</button>
 		</div>
 	</div>
 
@@ -162,7 +160,7 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 				<p>
-				<img alt="ingranaggio" src="img/ingr.png" height=52px>
+					<img alt="ingranaggio" src="img/ingr.png" height=52px>
 				</p>
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 
@@ -197,7 +195,6 @@
 					Con un compagno si è più spontanei e si fanno quelle domande che
 					non si riesce a fare all'insegnante <br /> Mi è stato molto utile,
 					sono riuscito a recuperare<br />
-					ciaone
 				</p>
 			</div>
 		</div>
@@ -206,7 +203,7 @@
 	</div>
 	<div style="height: 130px; clear: both;">&nbsp;</div>
 
-	<footer id = "footer" class="page-footer orange">
+	<footer id="footer" class="page-footer orange">
 		<div class="container">
 			<div>
 				<div class="col l6 s12">

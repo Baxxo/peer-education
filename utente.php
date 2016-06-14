@@ -59,6 +59,7 @@ session_start ();
 					style="margin-top: 6%;">Logout</a></li>
 				<li><a class="light-blue btn" onclick="CreaCorsoOpen()"
 					style="margin-top: 6%;">Crea corso</a></li>
+
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 			</ul>
 

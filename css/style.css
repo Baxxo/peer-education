@@ -49,6 +49,17 @@ table {
 	z-index: 1000;
 }
 
+<<<<<<< HEAD
+=======
+#registrazione {
+	display: none;
+}
+
+#login {
+	display: none;
+}
+
+>>>>>>> branch 'master' of https://github.com/Baxxo/peer-education.git
 .LogReg {
 	background-color: white;
 	z-index: 1001;
@@ -62,9 +73,9 @@ table {
 }
 
 footer {
-	height:130px;
-	width:100%;
-	position:fixed;
-	bottom:0;
-	left:0;
+	height: 130px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
 }
