@@ -40,8 +40,8 @@ function Login(dati){
 		url: 'peer_Education/database.php',
 		data: (dati),
 		success: function (response) {
-			if(response == failed)
-				Materialize.toast("L'email e/o la password sono sbagliati", 1500);
+			if(response == failed){ Materialize.toast("L'email e/o la password sono sbagliati", 1500); }
+			if(response == success){ /* carica la pagina utente */ }
 		}
 	});
 }

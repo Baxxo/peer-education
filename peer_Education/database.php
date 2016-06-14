@@ -73,13 +73,17 @@ function Login(){
     
     $email = $_POST['mail'];
     $pass = $_POST['pass'];
-    $carica = mysqli_query($mysqli, "SELECT nome AS Nome, email, password, id FROM Utente WHERE email = '$email' AND password = '$pass'");
+    $carica = mysqli_query($mysqli, "SELECT nome AS Nome, email, password, id AS id FROM Utente WHERE email = '$email' AND password = '$pass'");
     
     $res = mysqli_fetch_object($carica);
-    if($res)
+    if($res){
+    	session_start();
+    	$_SESSION["user_id"] = $res->id;
+    	$_SESSION["user_name"] = $res->Nome;
     	echo $success;
-    else
-    	echo $failed;
+    } else {
+    	echo $failed; 
+    }
     
 }
 
