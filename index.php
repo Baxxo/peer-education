@@ -61,6 +61,7 @@
 			<ul class="right hide-on-med-and-down">
 				<li><a class="light-blue btn" onclick="LoginOpen()" style="margin-top:6%;">Login</a></li>
 				<li><a class="light-blue btn" onclick="RegOpen()" style="margin-top:6%;">Registrati</a></li>
+				
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 
 			</ul>
