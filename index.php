@@ -34,6 +34,7 @@
 	function RegOpen(){
 		$( "#registrazione" ).fadeIn(250);
 		$(" #footer ").fadeOut(250);
+	    $('select').material_select();
 	}
 	function LoginOpen() {
 		$("#login").fadeIn(250);
@@ -43,6 +44,7 @@
 	function TogliReg() {
 		$("#registrazione").fadeOut(250);
 		$(" #footer ").fadeIn(250);
+		$('select').material_select('destroy');
 	}
 	function TogliLogin() {
 		$("#login").fadeOut(250);
@@ -120,10 +122,18 @@
 		<div class="LogReg col l3 s24">
 			Nome: <input id="nomeR" type="text"><br> Cognome: <input
 				id="cognomeR" type="text"><br> Classe: <input id="classeR"
-				type="text"><br> Scuola: <input id="scuolaR" type="text"><br>
-			E-mail: <input id="mailR" type="text"><br> Telefono: <input id="telR"
-				type="text"><br> Data nascita: <input id="dataR" type="date"><br>
-			Password: <input id="passR" type="password"><br>
+				type="text"><br>
+			<div class="input-field col s12">
+				<select>
+					<option value="" disabled selected>Scuola</option>
+					<option value="1">Einaudi</option>
+					<option value="2">Scarpa</option>
+					<option value="3">Liceo Levi</option>
+				</select>
+			</div>
+			<br> E-mail: <input id="mailR" type="text"><br> Telefono: <input
+				id="telR" type="text"><br> Data nascita: <input id="dataR"
+				type="date"><br> Password: <input id="passR" type="password"><br>
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
@@ -193,7 +203,7 @@
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 
 				<p class="light" style="text-align: center;">
-					E' bello poter aiutare chi è in difficoltà <br /> Sì dai, si
+					E' bello poter aiutare chi è in difficoltà <br />Sì dai, si
 					mangia al bar e poi si fa una cosa carina con gli amici imparando
 					assieme<br /> Sapeva tutti gli argomenti e anche quali compiti
 					erano stati assegnati <br /> E' stata un'esperienza nuova e
@@ -211,9 +221,10 @@
 			<div class="icon-block">
 
 				<p>
-					<img alt="gruppo" src="img/gruppo.png" height=52px style="padding:2;">
+					<img alt="gruppo" src="img/gruppo.png" height=52px
+						style="padding: 2;">
 				</p>
-				
+
 				<h5 class="center">Lavora con i tuoi compagni</h5>
 
 				<p class="light" style="text-align: center;">

@@ -28,6 +28,9 @@ session_start ();
 	#creaCorso {
 		display: none;
 	}
+	#creaCorso {
+		display: none;
+	}
 	#cercaCorso {
 		display: none;
 	}
@@ -35,7 +38,7 @@ session_start ();
 		margin: 20px;
 		display: none;
 	}
-
+	
 </style>
 
 <script>
@@ -57,11 +60,13 @@ session_start ();
 	function CreaCorsoOpen(){
 		$( "#creaCorso" ).fadeIn(250);
 		$(" #footer ").fadeOut(250);
+	    $('select').material_select();
 	}
 
 	function TogliCreaCorso(){
 		$( "#creaCorso" ).fadeOut(250);
 		$(" #footer ").fadeIn(250);
+		$('select').material_select('destroy');
 	}
 
 	function getCorsoCerca(){
@@ -121,7 +126,7 @@ session_start ();
 	</nav>
 
 	<h1 class="header center orange-text">Benvenuto <?php echo $_SESSION["user_name"]; ?></h1>
-	
+
 	<!-- Div per cercare il corso -->
 	<div id="cercaCorso">
 		<div class="mask" onclick="TogliCercaCorso()"></div>
@@ -138,63 +143,91 @@ session_start ();
 		</div>
 		
 	</div>
-	
+
 	<!-- Div per creare il corso -->
 	<div id="creaCorso">
 		<div class="mask" onclick="TogliCreaCorso()"></div>
 		<div class="LogReg col l3 s12">
-			Scuola: <input id="scuola" type="number"><br> Materia: <input
-				id="materia" type="number"><br> Giorno: <input id="giorno"
-				type="text"><br> Ora: <input id="ora" type="time"><br>
 
-			<button type="submit" class="btn waves-effect light-blue"
-				onclick="getCorso()">
-				<i class="material-icons right">send</i>Crea
-			</button>
+			
+				<select>
+					<option value="" disabled selected>Scuola</option>
+					<option value="1">Einaudi</option>
+					<option value="2">Scarpa</option>
+					<option value="3">Liceo Levi</option>
+				</select>
+				
+				 <select>
+					<option value="" disabled selected>Materia</option>
+					<option value="1">Italiano</option>
+					<option value="2">Storia</option>
+					<option value="3">Matematica</option>
+					<option value="4">Informatica</option>
+					<option value="5">Sistemi</option>
+					<option value="6">TPS</option>
+					<option value="7">Inglese</option>
+					<option value="8">Ginnastica</option>
+				</select>
+				<select>
+					<option value="" disabled selected>Giorno</option>
+					<option value="1">Lunedì </option>
+					<option value="2">Martedì </option>
+					<option value="3">Mercoledì </option>
+					<option value="4">Giovedì </option>
+					<option value="5">Venerdì </option>
+				</select> Ora: <input id="ora" type="time"><br>
 
-			<button type="submit" class="btn waves-effect light-blue"
-				onclick="TogliCreaCorso()">Annula</button>
+				<button type="submit" class="btn waves-effect light-blue"
+					onclick="getCorso()">
+					<i class="material-icons right">send</i>Crea
+				</button>
+
+				<button type="submit" class="btn waves-effect light-blue"
+					onclick="TogliCreaCorso()">Annula</button>
+			</div>
+
 		</div>
-	</div>
-	
-	<div class="row">
-		<div class="col s6 offset-s3">
-			<div id="mieiCorsi"></div>
-		</div>
-	</div>
 
-	<div class="row">
-		<div class="col s6 offset-s3">
-			<div id="corsiCheSeguo"></div>
-		</div>
-	</div>
 
-	<footer id = "footer" class="page-footer orange">
-		<div class="container">
-			<div>
-				<div class="col l3 s12">
-					<ul>
-						<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
-								agli sviluppatori</a></li>
-						<li><a class="white-text"
-							href="#http://www.iiseinaudiscarpa.gov.it/">IIS Einaudi - Scarpa</a></li>
-					</ul>
+
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<div id="mieiCorsi"></div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<div id="corsiCheSeguo"></div>
+			</div>
+		</div>
+
+		<footer id="footer" class="page-footer orange">
+			<div class="container">
+				<div>
+					<div class="col l3 s12">
+						<ul>
+							<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
+									agli sviluppatori</a></li>
+							<li><a class="white-text"
+								href="#http://www.iiseinaudiscarpa.gov.it/">IIS Einaudi - Scarpa</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				Made by <a class="orange-text text-lighten-3">Basso Matteo e
-					Oleksandr Demian</a>
+			<div class="footer-copyright">
+				<div class="container">
+					Made by <a class="orange-text text-lighten-3">Basso Matteo e
+						Oleksandr Demian</a>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
 
 
-	<!--  Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="js/materialize.js"></script>
-	<script src="js/init.js"></script>
+		<!--  Scripts-->
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="js/materialize.js"></script>
+		<script src="js/init.js"></script>
 
 </body>
 </html>
