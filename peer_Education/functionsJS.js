@@ -64,7 +64,7 @@ function LogOut(){
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
-		data: ({request:'logOut'}),
+		data: ({ request:'logOut' }),
 		success: function (response) {
 			LoadPage("index.php");
 		}
@@ -79,6 +79,18 @@ function CreaCorso(corso){
 		data: (corso),
 		success: function (response) {
 			alert(response);
+		}
+	});
+}
+
+function CaricaMieiCorsi(){
+	alert("Carico i miei corsi");
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaMieiCorsi' }),
+		success: function (response) {
+			$("body").append(response);
 		}
 	});
 }

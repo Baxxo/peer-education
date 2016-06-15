@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start ();
 $request = $_POST['request'];
 $success = "SUCCESS";
 $failed = "FAILED";
@@ -19,6 +19,9 @@ switch($request){
     	break;
     case "creaCorso":
     	CreaCorso();
+    	break;
+    case "caricaMieiCorsi":
+    	CaricaMieiCorsi();
     	break;
     default:
         echo "Richiesta strana: " .$request;
@@ -98,7 +101,6 @@ function LogOut(){
 	global $failed;
 	global $success;
 	
-	session_start ();
 	unset ( $_SESSION ["user_id"] );
 	unset ( $_SESSION ["user_name"] );
 	
@@ -127,6 +129,30 @@ function CreaCorso(){
 
 function CaricaMieiCorsi(){
 	$mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
+	$idTutor = $_SESSION["user_id"];
+	
+	$carica = mysqli_query($mysqli, "SELECT idTutor AS tutor,
+									scuola AS idScuola,
+									idMateria AS mat,
+									giorno AS giorno,
+									ora AS ora
+									FROM corso");
+	if($carica){		
+		echo '<table border = "1px solid black" id = "Tabella">';
+		echo '<tr>';
+		echo '<td> Scuola </td><td> Materia </td><td> Giorno </td><td> Ora </td>';
+		echo '</tr>';
+		
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<tr>';
+			echo '<td>' . $res ['idScuola'] . '</td>';
+			echo '<td>' . $res ['mat'] . '</td>';
+			echo '<td>' . $res ['giorno'] . '</td>';
+			echo '<td>' . $res ['ora'] . '</td>';
+			echo '</tr>';
+		}
+		echo "</table>";
+	}
 	
 }
 

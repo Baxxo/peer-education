@@ -31,6 +31,10 @@ session_start ();
 
 <script>
 
+	$(document).ready(function(){
+		CaricaMieiCorsi();
+	});
+
 	function getCorso(){
 		var corso = {
 			'scuola': document.getElementById("scuola").value,
