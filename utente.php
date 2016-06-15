@@ -31,6 +31,10 @@ session_start ();
 	#cercaCorso {
 		display: none;
 	}
+	#corsiTrovati{
+		margin: 20px;
+		display: none;
+	}
 
 </style>
 
@@ -60,6 +64,18 @@ session_start ();
 		$(" #footer ").fadeIn(250);
 	}
 
+	function getCorsoCerca(){
+		var corso = {
+			'materia': document.getElementById("materiaCerca").value,
+			'request':'cercaCorso'
+			};
+		if(corso['materia'] != ""){
+			CercaCorso(corso);
+		}
+        else
+        	Materialize.toast('Non hai compilato tutti i campi!', 1500);
+	}
+
 	function getCorso(){
 		var corso = {
 			'scuola': document.getElementById("scuola").value,
@@ -69,7 +85,6 @@ session_start ();
 			'request':'creaCorso'
 			};
 		if(corso['scuola'] != "" && corso['materia'] != "" && corso['giorno'] != "" && corso['ora'] != ""){
-			alert("Inizio utente");
 			CreaCorso(corso);
 		}
         else
@@ -113,13 +128,15 @@ session_start ();
 		<div class="LogReg col l3 s12">
 			 Materia: <input id="materiaCerca" type="number">
 			<button type="submit" class="btn waves-effect light-blue"
-				onclick="">
+				onclick="getCorsoCerca()">
 				<i class="material-icons right">send</i>Cerca
 			</button>
 
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="TogliCercaCorso()">Annula</button>
+			<div id = "corsiTrovati"></div>
 		</div>
+		
 	</div>
 	
 	<!-- Div per creare il corso -->
@@ -151,9 +168,6 @@ session_start ();
 			<div id="corsiCheSeguo"></div>
 		</div>
 	</div>
-	
-	
-
 
 	<footer id = "footer" class="page-footer orange">
 		<div class="container">

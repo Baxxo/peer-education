@@ -26,6 +26,9 @@ switch ($request) {
 	case "caricaTutor":
 		CaricaCorsiCheSeguo();
 		break;
+	case "cercaCorso":
+		CercaCorso();
+		break;
 	default :
 		echo "Richiesta strana: " . $request;
 		break;
@@ -141,7 +144,7 @@ function CaricaMieiCorsi() {
 		echo '<table class="centered striped" id = "Tabella">';
 		
 		echo '<tr>';
-		echo '<td colspan="4" style="background-color: orange; color: white;"><b> I corsi dove sono tutor</b> </td>';
+		echo '<td colspan="4" class = "z-depth-2 light-blue" style="color: white;"><b> I corsi dove sono tutor</b> </td>';
 		echo '</tr>';
 		
 		echo '<tr>';
@@ -175,7 +178,7 @@ function CaricaCorsiCheSeguo() {
 		echo '<table class="centered striped" id = "Tabella">';
 
 		echo '<tr>';
-		echo '<td colspan="5" style="background-color: orange; color: white;"><b> I corsi che seguo</b> </td>';
+		echo '<td colspan="5" class = "z-depth-2 orange" style="color: white;"><b> I corsi che seguo</b> </td>';
 		echo '</tr>';
 
 		echo '<tr>';
@@ -193,6 +196,43 @@ function CaricaCorsiCheSeguo() {
 		}
 		echo "</table><hr>";
 	}
+}
+
+function CercaCorso(){
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
+	$mat = $_POST ['materia'];
+	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
+									scuola AS idScuola,
+									idMateria AS mat,
+									giorno AS giorno,
+									ora AS ora
+									FROM corso
+									WHERE idMateria = '$mat'" );
+	
+	if ($carica) {
+		echo '<table class="centered striped" id = "TabellaCerca">';
+	
+		echo '<tr>';
+		echo '<td colspan="5" class = "z-depth-2 light-blue" style="color: white;"><b> I corsi trovati</b> </td>';
+		echo '</tr>';
+	
+		echo '<tr>';
+		echo '<td> Tutor </td><td> Scuola </td><td> Materia </td><td> Giorno </td><td> Ora </td>';
+		echo '</tr>';
+	
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<tr>';
+			echo '<td>' . $res ['tutor'] . '</td>';
+			echo '<td>' . $res ['idScuola'] . '</td>';
+			echo '<td>' . $res ['mat'] . '</td>';
+			echo '<td>' . $res ['giorno'] . '</td>';
+			echo '<td>' . $res ['ora'] . '</td>';
+			echo '</tr>';
+		}
+		echo "</table>";
+	}
+	
 }
 
 ?>

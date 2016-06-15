@@ -54,7 +54,6 @@ function LogOut(){
 }
 
 function CreaCorso(corso){
-	alert("Inizio");
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
@@ -65,13 +64,15 @@ function CreaCorso(corso){
 	});
 }
 
-function CercaCorso(corso){
+function CercaCorso(dati){
+	$("#corsiTrovati").fadeOut(100);
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
-		data: (corso),
+		data: (dati),
 		success: function (response) {
-			alert(response);
+			$("#TabellaCerca").remove();
+			$("#corsiTrovati").append(response).fadeIn(250);
 		}
 	});
 }
