@@ -20,16 +20,13 @@
 </head>
 
 <style>
+#registrazione {
+	display: none;
+}
 
-	#registrazione {
-		display: none;
-	}
-	
-	#login {
-		display: none;
-		
-	}
-
+#login {
+	display: none;
+}
 </style>
 
 <script>
@@ -136,8 +133,14 @@
 	</div>
 
 	<!-- pagina -->
-	<img src="img/peer-education1.png" class="brand-logo" />
+	<div
+		style="position: relative; top: 0; bottom: 0; left: 0; right: 0; margin: auto;">
+		<img src="img/peer-education1.png" class="brand-logo" />
+	</div>
 	<br />
+	<!--  <div class="row center">
+		<h5 class="header col s12 light">Un nuovo modo di studiare</h5>
+	</div>-->
 
 	<!-- da inserire nel database -->
 
@@ -150,7 +153,7 @@
 
 				<h5 class="center">Aumenta i tuoi voti</h5>
 
-				<p class="light">
+				<p class="light" style="text-align: center;">
 					I tutor sono molto disponibili, cercano sempre di darti una mano<br />
 					Grazie per il tuo aiuto, mi è stato utile<br /> Si capiscono
 					meglio gli argomenti e tra tutor e "alunni" ci si aiuta
@@ -171,7 +174,7 @@
 				</p>
 				<h5 class="center">Impara nuovi metodi di studio</h5>
 
-				<p class="light">
+				<p class="light" style="text-align: center;">
 					E' bello poter aiutare chi è in difficoltà <br /> Sì dai, si
 					mangia al bar e poi si fa una cosa carina con gli amici imparando
 					assieme<br /> Sapeva tutti gli argomenti e anche quali compiti
@@ -189,12 +192,13 @@
 		<div class="col s12 m4">
 			<div class="icon-block">
 
-				<p class="center light-blue-text">
-					<i class="material-icons" style="font-size: 52px;">group</i>
+				<p>
+					<img alt="gruppo" src="img/gruppo.png" height=52px style="padding:2;">
 				</p>
+				
 				<h5 class="center">Lavora con i tuoi compagni</h5>
 
-				<p class="light">
+				<p class="light" style="text-align: center;">
 					Sei stato molto d'aiuto<br /> Il mio tutor era proprio disponibile,
 					glielo farei rifare <br /> Utile anche al tutor per ripassare dando
 					una mano a chi ha bisogno (tutor)<br /> Mettersi alla prova come

@@ -73,8 +73,7 @@ session_start ();
 		</div>
 	</nav>
 
-	
-	<center><h1>Welcome <?php echo $_SESSION["user_name"]; ?></h1></center>
+	<h1 class="header center orange-text" style="margin-top:8%;">Benvenuto <?php echo $_SESSION["user_name"]; ?></h1>
 	
 	<div id="creaCorso">
 		<div class="mask" onclick="TogliCreaCorso()"></div>
@@ -92,6 +91,10 @@ session_start ();
 				onclick="TogliCreaCorso()">Annula</button>
 		</div>
 	</div>
+	
+	<div id="divutente1">ciaone</div>
+	<div id="divutente2">ciaone</div>
+	
 
 
 	<footer id = "footer" class="page-footer orange">
