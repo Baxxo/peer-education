@@ -47,8 +47,15 @@
             'request':'registrati'
         };
         if(utente['nome'] != "" && utente['cognome'] != "" && utente['classe'] != "" && utente['scuola'] != "" && 
-                utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" &&utente['pass'] != "")
+                utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" && utente['pass'] != ""){
         	registrati(utente);
+        	var dati = {
+                    'mail': utente['mail'],
+                    'pass': utente['pass'],
+                    'request':'login'
+            };
+        	Login(dati);
+        }
         else
         	Materialize.toast('Ci sono dei campi mancanti!', 1500);
     }

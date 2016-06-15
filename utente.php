@@ -58,7 +58,7 @@ session_start ();
 				<li><a class="light-blue btn" onclick="LogOut()"
 					style="margin-top: 6%;">Logout</a></li>
 				<li><a class="light-blue btn" onclick="CreaCorsoOpen()"
-					style="margin-top: 6%;">Crea corso</a></li>
+					style="margin-top: 5%;">Crea corso</a></li>
 
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 			</ul>
@@ -74,7 +74,7 @@ session_start ();
 	</nav>
 
 	
-	Welcome <?php echo $_SESSION["user_name"]; ?>
+	<center><h1>Welcome <?php echo $_SESSION["user_name"]; ?></h1></center>
 	
 	<div id="creaCorso">
 		<div class="mask" onclick="TogliCreaCorso()"></div>

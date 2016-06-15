@@ -117,7 +117,7 @@ function CreaCorso(){
 	$giorno = $_POST['giorno'];
 	$ora = $_POST['ora'];
 	
-	$sql = "INSERT INTO corso VALUES (null, ''$idTutor', '$scuola', '$mat', '$giorno', '$ora')";
+	$sql = "INSERT INTO corso VALUES (null, '$idTutor', '$scuola', '$mat', '$giorno', '$ora')";
 	if($carica = mysqli_query($mysqli, $sql)){
 		echo $success;
 	} else {
@@ -127,7 +127,7 @@ function CreaCorso(){
 
 function CaricaMieiCorsi(){
 	$mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
-	//Finisci questa funzione!!!!!!
+	
 }
 
 ?>
