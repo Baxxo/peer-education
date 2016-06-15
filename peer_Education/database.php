@@ -141,7 +141,7 @@ function CaricaMieiCorsi() {
 		echo '<table class="centered striped" id = "Tabella">';
 		
 		echo '<tr>';
-		echo '<td colspan="4" style="background-color: orange; color: white;"><b> I corsi dove sono tutor</b> </td>';
+		echo '<td colspan="4" style="background-color: orange; color: white;"><b>I corsi che tengo</b> </td>';
 		echo '</tr>';
 		
 		echo '<tr>';
