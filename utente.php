@@ -41,7 +41,6 @@ session_start ();
 	});
 
 	function CercaCorsoOpen(){
-		alert("Stra ciaone");
 		$( "#cercaCorso" ).fadeIn(250);
 		$(" #footer ").fadeOut(250);
 	}
@@ -89,7 +88,7 @@ session_start ();
 					style="margin-top: 6%;">Logout</a></li>
 				<li><a class="light-blue btn" onclick="CreaCorsoOpen()"
 					style="margin-top: 5%;">Crea corso</a></li>
-				<li><a class="light-blue btn" onclick=""
+				<li><a class="light-blue btn" onclick="CercaCorsoOpen()"
 					style="margin-top: 5%;">Cerca corso</a></li>
 
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
@@ -112,7 +111,7 @@ session_start ();
 	<div id="cercaCorso">
 		<div class="mask" onclick="TogliCercaCorso()"></div>
 		<div class="LogReg col l3 s12">
-			
+			 Materia: <input id="materiaCerca" type="number">
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="">
 				<i class="material-icons right">send</i>Cerca
