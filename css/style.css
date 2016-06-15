@@ -33,11 +33,6 @@ article {
 	margin-left: auto;
 }
 
-table {
-	margin-right: auto;
-	margin-left: auto;
-}
-
 .mask {
 	background: white;
 	position: fixed;
@@ -74,14 +69,4 @@ footer {
 	position: fixed;
 	bottom: 0;
 	left: 0;
-}
-#divutente1{
-	margin-top:5%;
-	margin-right:30%;
-	margin-left:60%;
-}
-#divutente2{
-	margin-right:60%;
-	margin-left:30%;
-	
 }

@@ -83,24 +83,36 @@ function CreaCorso(corso){
 	});
 }
 
+function CercaCorso(corso){
+	alert("Inizio");
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: (corso),
+		success: function (response) {
+			alert(response);
+		}
+	});
+}
+
+
 function CaricaMieiCorsi(){
-	alert("Carico i miei corsi");
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
 		data: ({ request:'caricaMieiCorsi' }),
 		success: function (response) {
-			$("body").append(response);
+			$("#mieiCorsi").append(response);
 		}
 	});
-}
-
-function CreaCorsoOpen(){
-	$( "#creaCorso" ).fadeIn(250);
-	$(" #footer ").fadeOut(250);
-}
-
-function TogliCreaCorso(){
-	$( "#creaCorso" ).fadeOut(250);
-	$(" #footer ").fadeIn(250);
+	
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaTutor' }),
+		success: function (response) {
+			$("#corsiCheSeguo").append(response);
+		}
+	});
+	
 }

@@ -1,35 +1,38 @@
 <?php
 session_start ();
-$request = $_POST['request'];
+$request = $_POST ['request'];
 $success = "SUCCESS";
 $failed = "FAILED";
 
-switch($request){
-    case "caricaUtenti":
-        caricaUtenti();
-        break;
-    case "registrati":
-        registrati();
-        break;
-    case "login":
-        Login();
-        break;
-    case "logOut":
-    	LogOut();
-    	break;
-    case "creaCorso":
-    	CreaCorso();
-    	break;
-    case "caricaMieiCorsi":
-    	CaricaMieiCorsi();
-    	break;
-    default:
-        echo "Richiesta strana: " .$request;
-        break;
+switch ($request) {
+	case "caricaUtenti" :
+		caricaUtenti ();
+		break;
+	case "registrati" :
+		registrati ();
+		break;
+	case "login" :
+		Login ();
+		break;
+	case "logOut" :
+		LogOut ();
+		break;
+	case "creaCorso" :
+		CreaCorso ();
+		break;
+	case "caricaMieiCorsi" :
+		CaricaMieiCorsi ();
+		break;
+	case "caricaTutor":
+		CaricaCorsiCheSeguo();
+		break;
+	default :
+		echo "Richiesta strana: " . $request;
+		break;
 }
 
-/*	Index functions	*/
-function caricaUtenti(){
+/* Index functions */
+function caricaUtenti() {
 	global $failed;
 	global $success;
 	
@@ -76,28 +79,24 @@ function Login() {
 	global $failed;
 	global $success;
 	
-    $mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
-    
-    $email = $_POST['mail'];
-    $pass = $_POST['pass'];
-    $carica = mysqli_query($mysqli, "SELECT nome AS Nome, email, password, id AS id FROM Utente WHERE email = '$email' AND password = '$pass'");
-    
-    $res = mysqli_fetch_object($carica);
-    if($res){
-    	$_SESSION["user_id"] = $res->id;
-    	$_SESSION["user_name"] = $res->Nome;
-    	echo $success;
-    } else {
-    	echo $failed; 
-    }
-
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
+	$email = $_POST ['mail'];
+	$pass = $_POST ['pass'];
+	$carica = mysqli_query ( $mysqli, "SELECT nome AS Nome, email, password, id AS id FROM Utente WHERE email = '$email' AND password = '$pass'" );
+	
+	$res = mysqli_fetch_object ( $carica );
+	if ($res) {
+		$_SESSION ["user_id"] = $res->id;
+		$_SESSION ["user_name"] = $res->Nome;
+		echo $success;
+	} else {
+		echo $failed;
+	}
 }
 
-
-/*	Utente functions	*/
-
-function LogOut(){
-
+/* Utente functions */
+function LogOut() {
 	global $failed;
 	global $success;
 	
@@ -106,39 +105,45 @@ function LogOut(){
 	
 	echo $succes;
 }
-
-function CreaCorso(){
+function CreaCorso() {
 	global $failed;
 	global $success;
 	
-	$mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
-	$idTutor = $_SESSION["user_id"];
-	$scuola = $_POST['scuola'];
-	$mat = $_POST['materia'];
-	$giorno = $_POST['giorno'];
-	$ora = $_POST['ora'];
+	$idTutor = $_SESSION ["user_id"];
+	$scuola = $_POST ['scuola'];
+	$mat = $_POST ['materia'];
+	$giorno = $_POST ['giorno'];
+	$ora = $_POST ['ora'];
 	
 	$sql = "INSERT INTO corso VALUES (null, '$idTutor', '$scuola', '$mat', '$giorno', '$ora')";
-	if($carica = mysqli_query($mysqli, $sql)){
+	if ($carica = mysqli_query ( $mysqli, $sql )) {
 		echo $success;
 	} else {
 		echo $failed;
 	}
 }
 
-function CaricaMieiCorsi(){
-	$mysqli = mysqli_connect('127.0.0.1', 'root', '', 'peer');
-	$idTutor = $_SESSION["user_id"];
+function CaricaMieiCorsi() {
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	$idTutor = $_SESSION ["user_id"];
 	
-	$carica = mysqli_query($mysqli, "SELECT idTutor AS tutor,
+	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
 									scuola AS idScuola,
 									idMateria AS mat,
 									giorno AS giorno,
 									ora AS ora
-									FROM corso");
-	if($carica){		
-		echo '<table border = "1px solid black" id = "Tabella">';
+									FROM corso
+									WHERE idTutor = '$idTutor'" );
+	
+	if ($carica) {
+		echo '<table class="centered striped" id = "Tabella">';
+		
+		echo '<tr>';
+		echo '<td colspan="4" style="background-color: orange; color: white;"><b> I corsi dove sono tutor</b> </td>';
+		echo '</tr>';
+		
 		echo '<tr>';
 		echo '<td> Scuola </td><td> Materia </td><td> Giorno </td><td> Ora </td>';
 		echo '</tr>';
@@ -151,9 +156,43 @@ function CaricaMieiCorsi(){
 			echo '<td>' . $res ['ora'] . '</td>';
 			echo '</tr>';
 		}
-		echo "</table>";
+		echo "</table><hr>";
 	}
-	
+}
+
+function CaricaCorsiCheSeguo() {
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	$idUtente = $_SESSION ["user_id"];
+
+	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
+									scuola AS idScuola,
+									idMateria AS mat,
+									giorno AS giorno,
+									ora AS ora
+									FROM corso, iscrizioni
+									WHERE idCorso = id AND idStudente = '$idUtente'" );
+	if ($carica) {
+		echo '<table class="centered striped" id = "Tabella">';
+
+		echo '<tr>';
+		echo '<td colspan="5" style="background-color: orange; color: white;"><b> I corsi che seguo</b> </td>';
+		echo '</tr>';
+
+		echo '<tr>';
+		echo '<td> Tutor </td><td> Scuola </td><td> Materia </td><td> Giorno </td><td> Ora </td>';
+		echo '</tr>';
+
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<tr>';
+			echo '<td>' . $res ['tutor'] . '</td>';
+			echo '<td>' . $res ['idScuola'] . '</td>';
+			echo '<td>' . $res ['mat'] . '</td>';
+			echo '<td>' . $res ['giorno'] . '</td>';
+			echo '<td>' . $res ['ora'] . '</td>';
+			echo '</tr>';
+		}
+		echo "</table><hr>";
+	}
 }
 
 ?>

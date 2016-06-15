@@ -24,9 +24,14 @@ session_start ();
 </head>
 
 <style>
-#creaCorso {
-	display: none;
-}
+
+	#creaCorso {
+		display: none;
+	}
+	#cercaCorso {
+		display: none;
+	}
+
 </style>
 
 <script>
@@ -34,6 +39,27 @@ session_start ();
 	$(document).ready(function(){
 		CaricaMieiCorsi();
 	});
+
+	function CercaCorsoOpen(){
+		alert("Stra ciaone");
+		$( "#cercaCorso" ).fadeIn(250);
+		$(" #footer ").fadeOut(250);
+	}
+
+	function TogliCercaCorso(){
+		$( "#cercaCorso" ).fadeOut(250);
+		$(" #footer ").fadeIn(250);
+	}
+
+	function CreaCorsoOpen(){
+		$( "#creaCorso" ).fadeIn(250);
+		$(" #footer ").fadeOut(250);
+	}
+
+	function TogliCreaCorso(){
+		$( "#creaCorso" ).fadeOut(250);
+		$(" #footer ").fadeIn(250);
+	}
 
 	function getCorso(){
 		var corso = {
@@ -63,6 +89,8 @@ session_start ();
 					style="margin-top: 6%;">Logout</a></li>
 				<li><a class="light-blue btn" onclick="CreaCorsoOpen()"
 					style="margin-top: 5%;">Crea corso</a></li>
+				<li><a class="light-blue btn" onclick=""
+					style="margin-top: 5%;">Cerca corso</a></li>
 
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 			</ul>
@@ -70,6 +98,7 @@ session_start ();
 			<ul id="nav-mobile" class="side-nav">
 				<li><a class="light-blue btn" onclick="LogOut()">Logout</a></li>
 				<li><a class="light-blue btn" onclick="CreaCorsoOpen()">Crea corso</a></li>
+				<li><a class="light-blue btn" onclick="CercaCorsoOpen()">Cerca corso</a></li>
 			</ul>
 
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
@@ -77,8 +106,24 @@ session_start ();
 		</div>
 	</nav>
 
-	<h1 class="header center orange-text" style="margin-top:8%;">Benvenuto <?php echo $_SESSION["user_name"]; ?></h1>
+	<h1 class="header center orange-text">Benvenuto <?php echo $_SESSION["user_name"]; ?></h1>
 	
+	<!-- Div per cercare il corso -->
+	<div id="cercaCorso">
+		<div class="mask" onclick="TogliCercaCorso()"></div>
+		<div class="LogReg col l3 s12">
+			
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="">
+				<i class="material-icons right">send</i>Cerca
+			</button>
+
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="TogliCercaCorso()">Annula</button>
+		</div>
+	</div>
+	
+	<!-- Div per creare il corso -->
 	<div id="creaCorso">
 		<div class="mask" onclick="TogliCreaCorso()"></div>
 		<div class="LogReg col l3 s12">
@@ -96,8 +141,18 @@ session_start ();
 		</div>
 	</div>
 	
-	<div id="divutente1">ciaone</div>
-	<div id="divutente2">ciaone</div>
+	<div class="row">
+		<div class="col s6 offset-s3">
+			<div id="mieiCorsi"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s6 offset-s3">
+			<div id="corsiCheSeguo"></div>
+		</div>
+	</div>
+	
 	
 
 

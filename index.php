@@ -133,8 +133,7 @@
 	</div>
 
 	<!-- pagina -->
-	<div
-		style="position: relative; top: 0; bottom: 0; left: 0; right: 0; margin: auto;">
+	<div>
 		<img src="img/peer-education1.png" class="brand-logo" />
 	</div>
 	<br />
