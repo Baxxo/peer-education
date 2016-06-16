@@ -156,21 +156,15 @@ session_start ();
 		<div class="LogReg col l3 s12">
 
 
-			<select>
+			<select id = "scuola">
 				<option value="" disabled selected>Scuola</option>
 				<option value="1">Einaudi</option>
 				<option value="2">Scarpa</option>
 				<option value="3">Liceo Levi</option>
-			</select> <select>
+			</select>
+			<select id = "materia">
 				<option value="" disabled selected>Materia</option>
 				<option value="1">Italiano</option>
-				<option value="2">Storia</option>
-				<option value="3">Matematica</option>
-				<option value="4">Informatica</option>
-				<option value="5">Sistemi</option>
-				<option value="6">TPS</option>
-				<option value="7">Inglese</option>
-				<option value="8">Ginnastica</option>
 			</select> <select>
 				<option value="" disabled selected>Giorno</option>
 				<option value="1">Lunedì</option>

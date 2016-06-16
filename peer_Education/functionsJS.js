@@ -5,6 +5,28 @@ function LoadPage(dir){
 	window.location.href = dir;
 }
 
+function CaricaMaterie(){
+	$.ajax({
+		type : 'post',
+		url : 'peer_Education/database.php',
+		data : ({ request:'caricaMaterie' }),
+		success : function(response) {
+			alert(response);
+		}
+	});
+}
+
+function CaricaScuole(){
+	$.ajax({
+		type : 'post',
+		url : 'peer_Education/database.php',
+		data : ({ request:'caricaScuole' }),
+		success : function(response) {
+			alert(response);
+		}
+	});
+}
+
 /*	Functions Index	*/
 function registrati(utente){
 	$.ajax({
