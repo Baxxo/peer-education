@@ -203,8 +203,10 @@ session_start ();
 			<br>
 			<div id="cercaCorso">
 				<div class="col s6 offset-s3">
-					<select>
-					</select>
+					<select id = "scuoleCerca">
+						</select>
+					<select id = "materieCerca">
+						</select>
 				</div>
 
 			</div>

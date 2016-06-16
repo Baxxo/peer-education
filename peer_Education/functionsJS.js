@@ -12,7 +12,7 @@ function CaricaMaterie(){
 		data : ({ request:'caricaMaterie' }),
 		success : function(response) {
 			$("#materie").append(response);
-			$("#materieC").append(response);
+			$("#materieCerca").append(response);
 			$('select').material_select('destroy');
 			$('select').material_select();
 		}
@@ -26,7 +26,7 @@ function CaricaScuole(){
 		data : ({ request:'caricaScuole' }),
 		success : function(response) {
 			$("#scuole").append(response);
-			$("#scuoleC").append(response);
+			$("#scuoleCerca").append(response);
 			$('select').material_select('destroy');
 			$('select').material_select();
 		}
