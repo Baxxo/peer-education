@@ -203,26 +203,8 @@ session_start ();
 			<br>
 			<div id="cercaCorso">
 				<div class="col s6 offset-s3">
-					 <select>
-							<option value="" disabled selected>Materia</option>
-							<option value="1">Matematica</option>
-							<option value="2">Storia</option>
-							<option value="3">Informatica</option>
-							<option value="4">Inglese</option>
-							<option value="5">Italiano</option>
-							<option value="6">TPS</option>
-							<option value="7">Sistemi</option>
-							<option value="8">Ed.Fisica</option>
-							<option value="9">Geografia</option>
-							<option value="10">Francese</option>
-							<option value="11">Tedesco</option>
-							<option value="12">Spagnolo</option>
-							<option value="13">Telecomunicazioni</option>
-							<option value="14">Fisica</option>
-							<option value="15">Chimica</option>
-							<option value="16">Scienze</option>
-							<option value="17">Diritto</option>
-							<option value="18">Economia</option>
+					<select>
+					</select>
 				</div>
 
 			</div>
