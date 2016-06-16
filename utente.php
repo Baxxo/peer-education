@@ -1,6 +1,6 @@
 
 <?php
-session_start ();
+	session_start ();
 ?>
 
 <html lang="it">
@@ -45,6 +45,7 @@ session_start ();
 
 	$(document).ready(function(){
 		CaricaMieiCorsi();
+		$('select').material_select();
 	});
 
 	function CercaCorsoOpen(){
@@ -60,13 +61,11 @@ session_start ();
 	function CreaCorsoOpen(){
 		$( "#creaCorso" ).fadeIn(250);
 		$(" #footer ").fadeOut(250);
-	    $('select').material_select();
 	}
 
 	function TogliCreaCorso(){
 		$( "#creaCorso" ).fadeOut(250);
 		$(" #footer ").fadeIn(250);
-		$('select').material_select('destroy');
 	}
 
 	function getCorsoCerca(){

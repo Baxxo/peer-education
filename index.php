@@ -31,10 +31,13 @@
 
 <script>
 
+	$(document).ready(function() {
+	    $('select').material_select();
+	});
+
 	function RegOpen(){
 		$( "#registrazione" ).fadeIn(250);
 		$(" #footer ").fadeOut(250);
-	    $('select').material_select();
 	}
 	function LoginOpen() {
 		$("#login").fadeIn(250);
@@ -44,7 +47,6 @@
 	function TogliReg() {
 		$("#registrazione").fadeOut(250);
 		$(" #footer ").fadeIn(250);
-		$('select').material_select('destroy');
 	}
 	function TogliLogin() {
 		$("#login").fadeOut(250);
