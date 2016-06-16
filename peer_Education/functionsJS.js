@@ -5,6 +5,34 @@ function LoadPage(dir){
 	window.location.href = dir;
 }
 
+function CaricaMaterie(){
+	$.ajax({
+		type : 'post',
+		url : 'peer_Education/database.php',
+		data : ({ request:'caricaMaterie' }),
+		success : function(response) {
+			$("#materie").append(response);
+			$("#materieC").append(response);
+			$('select').material_select('destroy');
+			$('select').material_select();
+		}
+	});
+}
+
+function CaricaScuole(){
+	$.ajax({
+		type : 'post',
+		url : 'peer_Education/database.php',
+		data : ({ request:'caricaScuole' }),
+		success : function(response) {
+			$("#scuole").append(response);
+			$("#scuoleC").append(response);
+			$('select').material_select('destroy');
+			$('select').material_select();
+		}
+	});
+}
+
 /*	Functions Index	*/
 function registrati(utente){
 	$.ajax({

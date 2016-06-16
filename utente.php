@@ -48,6 +48,8 @@ session_start ();
 	$(document).ready(function(){
 		CaricaMieiCorsi();
 		$('select').material_select();
+		CaricaMaterie();
+		CaricaScuole();
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	});
@@ -132,19 +134,19 @@ session_start ();
 
 	<h1 class="header center orange-text">Benvenuto <?php echo $_SESSION["user_name"]; ?></h1>
 
-
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a class="active light-blue-text"
+				<li class="tab col s3 active"><a class="light-blue-text"
 					href="#test1">I miei corsi</a></li>
-				<li class="tab col s3"><a class="active light-blue-text"
+				<li class="tab col s3"><a class="light-blue-text"
 					href="#test2">Crea corso</a></li>
-				<li class="tab col s3"><a class="active light-blue-text"
+				<li class="tab col s3"><a class="light-blue-text"
 					href="#test3">Cerca corso</a></li>
 			</ul>
 		</div>
 		
+		<!-- Corsi che seguo e che faccio -->
 		<div id="test1" class="col s12">
 			<!-- I miei corsi -->
 			<br>
@@ -160,7 +162,8 @@ session_start ();
 				</div>
 			</div>
 		</div>
-
+		
+		<!-- Crea corso -->
 		<div id="test2" class="col s12">
 			<!-- Cerca corso -->
 			<br>
@@ -169,32 +172,11 @@ session_start ();
 					<div id="creaCorso">
 
 
+						<select id = "scuole">
+						</select>
+						<select id = "materie">
+						</select>
 						<select>
-							<option value="" disabled selected>Scuola</option>
-							<option value="1">Einaudi</option>
-							<option value="2">Scarpa</option>
-							<option value="3">Liceo Levi</option>
-						</select> <select>
-							<option value="" disabled selected>Materia</option>
-							<option value="1">Matematica</option>
-							<option value="2">Storia</option>
-							<option value="3">Informatica</option>
-							<option value="4">Inglese</option>
-							<option value="5">Italiano</option>
-							<option value="6">TPS</option>
-							<option value="7">Sistemi</option>
-							<option value="8">Ed.Fisica</option>
-							<option value="9">Geografia</option>
-							<option value="10">Francese</option>
-							<option value="11">Tedesco</option>
-							<option value="12">Spagnolo</option>
-							<option value="13">Telecomunicazioni</option>
-							<option value="14">Fisica</option>
-							<option value="15">Chimica</option>
-							<option value="16">Scienze</option>
-							<option value="17">Diritto</option>
-							<option value="18">Economia</option>
-						</select> <select>
 							<option value="" disabled selected>Giorno</option>
 							<option value="1">Lunedì</option>
 							<option value="2">Martedì</option>
@@ -215,9 +197,9 @@ session_start ();
 			</div>
 
 		</div>
-
+		
+		<!-- Cerca corso -->
 		<div id="test3" class="col s12">
-			<!-- Crea corso -->
 			<br>
 			<div id="cercaCorso">
 				<div class="col s6 offset-s3">
@@ -241,13 +223,6 @@ session_start ();
 							<option value="16">Scienze</option>
 							<option value="17">Diritto</option>
 							<option value="18">Economia</option>
-						</select>
-					<button type="submit" style="width: 49%;"
-						class="btn waves-effect light-blue" onclick="getCorsoCerca()">
-						<i class="material-icons right">send</i>Cerca
-					</button>
-
-					<div id="corsiTrovati"></div>
 				</div>
 
 			</div>

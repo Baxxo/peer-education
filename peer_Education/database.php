@@ -29,6 +29,12 @@ switch ($request) {
 	case "cercaCorso":
 		CercaCorso();
 		break;
+	case "caricaMaterie":
+		CaricaMaterie();
+		break;
+	case "caricaScuole":
+		CaricaScuole();
+		break;
 	default :
 		echo "Richiesta strana: " . $request;
 		break;
@@ -232,7 +238,31 @@ function CercaCorso(){
 		}
 		echo "</table>";
 	}
+}
+
+function CaricaMaterie(){
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
+	$carica = mysqli_query ( $mysqli, "SELECT id AS id, materia AS mat FROM materie" );
+	
+	if($carica){
+		echo '<option value="" disabled selected>Materia</option>';
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<option value="' .$res ['id'] .'">' .$res ['mat'] ."</option>";
+		}
+	}
+}
+
+function CaricaScuole(){
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+
+	$carica = mysqli_query ( $mysqli, "SELECT id AS id, nome AS nome FROM scuole" );
+	if($carica){
+		echo '<option value="" disabled selected>Scuola</option>';
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<option value="' .$res ['id'] .'">' .$res ['nome'] ."</option>";
+		}
+	}
 }
 
 ?>
