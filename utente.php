@@ -111,7 +111,7 @@ session_start ();
 			<ul class="right hide-on-med-and-down">
 				<li><a class="light-blue btn" onclick="LogOut()"
 					style="margin-top: 6%;">Logout</a></li>
-					<!-- 
+				<!-- 
 				<li><a class="light-blue btn" onclick="CreaCorsoOpen()"
 					style="margin-top: 5%;">Crea corso</a></li>
 				<li><a class="light-blue btn" onclick="CercaCorsoOpen()"
@@ -139,13 +139,13 @@ session_start ();
 			<ul class="tabs">
 				<li class="tab col s3 active"><a class="light-blue-text"
 					href="#test1">I miei corsi</a></li>
-				<li class="tab col s3"><a class="light-blue-text"
-					href="#test2">Crea corso</a></li>
-				<li class="tab col s3"><a class="light-blue-text"
-					href="#test3">Cerca corso</a></li>
+				<li class="tab col s3"><a class="light-blue-text" href="#test2">Crea
+						corso</a></li>
+				<li class="tab col s3"><a class="light-blue-text" href="#test3">Cerca
+						corso</a></li>
 			</ul>
 		</div>
-		
+
 		<!-- Corsi che seguo e che faccio -->
 		<div id="test1" class="col s12">
 			<!-- I miei corsi -->
@@ -162,7 +162,7 @@ session_start ();
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Crea corso -->
 		<div id="test2" class="col s12">
 			<!-- Cerca corso -->
@@ -172,11 +172,7 @@ session_start ();
 					<div id="creaCorso">
 
 
-						<select id = "scuole">
-						</select>
-						<select id = "materie">
-						</select>
-						<select>
+						<select id="scuole"></select> <select id="materie"></select> <select>
 							<option value="" disabled selected>Giorno</option>
 							<option value="1">Lunedì</option>
 							<option value="2">Martedì</option>
@@ -197,21 +193,27 @@ session_start ();
 			</div>
 
 		</div>
-		
-		<!-- Cerca corso -->
-		<div id="test3" class="col s12">
-			<br>
-			<div id="cercaCorso">
-				<div class="col s6 offset-s3">
-					<select id = "scuoleCerca">
-						</select>
-					<select id = "materieCerca">
-						</select>
-				</div>
 
+		<!-- Cerca corso -->
+		<br>
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<div id="creaCorso">
+
+					<select id="scuole"></select>
+					<select id="materie"></select> 
+
+					<button type="submit" class="btn waves-effect light-blue"
+						onclick="getCorso()">
+						<i class="material-icons right">send</i>Cerca
+					</button>
+
+
+				</div>
 			</div>
 
 		</div>
+
 	</div>
 
 
