@@ -24,10 +24,7 @@ session_start ();
 </head>
 
 <style>
-#creaCorso {
-	display: none;
-}
-
+/*
 #creaCorso {
 	display: none;
 }
@@ -40,9 +37,9 @@ session_start ();
 	margin: 20px;
 	display: none;
 }
-
+*/
 .tabs .indicator {
-    background-color: #42a5f5;
+	background-color: #42a5f5;
 }
 </style>
 
@@ -51,10 +48,12 @@ session_start ();
 	$(document).ready(function(){
 		CaricaMieiCorsi();
 		$('select').material_select();
+		CaricaMaterie();
+		CaricaScuole();
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	});
-
+/*
 	function CercaCorsoOpen(){
 		$( "#cercaCorso" ).fadeIn(250);
 		$(" #footer ").fadeOut(250);
@@ -74,7 +73,7 @@ session_start ();
 		$( "#creaCorso" ).fadeOut(250);
 		$(" #footer ").fadeIn(250);
 	}
-
+*/
 	function getCorsoCerca(){
 		var corso = {
 			'materia': document.getElementById("materiaCerca").value,
@@ -112,18 +111,20 @@ session_start ();
 			<ul class="right hide-on-med-and-down">
 				<li><a class="light-blue btn" onclick="LogOut()"
 					style="margin-top: 6%;">Logout</a></li>
+					<!-- 
 				<li><a class="light-blue btn" onclick="CreaCorsoOpen()"
 					style="margin-top: 5%;">Crea corso</a></li>
 				<li><a class="light-blue btn" onclick="CercaCorsoOpen()"
 					style="margin-top: 5%;">Cerca corso</a></li>
+					 -->
 
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
 				<li><a class="light-blue btn" onclick="LogOut()">Logout</a></li>
-				<li><a class="light-blue btn" onclick="CreaCorsoOpen()">Crea corso</a></li>
-				<li><a class="light-blue btn" onclick="CercaCorsoOpen()">Cerca corso</a></li>
+				<!-- <li><a class="light-blue btn" onclick="CreaCorsoOpen()">Crea corso</a></li>
+				<li><a class="light-blue btn" onclick="CercaCorsoOpen()">Cerca corso</a></li> -->
 			</ul>
 
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
@@ -133,67 +134,19 @@ session_start ();
 
 	<h1 class="header center orange-text">Benvenuto <?php echo $_SESSION["user_name"]; ?></h1>
 
-	<!-- Div per cercare il corso -->
-	<div id="cercaCorso">
-		<div class="mask"></div>
-		<div class="LogReg col l3 s12">
-			Materia: <input id="materiaCerca" type="number">
-			<button type="submit" style="width: 49%;"
-				class="btn waves-effect light-blue" onclick="getCorsoCerca()">
-				<i class="material-icons right">send</i>Cerca
-			</button>
-
-			<button style="width: 49%;" type="submit"
-				class="btn waves-effect light-blue" onclick="TogliCercaCorso()">Annula</button>
-			<div id="corsiTrovati"></div>
-		</div>
-
-	</div>
-
-	<!-- Div per creare il corso -->
-	<div id="creaCorso">
-		<div class="mask"></div>
-		<div class="LogReg col l3 s12">
-
-
-			<select id = "scuola">
-				<option value="" disabled selected>Scuola</option>
-				<option value="1">Einaudi</option>
-				<option value="2">Scarpa</option>
-				<option value="3">Liceo Levi</option>
-			</select>
-			<select id = "materia">
-				<option value="" disabled selected>Materia</option>
-				<option value="1">Italiano</option>
-			</select> <select>
-				<option value="" disabled selected>Giorno</option>
-				<option value="1">Lunedì</option>
-				<option value="2">Martedì</option>
-				<option value="3">Mercoledì</option>
-				<option value="4">Giovedì</option>
-				<option value="5">Venerdì</option>
-			</select> Ora: <input id="ora" type="time"><br>
-
-			<button type="submit" class="btn waves-effect light-blue"
-				onclick="getCorso()">
-				<i class="material-icons right">send</i>Crea
-			</button>
-
-			<button type="submit" class="btn waves-effect light-blue"
-				onclick="TogliCreaCorso()">Annula</button>
-		</div>
-
-	</div>
-
-
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a class="active light-blue-text" href="#test1">I miei corsi</a></li>
-				<li class="tab col s3"><a class ="light-blue-text" href="#test2">Cerca corso</a></li>
-				<li class="tab col s3"><a class ="light-blue-text" href="#test4">Crea corso</a></li>
+				<li class="tab col s3 active"><a class="light-blue-text"
+					href="#test1">I miei corsi</a></li>
+				<li class="tab col s3"><a class="light-blue-text"
+					href="#test2">Crea corso</a></li>
+				<li class="tab col s3"><a class="light-blue-text"
+					href="#test3">Cerca corso</a></li>
 			</ul>
 		</div>
+		
+		<!-- Corsi che seguo e che faccio -->
 		<div id="test1" class="col s12">
 			<!-- I miei corsi -->
 			<br>
@@ -209,13 +162,67 @@ session_start ();
 				</div>
 			</div>
 		</div>
+		
+		<!-- Crea corso -->
 		<div id="test2" class="col s12">
 			<!-- Cerca corso -->
+			<br>
+			<div class="row">
+				<div class="col s6 offset-s3">
+					<div id="creaCorso">
+
+
+						<select id = "scuole">
+						</select>
+						<select id = "materie">
+						</select>
+						<select>
+							<option value="" disabled selected>Giorno</option>
+							<option value="1">Lunedì</option>
+							<option value="2">Martedì</option>
+							<option value="3">Mercoledì</option>
+							<option value="4">Giovedì</option>
+							<option value="5">Venerdì</option>
+						</select> Ora: <input id="ora" type="time"><br>
+
+						<button type="submit" class="btn waves-effect light-blue"
+							onclick="getCorso()">
+							<i class="material-icons right">send</i>Crea
+						</button>
+
+
+					</div>
+				</div>
+
+			</div>
+
 		</div>
+		
+		<!-- Cerca corso -->
 		<div id="test3" class="col s12">
-			<!-- Crea corso -->
+			<br>
+			<div id="cercaCorso">
+				<div class="col s6 offset-s3">
+						<select id = "scuoleC">
+						
+						</select>
+						<select id = "materieC">
+						
+						</select>
+					<button type="submit" style="width: 49%;"
+						class="btn waves-effect light-blue" onclick="getCorsoCerca()">
+						<i class="material-icons right">send</i>Cerca
+					</button>
+
+					<div id="corsiTrovati"></div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
+
+
 
 	<footer id="footer" class="page-footer orange">
 		<div class="container">

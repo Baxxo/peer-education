@@ -246,8 +246,9 @@ function CaricaMaterie(){
 	$carica = mysqli_query ( $mysqli, "SELECT id AS id, materia AS mat FROM materie" );
 	
 	if($carica){
+		echo '<option value="" disabled selected>Materia</option>';
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
-			echo '<option value=' .$res ['id'] .">" .$res ['mat'] ."</option>";
+			echo '<option value="' .$res ['id'] .'">' .$res ['mat'] ."</option>";
 		}
 	}
 }
@@ -257,8 +258,9 @@ function CaricaScuole(){
 
 	$carica = mysqli_query ( $mysqli, "SELECT id AS id, nome AS nome FROM scuole" );
 	if($carica){
+		echo '<option value="" disabled selected>Scuola</option>';
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
-			echo '<option value=' .$res ['id'] .">" .$res ['nome'] ."</option>";
+			echo '<option value="' .$res ['id'] .'">' .$res ['nome'] ."</option>";
 		}
 	}
 }

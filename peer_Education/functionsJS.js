@@ -11,7 +11,10 @@ function CaricaMaterie(){
 		url : 'peer_Education/database.php',
 		data : ({ request:'caricaMaterie' }),
 		success : function(response) {
-			alert(response);
+			$("#materie").append(response);
+			$("#materieC").append(response);
+			$('select').material_select('destroy');
+			$('select').material_select();
 		}
 	});
 }
@@ -22,7 +25,10 @@ function CaricaScuole(){
 		url : 'peer_Education/database.php',
 		data : ({ request:'caricaScuole' }),
 		success : function(response) {
-			alert(response);
+			$("#scuole").append(response);
+			$("#scuoleC").append(response);
+			$('select').material_select('destroy');
+			$('select').material_select();
 		}
 	});
 }
