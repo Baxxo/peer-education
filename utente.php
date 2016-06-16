@@ -196,8 +196,15 @@ session_start ();
 
 		<!-- Cerca corso -->
 		<div id="test3" class="col s12">
-			<br>
-			<div id="col">
+			<div id="cercaCorso">
+				<div class="col s6 offset-s3">
+					<select id = "scuoleCerca">
+						</select>
+					<select id = "materieCerca">
+						</select>
+						
+				</div>
+
 			</div>
 		</div>
 
