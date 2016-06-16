@@ -119,7 +119,7 @@
 
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
 	<div id="registrazione">
-		<div class="mask" onclick="TogliReg()"></div>
+		<div class="mask"></div>
 
 		<div class="LogReg col l3 s24">
 			Nome: <input id="nomeR" type="text"><br> Cognome: <input
@@ -148,7 +148,7 @@
 
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
 	<div id="login">
-		<div class="mask" onclick="TogliLogin()"></div>
+		<div class="mask"></div>
 		<div class="LogReg col l3 s12">
 			E-mail: <input id="mailLog" type="text"><br> Password: <input
 				id="passLog" type="password"><br>
