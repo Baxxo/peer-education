@@ -96,6 +96,15 @@
 
 <body>
 
+
+
+<!-- controllare la registrazione i vari errori, non mostra il toast -->
+
+<!-- cambiara da stringa a int -->
+
+
+
+
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
