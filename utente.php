@@ -195,23 +195,10 @@ session_start ();
 		</div>
 
 		<!-- Cerca corso -->
-		<br>
-		<div class="row">
-			<div class="col s6 offset-s3">
-				<div id="creaCorso">
-
-					<select id="scuole"></select>
-					<select id="materie"></select> 
-
-					<button type="submit" class="btn waves-effect light-blue"
-						onclick="getCorso()">
-						<i class="material-icons right">send</i>Cerca
-					</button>
-
-
-				</div>
+		<div id="test3" class="col s12">
+			<br>
+			<div id="col">
 			</div>
-
 		</div>
 
 	</div>
