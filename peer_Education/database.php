@@ -35,6 +35,9 @@ switch ($request) {
 	case "caricaScuole" :
 		CaricaScuole ();
 		break;
+	case "iscriviti":
+		Iscriviti();
+		break;
 	default :
 		echo "Richiesta strana: " . $request;
 		break;
@@ -63,6 +66,7 @@ function caricaUtenti() {
 	}
 	echo "</table>";
 }
+
 function registrati() {
 	global $failed;
 	global $success;
@@ -84,6 +88,7 @@ function registrati() {
 		echo $failed;
 	}
 }
+
 function Login() {
 	global $failed;
 	global $success;
@@ -114,6 +119,7 @@ function LogOut() {
 	
 	echo $succes;
 }
+
 function CreaCorso() {
 	global $failed;
 	global $success;
@@ -133,10 +139,10 @@ function CreaCorso() {
 		echo $failed;
 	}
 }
+
 function CaricaMieiCorsi() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$idTutor = $_SESSION ["user_id"];
-	
 	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
 									scuola AS idScuola,
 									idMateria AS mat,
@@ -167,18 +173,19 @@ function CaricaMieiCorsi() {
 		echo "</table><hr>";
 	}
 }
+
 function CaricaCorsiCheSeguo() {
+	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$idUtente = $_SESSION ["user_id"];
 	
-	$carica = mysqli_query ( $mysqli, "SELECT id AS idCorso
-									idTutor AS tutor,
+	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
 									scuola AS idScuola,
 									idMateria AS mat,
 									giorno AS giorno,
 									ora AS ora
-									FROM corso, iscrizioni
-									WHERE idCorso = id AND idStudente = '$idUtente'" );
+									FROM corso c, iscrizioni i
+									WHERE i.idCorso = c.id AND i.idStudente = '$idUtente'" );
 	if ($carica) {
 		echo '<table class="centered striped" id = "Tabella">';
 		
@@ -192,7 +199,7 @@ function CaricaCorsiCheSeguo() {
 		
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
 			echo '<tr>';
-			echo '<td>' . CaricaTutorById (['tutor']) . '</td>';
+			echo '<td>' . CaricaTutorById ($res ['tutor']) . '</td>';
 			echo '<td>' . CaricaScuolaById ( $res ['idScuola'] ) . '</td>';
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
@@ -200,14 +207,18 @@ function CaricaCorsiCheSeguo() {
 			echo '</tr>';
 		}
 		echo "</table><hr>";
+	} else {
+		echo $failed;
 	}
 }
+
 function CercaCorso() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
 	$mat = $_POST ['materia'];
 	$scuola = $_POST['scuola'];
 	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
+									id AS idCorso,
 									scuola AS scuola,
 									idMateria AS mat,
 									giorno AS giorno,
@@ -215,10 +226,10 @@ function CercaCorso() {
 									FROM corso
 									WHERE idMateria = '$mat' AND scuola = '$scuola'" );
 	
-	if ($carica) {
+	if ($carica) { 
 		echo '<table class="centered striped" id = "TabellaCerca">';		
 		echo '<tr>';
-		echo '<td colspan="6" class = "z-depth-2 light-blue" style="color: white;"><b>Corsi</b> </td>';
+		echo '<td colspan="6" class = "z-depth-2 orange"style="color: white;"><b>Corsi</b> </td>';
 		echo '</tr>';
 		
 		echo '<tr>';
@@ -226,6 +237,7 @@ function CercaCorso() {
 		echo '</tr>';
 		
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			$corso = $res['idCorso'];
 			echo '<tr>';
 			echo '<td>' . CaricaTutorById($res ['tutor']) . '</td>';
 			echo '<td>' . CaricaScuolaById ( $res ['scuola'] ) . '</td>';
@@ -233,14 +245,15 @@ function CercaCorso() {
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
 			echo '<td>' . '<button type="submit" class="btn waves-effect light-blue"
-							onclick="Iscriviti()">
-							<i class="material-icons right">send</i>Iscriviti
+							onclick="Iscriviti("$corso")><i class="material-icons right">send</i>
+							Iscriviti
 						</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table>";
 	}
 }
+
 function CaricaMaterie() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
@@ -253,6 +266,7 @@ function CaricaMaterie() {
 		}
 	}
 }
+
 function CaricaScuole() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
@@ -264,6 +278,7 @@ function CaricaScuole() {
 		}
 	}
 }
+
 function CaricaScuolaById($id) {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
@@ -275,6 +290,7 @@ function CaricaScuolaById($id) {
 		return $failed;
 	}
 }
+
 function CaricaMateriaById($id) {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
@@ -297,6 +313,24 @@ function CaricaTutorById($id) {
 	} else {
 		return $failed;
 	}
+}
+
+function Iscriviti(){
+	global $failed;
+	global $success;
+	
+	$idUtente = $_SESSION ["user_id"];
+	$idCorso = $_POST ["idCorsoP"];
+	
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
+	$sql = "INSERT INTO iscrizioni VALUES ('$idCorso', '$idUtente')";
+	if ($carica = mysqli_query ( $mysqli, $sql )) {
+		echo $success;
+	} else {
+		echo $failed;
+	}
+	
 }
 
 ?>

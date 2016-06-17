@@ -147,15 +147,18 @@ session_start ();
 
 						<select id="scuole"></select>
 						<select id="materie"></select>
-						<select id="giorno">
-							<option value="" disabled selected>Giorno</option>
-							<option value="Lunedì">Lunedì</option>
-							<option value="Martedì">Martedì</option>
-							<option value="Mercoledì">Mercoledì</option>
-							<option value="Giovedì">Giovedì</option>
-							<option value="Venerdì">Venerdì</option>
-						</select>
-						Ora: <input id="ora" type="time"><br>
+						<div id = "giorni">
+							<select id="giorno">
+								<option value="" disabled selected>Giorno</option>
+								<option value="Lunedì">Lunedì</option>
+								<option value="Martedì">Martedì</option>
+								<option value="Mercoledì">Mercoledì</option>
+								<option value="Giovedì">Giovedì</option>
+								<option value="Venerdì">Venerdì</option>
+							</select>
+							Ora: <input id="ora" type="time"><br><hr>
+						</div>
+						
 
 						<button type="submit" class="btn waves-effect light-blue"
 							onclick="getCorso()">
@@ -182,7 +185,7 @@ session_start ();
 							onclick="getCorsoCerca()">
 							<i class="material-icons right">send</i>Cerca
 					</button>
-					<div id ="corsiTrovati" class = "col s6"></div>
+					<div id ="corsiTrovati" class = "col s12"></div>
 				</div>
 
 			</div>

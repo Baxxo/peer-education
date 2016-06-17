@@ -69,14 +69,17 @@
         };
         if(utente['nome'] != "" && utente['cognome'] != "" && utente['classe'] != "" && utente['scuola'] != "" && 
                 utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" && utente['pass'] != ""){
-            alert(utente['scuola']);
-        	registrati(utente);
-        	var dati = {
-                    'mail': utente['mail'],
-                    'pass': utente['pass'],
-                    'request':'login'
-            };
-        	Login(dati);
+            if(NumbersOnly(utente['tel'])){
+	        	registrati(utente);
+	        	var dati = {
+	                    'mail': utente['mail'],
+	                    'pass': utente['pass'],
+	                    'request':'login'
+	            };
+	        	Login(dati);
+            } else {
+            	Materialize.toast('Il numero di telefono deve contenere solo i numeri', 1500);
+            }
         }
         else
         	Materialize.toast('Ci sono dei campi mancanti!', 1500);
@@ -94,14 +97,15 @@
         	Materialize.toast('Inserisci la mail e/o password', 1500);
     }
 
-    function NumberInsert(type){
-        alert(event.keyCode);
-        if(event.keyCode > 47 && event.keyCode < 65){
-			return event.keyCode;
-        } else {
-			return;
+    function NumbersOnly(string){
+        // + = 43
+        for(var i = 0; i < string.length; i++ ){
+            if(string.charCodeAt(i) < 48 && string.charCodeAt(i) != 43 || string.charCodeAt(i) > 57){
+				return false;
+            }
         }
-	}
+        return true;
+    }
 
 	function Invio(type){
 		if(event.keyCode == 13){
