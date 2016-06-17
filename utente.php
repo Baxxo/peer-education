@@ -77,9 +77,11 @@ session_start ();
 			};
 		if(corso['scuola'] != "" && corso['materia'] != "" && corso['giorno'] != "" && corso['ora'] != ""){
 			CreaCorso(corso);
+			CaricaMieiCorsi();
 		}
         else
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
+    	
 	}
 
 </script>

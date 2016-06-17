@@ -48,7 +48,7 @@ function caricaUtenti() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$carica = mysqli_query ( $mysqli, 'SELECT * FROM Utente' );
 	
-	echo '<table border = "1px solid black" id = "Tabella">';
+	echo '<table class="centered striped" border = "1px solid black" id = "Tabella">';
 	echo '<tr>';
 	echo '<td> Nome </td><td> Cognome </td><td> Classe </td><td> Istituto </td>';
 	echo '</tr>';
@@ -171,7 +171,8 @@ function CaricaCorsiCheSeguo() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$idUtente = $_SESSION ["user_id"];
 	
-	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
+	$carica = mysqli_query ( $mysqli, "SELECT id AS idCorso
+									idTutor AS tutor,
 									scuola AS idScuola,
 									idMateria AS mat,
 									giorno AS giorno,
@@ -191,7 +192,7 @@ function CaricaCorsiCheSeguo() {
 		
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
 			echo '<tr>';
-			echo '<td>' . $res ['tutor'] . '</td>';
+			echo '<td>' . CaricaTutorById (['tutor']) . '</td>';
 			echo '<td>' . CaricaScuolaById ( $res ['idScuola'] ) . '</td>';
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
@@ -217,11 +218,11 @@ function CercaCorso() {
 	if ($carica) {
 		echo '<table class="centered striped" id = "TabellaCerca">';		
 		echo '<tr>';
-		echo '<td colspan="5" class = "z-depth-2 light-blue" style="color: white;"><b>Corsi</b> </td>';
+		echo '<td colspan="6" class = "z-depth-2 light-blue" style="color: white;"><b>Corsi</b> </td>';
 		echo '</tr>';
 		
 		echo '<tr>';
-		echo '<td> Tutor </td><td> Scuola </td><td> Materia </td><td> Giorno </td><td> Ora </td>';
+		echo '<td> Tutor </td><td> Scuola </td><td> Materia </td><td> Giorno </td><td> Ora </td><td></td>';
 		echo '</tr>';
 		
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
@@ -231,6 +232,10 @@ function CercaCorso() {
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
+			echo '<td>' . '<button type="submit" class="btn waves-effect light-blue"
+							onclick="Iscriviti()">
+							<i class="material-icons right">send</i>Iscriviti
+						</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table>";
