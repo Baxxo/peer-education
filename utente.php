@@ -32,12 +32,11 @@ session_start ();
 #cercaCorso {
 	display: none;
 }
-
+*/
 #corsiTrovati {
 	margin: 20px;
 	display: none;
 }
-*/
 .tabs .indicator {
 	background-color: #42a5f5;
 }
@@ -48,32 +47,12 @@ session_start ();
 	$(document).ready(function(){
 		CaricaMieiCorsi();
 		$('select').material_select();
-		CaricaMaterie();
-		CaricaScuole();
+		CaricaMaterie("#materie");
+		CaricaScuole("#scuole");
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	});
-/*
-	function CercaCorsoOpen(){
-		$( "#cercaCorso" ).fadeIn(250);
-		$(" #footer ").fadeOut(250);
-	}
-
-	function TogliCercaCorso(){
-		$( "#cercaCorso" ).fadeOut(250);
-		$(" #footer ").fadeIn(250);
-	}
-
-	function CreaCorsoOpen(){
-		$( "#creaCorso" ).fadeIn(250);
-		$(" #footer ").fadeOut(250);
-	}
-
-	function TogliCreaCorso(){
-		$( "#creaCorso" ).fadeOut(250);
-		$(" #footer ").fadeIn(250);
-	}
-*/
+	
 	function getCorsoCerca(){
 		var corso = {
 			'materia': document.getElementById("materiaCerca").value,
@@ -207,15 +186,17 @@ session_start ();
 						</select>
 					<select id = "materieCerca">
 						</select>
-						
+					<button type="submit" class="btn waves-effect light-blue"
+							onclick="getCorsoCerca()">
+							<i class="material-icons right">send</i>Cerca
+					</button>
+					<div id ="corsiTrovati" class = "col s6"></div>
 				</div>
 
 			</div>
 
 		</div>
 	</div>
-
-
 
 	<footer id="footer" class="page-footer orange">
 		<div class="container">

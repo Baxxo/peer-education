@@ -68,6 +68,7 @@
         };
         if(utente['nome'] != "" && utente['cognome'] != "" && utente['classe'] != "" && utente['scuola'] != "" && 
                 utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" && utente['pass'] != ""){
+            alert(utente['scuola']);
         	registrati(utente);
         	var dati = {
                     'mail': utente['mail'],
@@ -122,11 +123,11 @@
 		<div class="mask"></div>
 
 		<div class="LogReg col l3 s24">
-			Nome: <input id="nomeR" type="text"><br> Cognome: <input
-				id="cognomeR" type="text"><br> Classe: <input id="classeR"
-				type="text"><br>
+			Nome: <input id="nomeR" type="text"><br>
+			Cognome: <input id="cognomeR" type="text"><br>
+			Classe: <input id="classeR" type="text"><br>
 			<div class="input-field col s12">
-				<select>
+				<select id = "scuolaR">
 					<option value="" disabled selected>Scuola</option>
 					<option value="1">Einaudi</option>
 					<option value="2">Scarpa</option>
