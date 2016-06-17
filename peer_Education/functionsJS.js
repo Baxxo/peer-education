@@ -122,5 +122,20 @@ function CaricaMieiCorsi(){
 			$("#corsiCheSeguo").append(response);
 		}
 	});
-	
+}
+
+function Iscriviti(idCorso){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'iscriviti', idCorsoP:idCorso }),
+		success: function (response) {
+			if (response == failed) {
+				Materialize.toast("Errore durante iscrizione", 1500);
+			}
+			if (response == success) {
+				Materialize.toast("Ti sei iscritto", 1500);
+			}
+		}
+	});
 }

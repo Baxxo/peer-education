@@ -145,15 +145,18 @@ session_start ();
 
 						<select id="scuole"></select>
 						<select id="materie"></select>
-						<select id="giorno">
-							<option value="" disabled selected>Giorno</option>
-							<option value="Lunedì">Lunedì</option>
-							<option value="Martedì">Martedì</option>
-							<option value="Mercoledì">Mercoledì</option>
-							<option value="Giovedì">Giovedì</option>
-							<option value="Venerdì">Venerdì</option>
-						</select>
-						Ora: <input id="ora" type="time"><br>
+						<div id = "giorni">
+							<select id="giorno">
+								<option value="" disabled selected>Giorno</option>
+								<option value="Lunedì">Lunedì</option>
+								<option value="Martedì">Martedì</option>
+								<option value="Mercoledì">Mercoledì</option>
+								<option value="Giovedì">Giovedì</option>
+								<option value="Venerdì">Venerdì</option>
+							</select>
+							Ora: <input id="ora" type="time"><br><hr>
+						</div>
+						
 
 						<button type="submit" class="btn waves-effect light-blue"
 							onclick="getCorso()">
