@@ -51,6 +51,7 @@ session_start ();
 		CaricaScuole("#scuole");
 		CaricaMaterie("#materiaCerca");
 		CaricaScuole("#scuoleCerca");
+		CaricaGiorni(1);
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	});
@@ -68,11 +69,21 @@ session_start ();
 	}
 
 	function getCorso(){
+		var days = document.getElementsById("giorno");
+		var hours = document.getElementsById("ora");
+
+		var giorni = "";
+		var ore = "";
+		for(var i = 0; i < days.length; i++){
+			giorni += days[i] + "/";
+			ore += hours[i] + "/";
+		}
+		
 		var corso = {
 			'scuola': document.getElementById("scuole").value,
 			'materia': document.getElementById("materie").value,
-			'giorno': document.getElementById("giorno").value,
-			'ora': document.getElementById("ora").value,
+			'giorno': giorni,
+			'ora': ore,
 			'request':'creaCorso'
 			};
 		if(corso['scuola'] != "" && corso['materia'] != "" && corso['giorno'] != "" && corso['ora'] != ""){
@@ -82,6 +93,21 @@ session_start ();
         else
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
     	
+	}
+
+	function CaricaGiorni(){	
+		var giorno = '<select id="giorno"> <option value="" disabled selected>Giorno</option> <option value="Lunedì">Lunedì</option>'
+			+ '<option value="Martedì">Martedì</option> <option value="Mercoledì">Mercoledì</option> <option value="Giovedì">Giovedì</option>'
+			+ '<option value="Venerdì">Venerdì</option> </select> Ora: <input id="ora" type="time"><br>';
+		
+		$("#giorni").html('<div id = "giorniClear">');
+		$("#giorniClear").empty();
+		for(var i = 0; i < $("#giorniSettimana").val(); i++){
+			$("#giorni").append(giorno);
+		}
+		$("#giorni").append('</div>');
+		$('select').material_select('destroy');
+		$('select').material_select();
 	}
 
 </script>
@@ -146,21 +172,17 @@ session_start ();
 
 						<select id="scuole"></select>
 						<select id="materie"></select>
-						<div id = "giorni">
-							<select id="giorno">
-								<option value="" disabled selected>Giorno</option>
-								<option value="Lunedì">Lunedì</option>
-								<option value="Martedì">Martedì</option>
-								<option value="Mercoledì">Mercoledì</option>
-								<option value="Giovedì">Giovedì</option>
-								<option value="Venerdì">Venerdì</option>
-							</select>
-							Ora: <input id="ora" type="time"><br><hr>
+						<select id="giorniSettimana" onchange = "CaricaGiorni()">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+						<div id = "giorni" class ="col s8 offset-s2">
+							
 						</div>
 						
-
-						<button type="submit" class="btn waves-effect light-blue"
-							onclick="getCorso()">
+						<button type="submit" class="btn col s8 offset-s2 waves-effect light-blue"
+							onclick="getCorso()" style="position:static">
 							<i class="material-icons right">send</i>Crea
 						</button>
 
@@ -191,7 +213,9 @@ session_start ();
 		</div>
 
 	</div>
-
+	
+	<div style="height: 130px; clear: both;">&nbsp;</div>
+	
 	<footer id="footer" class="page-footer orange">
 		<div class="container">
 			<div>

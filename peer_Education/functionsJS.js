@@ -56,8 +56,7 @@ function Login(dati) {
 		data : (dati),
 		success : function(response) {
 			if (response == failed) {
-				Materialize.toast("L'email e/o la password sono sbagliati",
-						1500);
+				Materialize.toast("L'email e/o la password sono sbagliati", 1500);
 			}
 			if (response == success) {
 				LoadPage("utente.php");
