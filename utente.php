@@ -49,6 +49,8 @@ session_start ();
 		$('select').material_select();
 		CaricaMaterie("#materie");
 		CaricaScuole("#scuole");
+		CaricaMaterie("#materieCerca");
+		CaricaScuole("#scuoleCerca");
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	});
@@ -60,8 +62,7 @@ session_start ();
 			};
 		if(corso['materia'] != ""){
 			CercaCorso(corso);
-		}
-        else
+		} else
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
 	}
 

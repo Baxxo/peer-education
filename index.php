@@ -33,6 +33,7 @@
 
 	$(document).ready(function() {
 	    $('select').material_select();
+	    CaricaScuole("#scuolaR");
 	});
 
 	function RegOpen(){
@@ -93,11 +94,35 @@
         	Materialize.toast('Inserisci la mail e/o password', 1500);
     }
 
+    function NumberInsert(type){
+        alert(event.keyCode);
+        if(event.keyCode > 47 && event.keyCode < 65){
+			return event.keyCode;
+        } else {
+			return;
+        }
+	}
+
+	function Invio(type){
+		if(event.keyCode == 13){
+			switch(type){
+			case "Reg":
+				GetUtenteReg();
+				break;
+			case "Log":
+				GetUtenteLog();
+				break;
+			default:
+				alert("Invio: tipo sconosciuto");
+				break;
+			}
+		}
+		
+	}
+
 </script>
 
 <body>
-
-
 
 <!-- controllare la registrazione i vari errori, non mostra il toast -->
 
@@ -128,36 +153,34 @@
 	</nav>
 
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
-	<div id="registrazione">
+	<div id="registrazione" onkeydown = "Invio('Reg')">
 		<div class="mask"></div>
 
 		<div class="LogReg col l3 s24">
+		
 			Nome: <input id="nomeR" type="text"><br>
 			Cognome: <input id="cognomeR" type="text"><br>
 			Classe: <input id="classeR" type="text"><br>
 			<div class="input-field col s12">
 				<select id = "scuolaR">
-					<option value="" disabled selected>Scuola</option>
-					<option value="1">Einaudi</option>
-					<option value="2">Scarpa</option>
-					<option value="3">Liceo Levi</option>
 				</select>
-			</div>
-			<br> E-mail: <input id="mailR" type="text"><br> Telefono: <input
-				id="telR" type="text"><br> Data nascita: <input id="dataR"
-				type="date"><br> Password: <input id="passR" type="password"><br>
+			</div><br>
+			E-mail: <input id="mailR" type="text"><br>
+			Telefono: <input id="telR" type="text"><br>
+			Data nascita: <input id="dataR" type="date"><br>
+			Password: <input id="passR" type="password"><br>
+			
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
 			</button>
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="TogliReg()">Annulla</button>
-
 		</div>
 	</div>
 
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
-	<div id="login">
+	<div id="login" onkeydown = "Invio('Log')">
 		<div class="mask"></div>
 		<div class="LogReg col l3 s12">
 			E-mail: <input id="mailLog" type="text"><br> Password: <input
