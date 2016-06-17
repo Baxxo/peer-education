@@ -124,13 +124,6 @@
 
 <body>
 
-<!-- controllare la registrazione i vari errori, non mostra il toast -->
-
-<!-- cambiara da stringa a int -->
-
-
-
-
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
@@ -153,23 +146,22 @@
 	</nav>
 
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
-	<div id="registrazione" onkeydown = "Invio('Reg')">
+	<div id="registrazione" onkeydown="Invio('Reg')">
 		<div class="mask"></div>
 
 		<div class="LogReg col l3 s24">
-		
-			Nome: <input id="nomeR" type="text"><br>
-			Cognome: <input id="cognomeR" type="text"><br>
-			Classe: <input id="classeR" type="text"><br>
+
+			Nome: <input id="nomeR" type="text"><br> Cognome: <input
+				id="cognomeR" type="text"><br> Classe: <input id="classeR"
+				type="text"><br>
 			<div class="input-field col s12">
-				<select id = "scuolaR">
+				<select id="scuolaR">
 				</select>
-			</div><br>
-			E-mail: <input id="mailR" type="text"><br>
-			Telefono: <input id="telR" type="text"><br>
-			Data nascita: <input id="dataR" type="date"><br>
-			Password: <input id="passR" type="password"><br>
-			
+			</div>
+			<br> E-mail: <input id="mailR" type="text"><br> Telefono: <input
+				id="telR" type="text"><br> Data nascita: <input id="dataR"
+				type="date"><br> Password: <input id="passR" type="password"><br>
+
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="GetUtenteReg()">
 				<i class="material-icons right">send</i>Registrati
@@ -180,7 +172,7 @@
 	</div>
 
 	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
-	<div id="login" onkeydown = "Invio('Log')">
+	<div id="login" onkeydown="Invio('Log')">
 		<div class="mask"></div>
 		<div class="LogReg col l3 s12">
 			E-mail: <input id="mailLog" type="text"><br> Password: <input
@@ -201,9 +193,6 @@
 		<img src="img/peer-education1.png" class="brand-logo" />
 	</div>
 	<br />
-	<!--  <div class="row center">
-		<h5 class="header col s12 light">Un nuovo modo di studiare</h5>
-	</div>-->
 
 	<!-- da inserire nel database -->
 

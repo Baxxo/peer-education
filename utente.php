@@ -49,7 +49,7 @@ session_start ();
 		$('select').material_select();
 		CaricaMaterie("#materie");
 		CaricaScuole("#scuole");
-		CaricaMaterie("#materieCerca");
+		CaricaMaterie("#materiaCerca");
 		CaricaScuole("#scuoleCerca");
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
@@ -58,6 +58,7 @@ session_start ();
 	function getCorsoCerca(){
 		var corso = {
 			'materia': document.getElementById("materiaCerca").value,
+			'scuola' : document.getElementById("scuoleCerca").value,
 			'request':'cercaCorso'
 			};
 		if(corso['materia'] != ""){
@@ -68,8 +69,8 @@ session_start ();
 
 	function getCorso(){
 		var corso = {
-			'scuola': document.getElementById("scuola").value,
-			'materia': document.getElementById("materia").value,
+			'scuola': document.getElementById("scuole").value,
+			'materia': document.getElementById("materie").value,
 			'giorno': document.getElementById("giorno").value,
 			'ora': document.getElementById("ora").value,
 			'request':'creaCorso'
@@ -91,20 +92,10 @@ session_start ();
 			<ul class="right hide-on-med-and-down">
 				<li><a class="light-blue btn" onclick="LogOut()"
 					style="margin-top: 6%;">Logout</a></li>
-				<!-- 
-				<li><a class="light-blue btn" onclick="CreaCorsoOpen()"
-					style="margin-top: 5%;">Crea corso</a></li>
-				<li><a class="light-blue btn" onclick="CercaCorsoOpen()"
-					style="margin-top: 5%;">Cerca corso</a></li>
-					 -->
-
-				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
 				<li><a class="light-blue btn" onclick="LogOut()">Logout</a></li>
-				<!-- <li><a class="light-blue btn" onclick="CreaCorsoOpen()">Crea corso</a></li>
-				<li><a class="light-blue btn" onclick="CercaCorsoOpen()">Cerca corso</a></li> -->
 			</ul>
 
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
@@ -152,14 +143,17 @@ session_start ();
 					<div id="creaCorso">
 
 
-						<select id="scuole"></select> <select id="materie"></select> <select>
+						<select id="scuole"></select>
+						<select id="materie"></select>
+						<select id="giorno">
 							<option value="" disabled selected>Giorno</option>
-							<option value="1">Lunedì</option>
-							<option value="2">Martedì</option>
-							<option value="3">Mercoledì</option>
-							<option value="4">Giovedì</option>
-							<option value="5">Venerdì</option>
-						</select> Ora: <input id="ora" type="time"><br>
+							<option value="Lunedì">Lunedì</option>
+							<option value="Martedì">Martedì</option>
+							<option value="Mercoledì">Mercoledì</option>
+							<option value="Giovedì">Giovedì</option>
+							<option value="Venerdì">Venerdì</option>
+						</select>
+						Ora: <input id="ora" type="time"><br>
 
 						<button type="submit" class="btn waves-effect light-blue"
 							onclick="getCorso()">
@@ -180,7 +174,7 @@ session_start ();
 				<div class="col s6 offset-s3">
 					<select id = "scuoleCerca">
 						</select>
-					<select id = "materieCerca">
+					<select id = "materiaCerca">
 						</select>
 					<button type="submit" class="btn waves-effect light-blue"
 							onclick="getCorsoCerca()">
