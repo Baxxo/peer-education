@@ -144,7 +144,6 @@ session_start ();
 				<div class="col s6 offset-s3">
 					<div id="creaCorso">
 
-
 						<select id="scuole"></select>
 						<select id="materie"></select>
 						<div id = "giorni">

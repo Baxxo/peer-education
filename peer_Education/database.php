@@ -244,10 +244,7 @@ function CercaCorso() {
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
-			echo '<td>' . '<button type="submit" class="btn waves-effect light-blue"
-							onclick="Iscriviti("$corso")><i class="material-icons right">send</i>
-							Iscriviti
-						</button>' . '</td>';
+			echo '<td>' . '<button class="btn light-blue" onclick = "Iscriviti(' .$corso .')">Iscriviti</button>' .'</td>';
 			echo '</tr>';
 		}
 		echo "</table>";
