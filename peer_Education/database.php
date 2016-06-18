@@ -165,7 +165,7 @@ function CaricaMieiCorsi() {
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
-			echo '<td>' . '<button class="btn col s8 offset-s2 waves-effect light-blue" onclick()>Informazioni</button>' . '</td>';
+			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 waves-effect light-blue" onclick()>Informazioni</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table><hr>";
