@@ -152,7 +152,7 @@ function CaricaMieiCorsi() {
 									WHERE idTutor = '$idTutor'" );
 	
 	if ($carica) {
-		echo '<table class="centered striped" id = "Tabella">';
+		echo '<table class="centered striped" id = "TabellaM">';
 		
 		echo '<tr>';
 		echo '<td colspan="4" class = "z-depth-2 light-blue" style="color: white;"><b> I corsi dove sono tutor</b> </td>';
@@ -187,7 +187,7 @@ function CaricaCorsiCheSeguo() {
 									FROM corso c, iscrizioni i
 									WHERE i.idCorso = c.id AND i.idStudente = '$idUtente'" );
 	if ($carica) {
-		echo '<table class="centered striped" id = "Tabella">';
+		echo '<table class="centered striped" id = "TabellaC">';
 		
 		echo '<tr>';
 		echo '<td colspan="5" class = "z-depth-2 orange" style="color: white;"><b> I corsi che seguo</b> </td>';

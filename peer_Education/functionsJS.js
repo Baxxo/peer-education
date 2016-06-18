@@ -84,7 +84,7 @@ function CreaCorso(corso){
 		url: 'peer_Education/database.php',
 		data: (corso),
 		success: function (response) {
-			alert(response);
+			Materialize.toast('Hai creato un nuovo corso!', 1500);
 		}
 	});
 }
@@ -109,7 +109,12 @@ function CaricaMieiCorsi(){
 		url: 'peer_Education/database.php',
 		data: ({ request:'caricaMieiCorsi' }),
 		success: function (response) {
-			$("#mieiCorsi").append(response);
+			if(response == failed){
+				Materialize.toast("Errore durante il caricamento dei miei corsi", 4000);
+			} else {
+				$("#mieiCorsi").empty();
+				$("#mieiCorsi").append(response);
+			}
 		}
 	});
 	
@@ -121,6 +126,7 @@ function CaricaMieiCorsi(){
 			if(response == failed){
 				Materialize.toast("Errore durante il caricamento dei corsi che seguo", 4000);
 			} else {
+				$("#corsiCheSeguo").empty();
 				$("#corsiCheSeguo").append(response);
 			}
 		}
