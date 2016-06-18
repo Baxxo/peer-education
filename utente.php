@@ -40,6 +40,7 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 	margin: 20px;
 	display: none;
 }
+
 .tabs .indicator {
 	background-color: #42a5f5;
 }
@@ -176,20 +177,18 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 				<div class="col s6 offset-s3">
 					<div id="creaCorso">
 
-						<select id="scuole"></select>
-						<select id="materie"></select>
-						<select id="giorniSettimana" onchange = "CaricaGiorni()">
+						<select id="scuole"></select> <select id="materie"></select> <select
+							id="giorniSettimana" onchange="CaricaGiorni()">
 							<option value="" disabled selected>Giorni del corso</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
 						</select>
-						<div id = "giorni" class ="col s8 offset-s2">
-							
-						</div>
-						
-						<button type="submit" class="btn col s8 offset-s2 waves-effect light-blue"
-							onclick="getCorso()" style="position:static">
+						<div id="giorni" class="col s8 offset-s2"></div>
+
+						<button type="submit"
+							class="btn col s8 offset-s2 waves-effect light-blue"
+							onclick="getCorso()" style="position: static">
 							<i class="material-icons right">send</i>Crea
 						</button>
 
@@ -205,24 +204,25 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 		<div id="test3" class="col s12">
 			<div id="cercaCorso">
 				<div class="col s6 offset-s3">
-					<select id = "scuoleCerca">
-						</select>
-					<select id = "materiaCerca">
-						</select>
-					<button type="submit" class="btn waves-effect light-blue"
-							onclick="getCorsoCerca()">
-							<i class="material-icons right">send</i>Cerca
+					<select id="scuoleCerca">
+					</select> 
+					<select id="materiaCerca">
+					</select>
+					<button type="submit"
+						class="btn col s8 offset-s2 waves-effect light-blue"
+						onclick="getCorsoCerca()" style="position: static">
+						<i class="material-icons right">send</i>Cerca
 					</button>
-					<div id ="corsiTrovati" class = "col s12"></div>
+					<div id="corsiTrovati" class="col s12"></div>
 				</div>
 
 			</div>
 		</div>
 
 	</div>
-	
+
 	<div style="height: 130px; clear: both;">&nbsp;</div>
-	
+
 	<footer id="footer" class="page-footer orange">
 		<div class="container">
 			<div>

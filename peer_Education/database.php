@@ -35,8 +35,8 @@ switch ($request) {
 	case "caricaScuole" :
 		CaricaScuole ();
 		break;
-	case "iscriviti":
-		Iscriviti();
+	case "iscriviti" :
+		Iscriviti ();
 		break;
 	default :
 		echo "Richiesta strana: " . $request;
@@ -66,7 +66,6 @@ function caricaUtenti() {
 	}
 	echo "</table>";
 }
-
 function registrati() {
 	global $failed;
 	global $success;
@@ -88,7 +87,6 @@ function registrati() {
 		echo $failed;
 	}
 }
-
 function Login() {
 	global $failed;
 	global $success;
@@ -119,7 +117,6 @@ function LogOut() {
 	
 	echo $succes;
 }
-
 function CreaCorso() {
 	global $failed;
 	global $success;
@@ -139,23 +136,23 @@ function CreaCorso() {
 		echo $failed;
 	}
 }
-
 function CaricaMieiCorsi() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$idTutor = $_SESSION ["user_id"];
-	$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
-									scuola AS idScuola,
-									idMateria AS mat,
-									giorno AS giorno,
-									ora AS ora
-									FROM corso
-									WHERE idTutor = '$idTutor'" );
+	$carica = mysqli_query ( $mysqli, "SELECT 
+										c.idTutor AS tutor,
+										c.scuola AS idScuola, 
+										c.idMateria AS mat, 
+										c.giorno AS giorno, 
+										c.ora AS ora 
+										FROM corso c
+										WHERE c.idTutor = '$idTutor'" );
 	
 	if ($carica) {
 		echo '<table class="centered striped" id = "TabellaM">';
 		
 		echo '<tr>';
-		echo '<td colspan="4" class = "z-depth-2 light-blue" style="color: white;"><b> I corsi dove sono tutor</b> </td>';
+		echo '<td colspan="5" class = "z-depth-2 light-blue" style="color: white;"><b>I corsi che tengo</b> </td>';
 		echo '</tr>';
 		
 		echo '<tr>';
@@ -168,12 +165,12 @@ function CaricaMieiCorsi() {
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
+			echo '<td>' . '<button class="btn col s8 offset-s2 waves-effect light-blue" onclick()>Informazioni</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table><hr>";
 	}
 }
-
 function CaricaCorsiCheSeguo() {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
@@ -199,7 +196,7 @@ function CaricaCorsiCheSeguo() {
 		
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
 			echo '<tr>';
-			echo '<td>' . CaricaTutorById ($res ['tutor']) . '</td>';
+			echo '<td>' . CaricaTutorById ( $res ['tutor'] ) . '</td>';
 			echo '<td>' . CaricaScuolaById ( $res ['idScuola'] ) . '</td>';
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
@@ -211,45 +208,44 @@ function CaricaCorsiCheSeguo() {
 		echo $failed;
 	}
 }
-
 function CercaCorso() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
-		
-	if($_POST['materia'] == "0" && $_POST['scuola']=="0"){
-		$carica = mysqli_query ( $mysqli,"SELECT idTutor AS tutor,
-				id AS idCorso,
-				scuola AS scuola,
-				idMateria AS mat,
-				giorno AS giorno,
-				ora AS ora
-				FROM corso ");
-	}	
 	
-	if($_POST['materia'] == "0" && $_POST['scuola']!="0"){
-		$scuola = $_POST['scuola'];
-		$carica = mysqli_query ( $mysqli,"SELECT idTutor AS tutor,
+	if ($_POST ['materia'] == "0" && $_POST ['scuola'] == "0") {
+		$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
 				id AS idCorso,
 				scuola AS scuola,
 				idMateria AS mat,
 				giorno AS giorno,
 				ora AS ora
-				FROM corso WHERE scuola = '$scuola'");		
+				FROM corso " );
 	}
 	
-	if($_POST['scuola']=="0" && $_POST['materia'] != "0"){
-		$mat = $_POST['materia'];
-		$carica = mysqli_query ( $mysqli,"SELECT idTutor AS tutor,
+	if ($_POST ['materia'] == "0" && $_POST ['scuola'] != "0") {
+		$scuola = $_POST ['scuola'];
+		$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
 				id AS idCorso,
 				scuola AS scuola,
 				idMateria AS mat,
 				giorno AS giorno,
 				ora AS ora
-				FROM corso WHERE idMateria = '$mat'");
+				FROM corso WHERE scuola = '$scuola'" );
 	}
 	
-	if($_POST['scuola']!="0" && $_POST['materia'] != "0"){
-		$mat = $_POST['materia'];
-		$scuola = $_POST['scuola'];
+	if ($_POST ['scuola'] == "0" && $_POST ['materia'] != "0") {
+		$mat = $_POST ['materia'];
+		$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
+				id AS idCorso,
+				scuola AS scuola,
+				idMateria AS mat,
+				giorno AS giorno,
+				ora AS ora
+				FROM corso WHERE idMateria = '$mat'" );
+	}
+	
+	if ($_POST ['scuola'] != "0" && $_POST ['materia'] != "0") {
+		$mat = $_POST ['materia'];
+		$scuola = $_POST ['scuola'];
 		$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
 				id AS idCorso,
 				scuola AS scuola,
@@ -260,8 +256,8 @@ function CercaCorso() {
 				WHERE idMateria = '$mat' AND scuola = '$scuola'" );
 	}
 	
-	if ($carica) { 
-		echo '<table class="centered striped" id = "TabellaCerca">';		
+	if ($carica) {
+		echo '<table class="centered striped" id = "TabellaCerca">';
 		echo '<tr>';
 		echo '<td colspan="6" class = "z-depth-2 orange"style="color: white;"><b>Corsi</b> </td>';
 		echo '</tr>';
@@ -271,20 +267,56 @@ function CercaCorso() {
 		echo '</tr>';
 		
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
-			$corso = $res['idCorso'];
+			$corso = $res ['idCorso'];
 			echo '<tr>';
-			echo '<td>' . CaricaTutorById($res ['tutor']) . '</td>';
+			echo '<td>' . CaricaTutorById ( $res ['tutor'] ) . '</td>';
 			echo '<td>' . CaricaScuolaById ( $res ['scuola'] ) . '</td>';
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
-			echo '<td>' . '<button class="btn light-blue" onclick = "Iscriviti(' .$corso .')">Iscriviti</button>' .'</td>';
+			echo '<td>' . '<button class="btn light-blue" onclick = "Iscriviti(' . $corso . ')">Iscriviti</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table>";
 	}
 }
-
+function CaricaMaterieCerca() {
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
+	$carica = mysqli_query ( $mysqli, "SELECT id AS id, materia AS mat FROM materie" );
+	
+	if ($carica) {
+		echo '<option value="" disabled selected>Materia</option>';
+		echo '<option value="0" >Tutte le materia</option>';
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<option value="' . $res ['id'] . '">' . $res ['mat'] . "</option>";
+		}
+	}
+}
+function CaricaScuoleCerca() {
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
+	$carica = mysqli_query ( $mysqli, "SELECT id AS id, nome AS nome FROM scuole" );
+	if ($carica) {
+		echo '<option value="" disabled selected>Scuola</option>';
+		echo '<option value="0">Tutte le scuole</option>';
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<option value="' . $res ['id'] . '">' . $res ['nome'] . "</option>";
+		}
+	}
+}
+function CaricaScuole() {
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
+	$carica = mysqli_query ( $mysqli, "SELECT id AS id, nome AS nome FROM scuole" );
+	if ($carica) {
+		echo '<option value="" disabled selected>Scuola</option>';
+		echo '<option value="0">Tutte le scuole</option>';
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<option value="' . $res ['id'] . '">' . $res ['nome'] . "</option>";
+		}
+	}
+}
 function CaricaMaterie() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
@@ -298,20 +330,6 @@ function CaricaMaterie() {
 		}
 	}
 }
-
-function CaricaScuole() {
-	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
-	
-	$carica = mysqli_query ( $mysqli, "SELECT id AS id, nome AS nome FROM scuole" );
-	if ($carica) {
-		echo '<option value="" disabled selected>Scuola</option>';
-		echo '<option value="0">Tutte le scuole</option>';
-		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
-			echo '<option value="' . $res ['id'] . '">' . $res ['nome'] . "</option>";
-		}
-	}
-}
-
 function CaricaScuolaById($id) {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
@@ -323,7 +341,6 @@ function CaricaScuolaById($id) {
 		return $failed;
 	}
 }
-
 function CaricaMateriaById($id) {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
@@ -335,7 +352,6 @@ function CaricaMateriaById($id) {
 		return $failed;
 	}
 }
-
 function CaricaTutorById($id) {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
@@ -347,8 +363,7 @@ function CaricaTutorById($id) {
 		return $failed;
 	}
 }
-
-function Iscriviti(){
+function Iscriviti() {
 	global $failed;
 	global $success;
 	
@@ -363,7 +378,6 @@ function Iscriviti(){
 	} else {
 		echo $failed;
 	}
-	
 }
 
 ?>
