@@ -85,6 +85,7 @@ function CreaCorso(corso){
 		data: (corso),
 		success: function (response) {
 			Materialize.toast('Hai creato un nuovo corso!', 1500);
+			CaricaMieiCorsi();
 		}
 	});
 }
@@ -143,6 +144,7 @@ function Iscriviti(idCorso){
 				Materialize.toast("Errore durante iscrizione", 1500);
 			}
 			if (response == success) {
+				CaricaMieiCorsi();
 				Materialize.toast("Ti sei iscritto", 1500);
 			}
 		}
