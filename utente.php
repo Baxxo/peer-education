@@ -47,7 +47,7 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 </style>
 
 <script>
-
+	
 	$(document).ready(function(){
 		CaricaMieiCorsi();
 		$('select').material_select();
@@ -59,7 +59,7 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 	});
-	
+	//------------------------------------------------------------------
 	function getCorsoCerca(){
 		var corso = {
 			'materia': document.getElementById("materiaCerca").value,
