@@ -62,9 +62,10 @@ session_start ();
 			'scuola' : document.getElementById("scuoleCerca").value,
 			'request':'cercaCorso'
 			};
-		if(corso['materia'] != ""){
+		if(corso['scuola'] != "" && corso['materia'] != ""){
 			CercaCorso(corso);
-		} else
+		}
+        else
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
 	}
 
@@ -173,6 +174,7 @@ session_start ();
 						<select id="scuole"></select>
 						<select id="materie"></select>
 						<select id="giorniSettimana" onchange = "CaricaGiorni()">
+							<option value="" disabled selected>Giorni del corso</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
