@@ -93,9 +93,8 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 			'ora': ore,
 			'request':'creaCorso'
 			};
-		if(corso['scuola'] != "" && corso['materia'] != "" && corso['giorno'] != "" && corso['ora'] != ""){
+		if(corso['scuola'] != "" && corso['scuola'] != "0" && corso['materia'] != "" && corso['materia'] != "0" && corso['giorno'] != "" && corso['ora'] != ""){
 			CreaCorso(corso);
-			CaricaMieiCorsi();
 		}
         else
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
