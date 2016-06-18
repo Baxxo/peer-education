@@ -1,5 +1,11 @@
 
-<html lang="it">
+<?php
+	session_start ();
+	
+	if(isset($_SESSION ["user_id"]) && isset($_SESSION ["user_name"])){
+		header("Location: utente.php");
+	}
+?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"

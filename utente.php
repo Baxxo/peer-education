@@ -1,6 +1,9 @@
 
 <?php
 session_start ();
+if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
+	header("Location: index.php");
+}
 ?>
 
 <html lang="it">
@@ -69,17 +72,19 @@ session_start ();
         else
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
 	}
-
+	//------------------------------------------------------------------
 	function getCorso(){
-		var days = document.getElementsById("giorno");
-		var hours = document.getElementsById("ora");
-
+				
 		var giorni = "";
 		var ore = "";
-		for(var i = 0; i < days.length; i++){
-			giorni += days[i] + "/";
-			ore += hours[i] + "/";
-		}
+		$(".selectGiorno option:selected").each(function(){
+			giorni += $(this).attr("value");
+			giorni += "<br>";
+			});
+		$(".ora").each(function(){
+			ore += $(this).val();
+			ore += "<br>";
+			});
 		
 		var corso = {
 			'scuola': document.getElementById("scuole").value,
@@ -96,11 +101,11 @@ session_start ();
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
     	
 	}
-
+	//------------------------------------------------------------------
 	function CaricaGiorni(){	
-		var giorno = '<select id="giorno"> <option value="" disabled selected>Giorno</option> <option value="Lunedì">Lunedì</option>'
+		var giorno = '<select id="selectGiorno" class = "selectGiorno"> <option value="" disabled selected>Giorno</option> <option value="Lunedì">Lunedì</option>'
 			+ '<option value="Martedì">Martedì</option> <option value="Mercoledì">Mercoledì</option> <option value="Giovedì">Giovedì</option>'
-			+ '<option value="Venerdì">Venerdì</option> </select> Ora: <input id="ora" type="time"><br>';
+			+ '<option value="Venerdì">Venerdì</option> </select> Ora: <input id="ora" class ="ora" type="time"><br>';
 		
 		$("#giorni").html('<div id = "giorniClear">');
 		$("#giorniClear").empty();
