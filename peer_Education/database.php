@@ -216,6 +216,7 @@ function CaricaCorsiCheSeguo() {
 }
 function CercaCorso() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	$userId = $_SESSION ["user_id"];
 	
 	if ($_POST ['materia'] == "0" && $_POST ['scuola'] == "0") {
 		$carica = mysqli_query ( $mysqli, "SELECT idTutor AS tutor,
@@ -224,7 +225,7 @@ function CercaCorso() {
 				idMateria AS mat,
 				giorno AS giorno,
 				ora AS ora
-				FROM corso " );
+				FROM corso WHERE idTutor != '$userId'" );
 	}
 	
 	if ($_POST ['materia'] == "0" && $_POST ['scuola'] != "0") {
@@ -235,7 +236,7 @@ function CercaCorso() {
 				idMateria AS mat,
 				giorno AS giorno,
 				ora AS ora
-				FROM corso WHERE scuola = '$scuola'" );
+				FROM corso WHERE scuola = '$scuola' AND idTutor != '$userId'" );
 	}
 	
 	if ($_POST ['scuola'] == "0" && $_POST ['materia'] != "0") {
@@ -246,7 +247,7 @@ function CercaCorso() {
 				idMateria AS mat,
 				giorno AS giorno,
 				ora AS ora
-				FROM corso WHERE idMateria = '$mat'" );
+				FROM corso WHERE idMateria = '$mat' AND idTutor != '$userId'" );
 	}
 	
 	if ($_POST ['scuola'] != "0" && $_POST ['materia'] != "0") {
@@ -259,7 +260,7 @@ function CercaCorso() {
 				giorno AS giorno,
 				ora AS ora
 				FROM corso
-				WHERE idMateria = '$mat' AND scuola = '$scuola'" );
+				WHERE idMateria = '$mat' AND scuola = '$scuola' AND idTutor != '$userId'" );
 	}
 	
 	if ($carica) {
@@ -357,10 +358,10 @@ function CaricaMateriaById($id) {
 function CaricaTutorById($id) {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
-	$tutor = mysqli_query ( $mysqli, "SELECT nome AS nomeTutor, id FROM utente WHERE '$id' = id" );
+	$tutor = mysqli_query ( $mysqli, "SELECT nome AS nomeTutor, cognome AS Cognome, id FROM utente WHERE '$id' = id" );
 	if ($tutor) {
 		$nome = mysqli_fetch_object ( $tutor );
-		return $nome->nomeTutor;
+		return $nome->nomeTutor ." " .$nome->Cognome;
 	} else {
 		return $failed;
 	}
