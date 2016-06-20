@@ -5,12 +5,16 @@ function LoadPage(dir){
 	window.location.href = dir;
 }
 
-function CaricaMaterie(id){
+function CaricaMaterie(id, all){
 	$.ajax({
 		type : 'post',
 		url : 'peer_Education/database.php',
 		data : ({ request:'caricaMaterie' }),
 		success : function(response) {
+			if(all)
+				$(id).append('<option value="0" selected>Tutte le materie</option>');
+			else
+				$(id).append('<option value="" disabled selected>Materia</option>');
 			$(id).append(response);
 			$('select').material_select('destroy');
 			$('select').material_select();
@@ -18,12 +22,17 @@ function CaricaMaterie(id){
 	});
 }
 
-function CaricaScuole(id){
+function CaricaScuole(id, all){
 	$.ajax({
 		type : 'post',
 		url : 'peer_Education/database.php',
 		data : ({ request:'caricaScuole' }),
 		success : function(response) {
+			if(all)
+				$(id).append('<option value="0" selected>Tutte le scuole</option>');
+			else
+				$(id).append('<option value="" disabled selected>Scuola</option>');
+			
 			$(id).append(response);
 			$('select').material_select('destroy');
 			$('select').material_select();

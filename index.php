@@ -39,7 +39,7 @@
 
 	$(document).ready(function() {
 	    $('select').material_select();
-	    CaricaScuole("#scuolaR");
+	    CaricaScuole("#scuolaR", false);
 	});
 
 	function RegOpen(){
@@ -104,7 +104,6 @@
     }
 
     function NumbersOnly(string){
-        // + = 43
         for(var i = 0; i < string.length; i++ ){
             if(string.charCodeAt(i) < 48 && string.charCodeAt(i) != 43 || string.charCodeAt(i) > 57){
 				return false;

@@ -53,8 +53,8 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 		$('select').material_select();
 		CaricaMaterie("#materie");
 		CaricaScuole("#scuole");
-		CaricaMaterie("#materiaCerca");
-		CaricaScuole("#scuoleCerca");
+		CaricaMaterie("#materiaCerca", true);
+		CaricaScuole("#scuoleCerca", true);
 		CaricaGiorni(1);
 		$('ul.tabs').tabs();
 		$('ul.tabs').tabs('select_tab', 'tab_id');
