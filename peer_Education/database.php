@@ -145,7 +145,7 @@ function CreaCorso() {
 function CaricaMieiCorsi() {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$idTutor = $_SESSION ["user_id"];
-	$carica = mysqli_query ( $mysqli, "SELECT 
+	$carica = mysqli_query ( $mysqli, "SELECT  c.id AS cId,
 										c.idTutor AS tutor,
 										c.scuola AS idScuola, 
 										c.idMateria AS mat, 
@@ -171,7 +171,7 @@ function CaricaMieiCorsi() {
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
-			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 waves-effect light-blue" onclick()>Informazioni</button>' . '</td>';
+			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 light-blue" onclick = "GestisciCorso(' .$res ['cId'] .')">Gestisci corso</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table><hr>";
