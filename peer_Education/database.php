@@ -1,46 +1,48 @@
 <?php
 session_start ();
-$request = $_POST ['request'];
+
 $success = "SUCCESS";
 $failed = "FAILED";
-
-switch ($request) {
-	case "caricaUtenti" :
-		caricaUtenti ();
-		break;
-	case "registrati" :
-		registrati ();
-		break;
-	case "login" :
-		Login ();
-		break;
-	case "logOut" :
-		LogOut ();
-		break;
-	case "creaCorso" :
-		CreaCorso ();
-		break;
-	case "caricaMieiCorsi" :
-		CaricaMieiCorsi ();
-		break;
-	case "caricaTutor" :
-		CaricaCorsiCheSeguo ();
-		break;
-	case "cercaCorso" :
-		CercaCorso ();
-		break;
-	case "caricaMaterie" :
-		CaricaMaterie ();
-		break;
-	case "caricaScuole" :
-		CaricaScuole ();
-		break;
-	case "iscriviti" :
-		Iscriviti ();
-		break;
-	default :
-		echo "Richiesta strana: " . $request;
-		break;
+if(isset($_POST ['request'])){
+	$request = $_POST ['request'];
+	switch ($request) {
+		case "caricaUtenti" :
+			caricaUtenti ();
+			break;
+		case "registrati" :
+			registrati ();
+			break;
+		case "login" :
+			Login ();
+			break;
+		case "logOut" :
+			LogOut ();
+			break;
+		case "creaCorso" :
+			CreaCorso ();
+			break;
+		case "caricaMieiCorsi" :
+			CaricaMieiCorsi ();
+			break;
+		case "caricaTutor" :
+			CaricaCorsiCheSeguo ();
+			break;
+		case "cercaCorso" :
+			CercaCorso ();
+			break;
+		case "caricaMaterie" :
+			CaricaMaterie ();
+			break;
+		case "caricaScuole" :
+			CaricaScuole ();
+			break;
+		case "iscriviti" :
+			Iscriviti ();
+			break;
+		default :
+			echo "Richiesta strana: " . $request;
+			break;
+	}
 }
 
 /* Index functions */
@@ -171,7 +173,7 @@ function CaricaMieiCorsi() {
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
-			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 light-blue" onclick = "GestisciCorso(' .$res ['cId'] .')">Gestisci corso</button>' . '</td>';
+			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 light-blue" onclick = "GestisciCorso(' .$res ['cId'] .','. $res['mat'] .')">Gestisci corso</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table><hr>";

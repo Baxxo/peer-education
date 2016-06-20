@@ -1,10 +1,10 @@
 <?php
-	session_start ();
-	if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
-		header("Location: index.php");
-	} else if(!isset($_GET ["corso_Id"])){
-		header("Location: utente.php");
-	}
+include ("peer_Education/database.php");
+if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
+	header ( "Location: index.php" );
+} else if (! isset ( $_GET ["corso_Id"] )) {
+	header ( "Location: utente.php" );
+}
 ?>
 
 <head>
@@ -45,12 +45,41 @@
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a class="waves-effect light-blue btn" onclick="LoadPage('utente.php')">Torna indietro</a></li>
+				<li><a class="waves-effect light-blue btn"
+					onclick="LoadPage('utente.php')">Torna indietro</a></li>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
 				class="material-icons">menu</i></a>
 		</div>
 	</nav>
-	<h1> <?php echo $_GET ["corso_Id"] ?> </h1>
+
+	<h1 class="header center orange-text">Corso di <?php echo CaricaMateriaById($_GET["mat"]) ?></h1>
+	
+	<div class="row">
+		<div class="col s3">
+			<table class="centered striped" border = "1px solid black">
+			<tr>
+			<td>Giorno</td>
+			<td>Ora</td>
+			<td>Sede</td>
+			</tr>
+			<tr>
+			<td>asd</td>
+			<td>12</td>
+			<td>Asdf</td>
+			</tr>
+			</table>
+			
+			<table class="centered striped" border = "1px solid black">
+			<tr><td>Lezone del </td>
+			</tr>
+			</table>
+		</div>
+	</div>
+
+	<!--<h1> <?php echo $_GET ["corso_Id"] ?> </h1> -->
+	<?php
+	
+	?>
 
 </body>

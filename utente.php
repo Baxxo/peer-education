@@ -116,9 +116,8 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 		$('select').material_select();
 	}
 
-	function GestisciCorso(id){
-
-		LoadPage("corsoGestione.php?corso_Id=" + id);
+	function GestisciCorso(id,mat){
+		LoadPage("corsoGestione.php?corso_Id=" + id + "&mat=" + mat);
 		
 	}
 
