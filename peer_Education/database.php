@@ -39,6 +39,9 @@ if(isset($_POST ['request'])){
 		case "iscriviti" :
 			Iscriviti ();
 			break;
+		case "aggiungiLezione" :
+			AggiungiLezione();
+			break;
 		default :
 			echo "Richiesta strana: " . $request;
 			break;
@@ -383,6 +386,27 @@ function Iscriviti() {
 	} else {
 		echo $failed;
 	}
+}
+
+function AggiungiLezione(){
+	global $failed;
+	global $success;
+	
+	//id, idCorso, data, Argomento
+	//$idCorso = $_POST['idCorso'];
+	$idCorso = 2;
+	$data = time();
+	$arg = "Ciaone";
+	
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	$sql = "INSERT INTO lezione VALUES (null, '$idCorso', NOW(), '$arg')";
+	
+	if ($carica = mysqli_query ( $mysqli, $sql )) {
+		echo $success;
+	} else {
+		echo $failed;
+	}
+	
 }
 
 ?>
