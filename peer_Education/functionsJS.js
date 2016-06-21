@@ -169,7 +169,7 @@ function CaricaInformazioniCorso(idCorso){
 			if (response == failed) {
 				Materialize.toast("Errore durante caricamento delle informazioni", 1500);
 			} else {
-				$("#CorsoInformazioni").append(response).fadeIn(250);
+				$("#CorsoInformazioni").append(response);
 			}
 			
 		}
