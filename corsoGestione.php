@@ -27,13 +27,26 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 </head>
 
 <style>
+
+	#NewLezione {
+		display: none;
+	}
+
 </style>
 
 <script>
 
-	//var tech = getUrlParameter('technology');
 	var params = <?php echo json_encode($_GET); ?>;
 	CaricaInformazioniCorso(params['corso_Id']);
+	CaricaGliIscritti(params['corso_Id']);
+	
+	function LezioneCreaOpen() {
+		$("#NewLezione").fadeIn(250);
+	}
+	
+	function LezioneCreaClose() {
+		$("#NewLezione").fadeOut(250);
+	}
 
 </script>
 
@@ -42,18 +55,36 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
+				<li><a class="light-blue btn" style="margin-top: 15px;"
+					onclick="LezioneCreaOpen()">Aggiungi nuova lezione</a></li>
 				<li><a class="light-blue btn" onclick="LoadPage('utente.php')"
-					style="margin-top: 6%;">Torna indietro</a></li>
+					style="margin-top: 15px;">Torna indietro</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a class="waves-effect light-blue btn"
+				<li><a class="light-blue btn"
+					onclick="LezioneCreaOpen()">Aggiungi nuova lezione</a></li>
+				<li><a class="light-blue btn"
 					onclick="LoadPage('utente.php')">Torna indietro</a></li>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
 				class="material-icons">menu</i></a>
 		</div>
 	</nav>
+	
+	<div id="NewLezione" onkeydown="">
+		<div class="mask"></div>
+		<div class="LogReg col l3 s12">
+			Argomento: <input id="argomenti" type="text"><br>
+			<div id = "registro"></div>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="">
+				<i class="material-icons right">send</i>Aggiungi la lezione
+			</button>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="LezioneCreaClose()">Annulla</button>
+		</div>
+	</div>
 	
 	<h1 class="header center orange-text">Corso di <?php echo CaricaMateriaById($_GET["mat"]) ?></h1>
 	
@@ -66,8 +97,5 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	<hr class = "blue-grey lighten-3" style="width:90%; border: 0px; height: 1px;">	
 
 	<!--<h1> <?php echo $_GET ["corso_Id"] ?> </h1> -->
-	<?php
-	
-	?>
 
 </body>

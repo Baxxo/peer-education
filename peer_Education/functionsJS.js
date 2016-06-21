@@ -160,6 +160,8 @@ function Iscriviti(idCorso){
 	});
 }
 
+/*	Functions Corso	*/
+
 function CaricaInformazioniCorso(idCorso){
 	$.ajax({
 		type: 'post',
@@ -170,6 +172,23 @@ function CaricaInformazioniCorso(idCorso){
 				Materialize.toast("Errore durante caricamento delle informazioni", 1500);
 			} else {
 				$("#CorsoInformazioni").append(response);
+			}
+			
+		}
+	});
+}
+
+function CaricaGliIscritti(idCorso){
+	
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaIscrittiCorso', idCorsoP:idCorso }),
+		success: function (response) {
+			if (response == failed) {
+				Materialize.toast("Errore durante caricamento delle informazioni", 1500);
+			} else {
+				$("#registro").append(response);
 			}
 			
 		}
