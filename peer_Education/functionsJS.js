@@ -159,3 +159,19 @@ function Iscriviti(idCorso){
 		}
 	});
 }
+
+function CaricaInformazioniCorso(idCorso){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaInformazioniCorso', idCorsoP:idCorso }),
+		success: function (response) {
+			if (response == failed) {
+				Materialize.toast("Errore durante caricamento delle informazioni", 1500);
+			} else {
+				$("#CorsoInformazioni").append(response).fadeIn(250);
+			}
+			
+		}
+	});
+}

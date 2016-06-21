@@ -30,6 +30,11 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 </style>
 
 <script>
+
+	//var tech = getUrlParameter('technology');
+	var params = <?php echo json_encode($_GET); ?>;
+	CaricaInformazioniCorso(params['corso_Id']);
+
 </script>
 
 <body>
@@ -39,9 +44,6 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 			<ul class="right hide-on-med-and-down">
 				<li><a class="light-blue btn" onclick="LoadPage('utente.php')"
 					style="margin-top: 6%;">Torna indietro</a></li>
-
-				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
-
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
@@ -52,30 +54,16 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 				class="material-icons">menu</i></a>
 		</div>
 	</nav>
-
+	
 	<h1 class="header center orange-text">Corso di <?php echo CaricaMateriaById($_GET["mat"]) ?></h1>
 	
 	<div class="row">
-		<div class="col s3">
-			<table class="centered striped" border = "1px solid black">
-			<tr>
-			<td>Giorno</td>
-			<td>Ora</td>
-			<td>Sede</td>
-			</tr>
-			<tr>
-			<td>asd</td>
-			<td>12</td>
-			<td>Asdf</td>
-			</tr>
-			</table>
+		<div class="col s4 offset-s4" id = "CorsoInformazioni">
 			
-			<table class="centered striped" border = "1px solid black">
-			<tr><td>Lezone del </td>
-			</tr>
-			</table>
 		</div>
 	</div>
+	
+	<hr class = "blue-grey lighten-3" style="width:90%; border: 0px; height: 1px;">	
 
 	<!--<h1> <?php echo $_GET ["corso_Id"] ?> </h1> -->
 	<?php

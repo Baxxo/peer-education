@@ -118,7 +118,6 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 
 	function GestisciCorso(id,mat){
 		LoadPage("corsoGestione.php?corso_Id=" + id + "&mat=" + mat);
-		
 	}
 
 </script>
