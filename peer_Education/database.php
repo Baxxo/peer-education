@@ -399,9 +399,9 @@ function AggiungiLezione(){
 	global $failed;
 	global $success;
 	
-	$idCorso = 2;
+	$idCorso = $_POST ["idCorsoP"];
 	$data = time();
-	$arg = "Ciaone";
+	$arg = $_POST['argomento'];
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$sql = "INSERT INTO lezione VALUES (null, '$idCorso', NOW(), '$arg')";
@@ -434,7 +434,7 @@ function GetIscrittiAssenze(){
 	for($i = 0; $i < count($arr); $i++){
 		echo '<tr><td>' .CaricaNomeById($arr[$i]) .'</td><td><form action="#"><p>
 														<input type="checkbox" id="check' .$i .'" />
-														<label for="check'.$i.'"></label>
+														<label class ="light-blue-text" for="check'.$i.'">Presente</label>
 													</p></form>';
 	}
 }

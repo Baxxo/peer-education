@@ -179,18 +179,34 @@ function CaricaInformazioniCorso(idCorso){
 }
 
 function CaricaGliIscritti(idCorso){
-	
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
 		data: ({ request:'caricaIscrittiCorso', idCorsoP:idCorso }),
 		success: function (response) {
 			if (response == failed) {
-				Materialize.toast("Errore durante caricamento delle informazioni", 1500);
+				Materialize.toast("Errore durante caricamento degli iscritti", 1500);
 			} else {
 				$("#registro").append(response);
 			}
 			
 		}
 	});
+}
+
+function AggiungiLezione(idCorso, arg){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'aggiungiLezione', idCorsoP:idCorso, argomento:arg }),
+		success: function (response) {
+			if (response == failed) {
+				Materialize.toast("Errore durante creazione della lezione", 1500);
+			} else if (response == success) {
+				Materialize.toast("Hai aggiunto una nuova lezione", 1500);
+			}
+			
+		}
+	});
+	
 }
