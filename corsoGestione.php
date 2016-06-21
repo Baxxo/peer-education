@@ -38,10 +38,11 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 </script>
 
 <body>
-
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
+				<li><a class="light-blue btn" onclick="" style="margin-top: 6%;">Crea
+						Lezione</a></li>
 				<li><a class="light-blue btn" onclick="LoadPage('utente.php')"
 					style="margin-top: 6%;">Torna indietro</a></li>
 			</ul>
@@ -54,20 +55,24 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 				class="material-icons">menu</i></a>
 		</div>
 	</nav>
-	
+
 	<h1 class="header center orange-text">Corso di <?php echo CaricaMateriaById($_GET["mat"]) ?></h1>
-	
+
 	<div class="row">
-		<div class="col s4 offset-s4" id = "CorsoInformazioni">
-			
-		</div>
+		<div class="col s4 offset-s4" id="CorsoInformazioni"></div>
 	</div>
-	
-	<hr class = "blue-grey lighten-3" style="width:90%; border: 0px; height: 1px;">	
+
+	<hr class="blue-grey lighten-3"
+		style="width: 90%; border: 0px; height: 1px;">
+
+
+	<table class="centered striped" id="TabellaCerca">
+		<tr>
+			<td>Ciaone</td>
+		</tr>
+	</table>
+
 
 	<!--<h1> <?php echo $_GET ["corso_Id"] ?> </h1> -->
-	<?php
-	
-	?>
 
 </body>
