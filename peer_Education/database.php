@@ -413,11 +413,20 @@ function AggiungiLezione(){
 function GetIscritti($idCorso){
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$carica = mysqli_query ( $mysqli, "SELECT idStudente AS Studente FROM iscrizioni WHERE idCorso = '$idCorso'" );
-	$nomi = "";
+	$arr = array();
 	if ($carica) {
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
-			$nomi .= CaricaNomeById($res['Studente']);
+			array_push($arr, $res['Studente']);
 		}
+	}
+	return $arr;
+}
+
+function GetIscittiNome($idCorso){
+	$arr = GetIscritti($idCorso);
+	$nomi = "";
+	for($i = 0; $i < count($arr); $i++){
+		$nomi .= CaricaNomeById($arr[$i]);
 	}
 	return $nomi;
 }
@@ -435,7 +444,7 @@ function CaricaInformazioniCorso(){
 		echo '<tr> <td colspan = "2">Informazioni sul corso</td> </tr>';
 		
 		$info = mysqli_fetch_object ( $carica );
-		$iscritti = GetIscritti($idCorso);
+		$iscritti = GetIscittiNome($idCorso);
 		
 		if($iscritti === "")
 			$iscritti = "Non ci sono iscritti";
