@@ -76,12 +76,12 @@
                 utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" && utente['pass'] != ""){
             if(NumbersOnly(utente['tel'])){
 	        	registrati(utente);
-	        	var dati = {
+	        	/*var dati = {
 	                    'mail': utente['mail'],
 	                    'pass': utente['pass'],
 	                    'request':'login'
 	            };
-	        	Login(dati);
+	        	Login(dati);*/
             } else {
             	Materialize.toast('Il numero di telefono deve contenere solo i numeri', 1500);
             }
