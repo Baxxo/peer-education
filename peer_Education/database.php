@@ -46,6 +46,9 @@ if(isset($_POST ['request'])){
 		case "caricaInformazioniCorso" :
 			CaricaInformazioniCorso();
 			break;
+		case "caricaIscrittiCorso" :
+			GetIscrittiAssenze();
+			break;
 		default :
 			echo "Richiesta strana: " . $request;
 			break;
@@ -413,11 +416,34 @@ function AggiungiLezione(){
 function GetIscritti($idCorso){
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$carica = mysqli_query ( $mysqli, "SELECT idStudente AS Studente FROM iscrizioni WHERE idCorso = '$idCorso'" );
-	$nomi = "";
+	$arr = array();
 	if ($carica) {
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
-			$nomi .= CaricaNomeById($res['Studente']);
+			array_push($arr, $res['Studente']);
 		}
+	}
+	return $arr;
+}
+
+function GetIscrittiAssenze(){
+	$idCorso = $_POST["idCorsoP"];
+	$arr = GetIscritti($idCorso);
+	
+	echo '<table class="centered bordered light-blue-text">';
+	echo '<tr> <td colspan = "2">Assenze</td> </tr>';
+	for($i = 0; $i < count($arr); $i++){
+		echo '<tr><td>' .CaricaNomeById($arr[$i]) .'</td><td><form action="#"><p>
+														<input type="checkbox" id="check' .$i .'" />
+														<label for="check'.$i.'"></label>
+													</p></form>';
+	}
+}
+
+function GetIscittiNome($idCorso){
+	$arr = GetIscritti($idCorso);
+	$nomi = "";
+	for($i = 0; $i < count($arr); $i++){
+		$nomi .= CaricaNomeById($arr[$i]) ."<br>";
 	}
 	return $nomi;
 }
@@ -432,18 +458,17 @@ function CaricaInformazioniCorso(){
 	
 	if ($carica) {
 		echo '<table class="centered bordered light-blue-text">';
-		echo '<tr> <td colspan = "2">Informazioni sul corso</td> </tr>';
+		echo '<tr> <td colspan = "3">Informazioni sul corso</td> </tr>';
 		
 		$info = mysqli_fetch_object ( $carica );
-		$iscritti = GetIscritti($idCorso);
+		$iscritti = GetIscittiNome($idCorso);
 		
 		if($iscritti === "")
 			$iscritti = "Non ci sono iscritti";
 		
-		echo '<tr> <td>Giorni:</td><td>' .$info->Giorno .'</td> </tr>';
-		echo '<tr> <td>Ore:</td><td>' .$info->Ora .'</td> </tr>';
-		echo '<tr> <td>Sede:</td><td>' .CaricaScuolaById($info->Scuola) .'</td> </tr>';
-		echo '<tr> <td>Iscritti:</td><td>' .$iscritti .'</td> </tr>';
+		echo '<tr> <td>Giorni:</td><td>' .$info->Giorno .'</td><td>' .$info->Ora ."</td></tr>";
+		echo '<tr> <td>Sede:</td><td colspan = "2">' .CaricaScuolaById($info->Scuola) .'</td> </tr>';
+		echo '<tr> <td>Iscritti:</td><td colspan = "2">' .$iscritti .'</td> </tr>';
 		
 		echo "</table>";
 	} else {
