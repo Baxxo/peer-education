@@ -82,8 +82,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 
 			<div id = "registro"></div>
 			<button type="submit" class="btn waves-effect light-blue"
-				onclick="getLezione()">
-
+				onclick="getLezione(), LezioneCreaClose()	">
 				<i class="material-icons right">send</i>Aggiungi la lezione
 			</button>
 			<button type="submit" class="btn waves-effect light-blue"
