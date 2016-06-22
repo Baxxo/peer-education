@@ -98,16 +98,16 @@ function Registrati() {
 	$cognome = ucwords ( $cognome );
 	$nome = ucwords ( $nome );
 	
-	if(!mysqli_query ( $mysqli, "SELECT nome AS Nome, email, password, id AS id FROM Utente WHERE email = '$mail'" )){
+	if(!mysqli_query ( $mysqli, "SELECT email FROM Utente WHERE email = '$mail'" )){
 		$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
-		if ($carica = mysqli_query ( $mysqli, $sql )) {
+		if ( $carica = mysqli_query ( $mysqli, $sql )) {
 			echo $success;
 		} else {
 			echo $failed;
 		}
 	} else {
-			echo $failed;
-		}
+		echo 'mail';
+	}
 }
 function Login() {
 	global $failed;
