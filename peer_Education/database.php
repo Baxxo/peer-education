@@ -434,12 +434,12 @@ function GetIscrittiAssenze(){
 	$arr = GetIscritti($idCorso);
 	
 	echo '<table class="centered bordered light-blue-text">';
-	echo '<tr> <td colspan = "2">Assenze</td> </tr>';
+	echo '<tr> <td>Presenze</td> </tr>';
 	for($i = 0; $i < count($arr); $i++){
-		echo '<tr><td>' .CaricaNomeById($arr[$i]) .'</td><td><form action="#"><p>
-														<input type="checkbox" id="check' .$i .'" />
-														<label class ="light-blue-text" for="check'.$i.'">Presente</label>
-													</p></form>';
+		echo '<tr>' .'<td><form action="#"><p>
+						<input type="checkbox" id="check' .$i .'" />
+						<label class ="light-blue-text" for="check'.$i.'">' .CaricaNomeById($arr[$i]) .'</label>
+					</p></form>';
 	}
 }
 

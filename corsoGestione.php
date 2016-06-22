@@ -50,8 +50,11 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	function getLezione(){
 		var id = params['corso_Id'];
 		var arg = document.getElementById("argomenti").value;
-		
-		AggiungiLezione(id, arg);
+		if(arg != ""){
+			AggiungiLezione(id, arg);
+		} else {
+			Materialize.toast("Aggiungi un argomento", 1500);
+		}
 	}
 
 </script>
@@ -100,7 +103,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 		</div>
 	</div>
 	
-	<hr class = "blue-grey lighten-3" style="width:90%; border: 0px; height: 1px;">	
+	<hr class = "blue-grey lighten-3" style="width:90%; border: 0px; height: 1px;">
 
 	<!--<h1> <?php echo $_GET ["corso_Id"] ?> </h1> -->
 	
