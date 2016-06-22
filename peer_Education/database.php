@@ -11,7 +11,7 @@ if(isset($_POST ['request'])){
 			caricaUtenti ();
 			break;
 		case "registrati" :
-			registrati ();
+			Registrati ();
 			break;
 		case "login" :
 			Login ();
@@ -78,7 +78,7 @@ function caricaUtenti() {
 	}
 	echo "</table>";
 }
-function registrati() {
+function Registrati() {
 	global $failed;
 	global $success;
 	
@@ -98,12 +98,16 @@ function registrati() {
 	$cognome = ucwords ( $cognome );
 	$nome = ucwords ( $nome );
 	
-	$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
-	if ($carica = mysqli_query ( $mysqli, $sql )) {
-		echo $success;
+	if(!mysqli_query ( $mysqli, "SELECT nome AS Nome, email, password, id AS id FROM Utente WHERE email = '$mail'" )){
+		$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
+		if ($carica = mysqli_query ( $mysqli, $sql )) {
+			echo $success;
+		} else {
+			echo $failed;
+		}
 	} else {
-		echo $failed;
-	}
+			echo $failed;
+		}
 }
 function Login() {
 	global $failed;
@@ -399,9 +403,9 @@ function AggiungiLezione(){
 	global $failed;
 	global $success;
 	
-	$idCorso = 2;
+	$idCorso = $_POST ["idCorsoP"];
 	$data = time();
-	$arg = "Ciaone";
+	$arg = $_POST['argomento'];
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$sql = "INSERT INTO lezione VALUES (null, '$idCorso', NOW(), '$arg')";
@@ -434,7 +438,7 @@ function GetIscrittiAssenze(){
 	for($i = 0; $i < count($arr); $i++){
 		echo '<tr><td>' .CaricaNomeById($arr[$i]) .'</td><td><form action="#"><p>
 														<input type="checkbox" id="check' .$i .'" />
-														<label for="check'.$i.'"></label>
+														<label class ="light-blue-text" for="check'.$i.'">Presente</label>
 													</p></form>';
 	}
 }

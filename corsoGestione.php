@@ -12,8 +12,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
 <script src="peer_Education/functionsJs.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 <title>Peer Education</title>
 
@@ -46,6 +45,13 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 		$("#NewLezione").fadeOut(250);
 	}
 
+	function getLezione(){
+		var id = params['corso_Id'];
+		var arg = document.getElementById("argomenti").value;
+		
+		AggiungiLezione(id, arg);
+	}
+
 </script>
 
 <body>
@@ -68,13 +74,16 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 				class="material-icons">menu</i></a>
 		</div>
 	</nav>
-
-	<div id="NewLezione" onkeydown="">
+	
+	<div id="NewLezione">
 		<div class="mask"></div>
 		<div class="LogReg col l3 s12">
 			Argomento: <input id="argomenti" type="text"><br>
-			<div id="registro"></div>
-			<button type="submit" class="btn waves-effect light-blue" onclick="">
+
+			<div id = "registro"></div>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="getLezione()">
+
 				<i class="material-icons right">send</i>Aggiungi la lezione
 			</button>
 			<button type="submit" class="btn waves-effect light-blue"
@@ -82,13 +91,10 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 		</div>
 	</div>
 
-	<h1 class="header center orange-text">Corso di <?php echo CaricaMateriaById($_GET["mat"]) ?></h1>
-
-	<div class="row">
-		<div class="col s4 offset-s4" id="CorsoInformazioni"></div>
-	</div>
-
-	<hr class="blue-grey lighten-3"
-		style="width: 90%; border: 0px; height: 1px;">
-
+	<!--<h1> <?php echo $_GET ["corso_Id"] ?> </h1> -->
+	
+	<!--  Scripts-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/materialize.js"></script>
+	<script src="js/init.js"></script>
 </body>
