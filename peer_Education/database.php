@@ -11,7 +11,7 @@ if(isset($_POST ['request'])){
 			caricaUtenti ();
 			break;
 		case "registrati" :
-			registrati ();
+			Registrati ();
 			break;
 		case "login" :
 			Login ();
@@ -78,7 +78,7 @@ function caricaUtenti() {
 	}
 	echo "</table>";
 }
-function registrati() {
+function Registrati() {
 	global $failed;
 	global $success;
 	
@@ -98,12 +98,16 @@ function registrati() {
 	$cognome = ucwords ( $cognome );
 	$nome = ucwords ( $nome );
 	
-	$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
-	if ($carica = mysqli_query ( $mysqli, $sql )) {
-		echo $success;
+	if(!mysqli_query ( $mysqli, "SELECT nome AS Nome, email, password, id AS id FROM Utente WHERE email = '$mail'" )){
+		$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
+		if ($carica = mysqli_query ( $mysqli, $sql )) {
+			echo $success;
+		} else {
+			echo $failed;
+		}
 	} else {
-		echo $failed;
-	}
+			echo $failed;
+		}
 }
 function Login() {
 	global $failed;
