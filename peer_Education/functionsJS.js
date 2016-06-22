@@ -49,8 +49,16 @@ function registrati(utente){
 		success : function(response) {
 			if (response == success) {
 				Materialize.toast('Grazie per la registrazione', 1500);
+				var dati = {
+	                    'mail': utente['mail'],
+	                    'pass': utente['pass'],
+	                    'request':'login'
+	            };
+	        	Login(dati);
 			} else if (response == failed) {
 				Materialize.toast('Registrazione fallita', 1500);
+			} else if (response == 'mail') {
+				Materialize.toast("Questa l'email è gia in uso", 1500);
 			} else {
 				Materialize.toast("C'è qualcosa che non va", 1500);
 			}
