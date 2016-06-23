@@ -48,22 +48,13 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	function getLezione(){
 		var id = params['corso_Id'];
 		var arg = document.getElementById("argomenti").value;
+		var idLez;
 		
 		if(arg != ""){
-			AggiungiLezione(id, arg);
+			AggiungiLezione(id, arg);			
 		} else {
 			Materialize.toast("Aggiungi un argomento", 1500);
 		}
-
-		$(".assenze").each(function(){
-			var dati = {
-				idS: 1,
-				idL: 1,
-				P: 1,
-				'request':'aggiungiAssenza'
-				};
-			});
-			AggiungiAssenza(dati);
 	}
 
 </script>
@@ -96,7 +87,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 
 			<div id = "registro"></div>
 			<button type="submit" class="btn waves-effect light-blue"
-				onclick="getLezione(), LezioneCreaClose()	">
+				onclick="getLezione()">
 				<i class="material-icons right">send</i>Aggiungi la lezione
 			</button>
 			<button type="submit" class="btn waves-effect light-blue"

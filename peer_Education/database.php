@@ -440,7 +440,7 @@ function GetIscrittiAssenze(){
 	echo '<tr> <td>Presenze</td> </tr>';
 	for($i = 0; $i < count($arr); $i++){
 		echo '<tr>' .'<td><form action="#"><p>
-						<input type="checkbox" class="assenze" id="check' .$i .'" />
+						<input type="checkbox" class="assenze" value = "' .$arr[$i] .'" id="check' .$i .'" />
 						<label class ="light-blue-text" for="check'.$i.'">' .CaricaNomeById($arr[$i]) .'</label>
 					</p></form>';
 	}
@@ -485,11 +485,21 @@ function CaricaInformazioniCorso(){
 
 function AggiungiAssenza(){
 	
+	global $failed;
+	global $success;
+	
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
 	$idLezione = $_POST['idL'];
 	$idStudente = $_POST['idS'];
 	$presente = $_POST['P'];
 	
-	
+	$sql = "INSERT INTO presenze VALUES ('$idLezione', '$idStudente', '$presente')";
+	if ($carica = mysqli_query ( $mysqli, $sql )) {
+		echo $success;
+	} else {
+		echo $failed;
+	}
 	
 }
 
