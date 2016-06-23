@@ -210,11 +210,41 @@ function AggiungiLezione(idCorso, arg){
 		success: function (response) {
 			if (response == failed) {
 				Materialize.toast("Errore durante creazione della lezione", 1500);
-			} else if (response == success) {
-				Materialize.toast("Hai aggiunto una nuova lezione", 1500);
+			} else if (response != success) {
+				
+				$(".assenze").each(function(){
+					var state;
+					if($(this).is(':checked')){ state = 1; }
+					else { state = 0; }
+					
+					var dati = {
+						idS: $(this).val(),
+						idL: response,
+						P: state,
+						'request':'aggiungiAssenza'
+						};
+					AggiungiAssenza(dati);
+					});
+				LezioneCreaClose();
+				Materialize.toast("La lezione è stata agiunta", 1500);
+				
+			}
+		}
+	});
+}
+
+function AggiungiAssenza(dati){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: (dati),
+		success: function (response) {
+			if (response == failed) {
+				Materialize.toast("Errore durante 'Aggiungi assenza'", 1500);
+			} else if (response != success) {
+				Materialize.toast("Errore sconosciuto durante 'Aggiungi assenza'", 1500);
 			}
 			
 		}
 	});
-	
 }
