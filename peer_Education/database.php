@@ -414,7 +414,7 @@ function AggiungiLezione(){
 	$sql = "INSERT INTO lezione VALUES (null, '$idCorso', NOW(), '$arg')";
 	
 	if ($carica = mysqli_query ( $mysqli, $sql )) {
-		echo mysqli_query( $mysqli, "SELECT LAST_INSERT_ID()" );
+		echo mysqli_insert_id($mysqli);
 	} else {
 		echo $failed;
 	}
