@@ -1,8 +1,8 @@
 
 <?php
 session_start ();
-if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
-	header("Location: index.php");
+if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
+	header ( "Location: index.php" );
 }
 ?>
 
@@ -208,8 +208,7 @@ if(!isset($_SESSION ["user_id"]) && !isset($_SESSION ["user_name"])){
 			<div id="cercaCorso">
 				<div class="col s6 offset-s3">
 					<select id="scuoleCerca">
-					</select> 
-					<select id="materiaCerca">
+					</select> <select id="materiaCerca">
 					</select>
 					<button type="submit"
 						class="btn col s8 offset-s2 waves-effect light-blue"

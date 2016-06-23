@@ -26,11 +26,9 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 </head>
 
 <style>
-
-	#NewLezione {
-		display: none;
-	}
-
+#NewLezione {
+	display: none;
+}
 </style>
 
 <script>
@@ -71,7 +69,6 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 </script>
 
 <body>
-
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
@@ -82,10 +79,10 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a class="light-blue btn"
-					onclick="LezioneCreaOpen()">Aggiungi nuova lezione</a></li>
-				<li><a class="light-blue btn"
-					onclick="LoadPage('utente.php')">Torna indietro</a></li>
+				<li><a class="light-blue btn" onclick="LezioneCreaOpen()">Aggiungi
+						nuova lezione</a></li>
+				<li><a class="light-blue btn" onclick="LoadPage('utente.php')">Torna
+						indietro</a></li>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
 				class="material-icons">menu</i></a>
@@ -96,16 +93,17 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 		<div class="mask"></div>
 		<div class="LogReg col l3 s12">
 			Argomento: <input id="argomenti" type="text"><br>
+
 			<div id = "registro"></div>
 			<button type="submit" class="btn waves-effect light-blue"
-				onclick="getLezione()">
+				onclick="getLezione(), LezioneCreaClose()	">
 				<i class="material-icons right">send</i>Aggiungi la lezione
 			</button>
 			<button type="submit" class="btn waves-effect light-blue"
 				onclick="LezioneCreaClose()">Annulla</button>
 		</div>
 	</div>
-	
+		
 	<h1 class="header center orange-text">Corso di <?php echo CaricaMateriaById($_GET["mat"]) ?></h1>
 	
 	<div class="row">
@@ -115,9 +113,14 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	</div>
 	
 	<hr class = "blue-grey lighten-3" style="width:90%; border: 0px; height: 1px;">
+	
+	<div class="row>
+		<div class="col s4 offset-s4" id="lezioniAll">
+		
+		</div>
+	</div>
 
 	<!--<h1> <?php echo $_GET ["corso_Id"] ?> </h1> -->
-	
 	
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
