@@ -50,11 +50,22 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	function getLezione(){
 		var id = params['corso_Id'];
 		var arg = document.getElementById("argomenti").value;
+		
 		if(arg != ""){
 			AggiungiLezione(id, arg);
 		} else {
 			Materialize.toast("Aggiungi un argomento", 1500);
 		}
+
+		$(".assenze").each(function(){
+			var dati = {
+				idS: 1,
+				idL: 1,
+				P: 1,
+				'request':'aggiungiAssenza'
+				};
+			});
+			AggiungiAssenza(dati);
 	}
 
 </script>

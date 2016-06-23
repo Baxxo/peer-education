@@ -49,6 +49,9 @@ if(isset($_POST ['request'])){
 		case "caricaIscrittiCorso" :
 			GetIscrittiAssenze();
 			break;
+		case "aggiungiAssenza" :
+			AggiungiAssenza();
+			break;
 		default :
 			echo "Richiesta strana: " . $request;
 			break;
@@ -411,10 +414,10 @@ function AggiungiLezione(){
 	$sql = "INSERT INTO lezione VALUES (null, '$idCorso', NOW(), '$arg')";
 	
 	if ($carica = mysqli_query ( $mysqli, $sql )) {
-		echo $success;
+		echo mysqli_query( $mysqli, "SELECT LAST_INSERT_ID()" );
 	} else {
 		echo $failed;
-	}	
+	}
 }
 
 function GetIscritti($idCorso){
@@ -437,7 +440,7 @@ function GetIscrittiAssenze(){
 	echo '<tr> <td>Presenze</td> </tr>';
 	for($i = 0; $i < count($arr); $i++){
 		echo '<tr>' .'<td><form action="#"><p>
-						<input type="checkbox" id="check' .$i .'" />
+						<input type="checkbox" class="assenze" id="check' .$i .'" />
 						<label class ="light-blue-text" for="check'.$i.'">' .CaricaNomeById($arr[$i]) .'</label>
 					</p></form>';
 	}
@@ -478,6 +481,15 @@ function CaricaInformazioniCorso(){
 	} else {
 		echo $failed;
 	}
+}
+
+function AggiungiAssenza(){
+	
+	$idLezione = $_POST['idL'];
+	$idStudente = $_POST['idS'];
+	$presente = $_POST['P'];
+	
+	
 	
 }
 
