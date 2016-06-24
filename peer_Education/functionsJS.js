@@ -211,7 +211,6 @@ function AggiungiLezione(idCorso, arg){
 			if (response == failed) {
 				Materialize.toast("Errore durante creazione della lezione", 1500);
 			} else if (response != success) {
-				
 				$(".assenze").each(function(){
 					var state;
 					if($(this).is(':checked')){ state = 1; }
@@ -225,9 +224,9 @@ function AggiungiLezione(idCorso, arg){
 						};
 					AggiungiAssenza(dati);
 					});
+				CaricaLezioni();
 				LezioneCreaClose();
 				Materialize.toast("La lezione è stata agiunta", 1500);
-				
 			}
 		}
 	});
@@ -255,7 +254,11 @@ function CaricaLezioni(){
 		url: 'peer_Education/database.php',
 		data: ({ request:'caricaLezioni', idCorso:1 }),
 		success: function (response) {
-			alert(response);
+			if(response != failed){
+				$("#lezioniAll").empty();
+				$("#lezioniAll").append(response);
+			}
+			
 		}
 	});
 }

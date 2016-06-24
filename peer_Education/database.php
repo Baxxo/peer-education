@@ -288,7 +288,7 @@ function CercaCorso() {
 	if ($carica) {
 		echo '<table class="centered striped" id = "TabellaCerca">';
 		echo '<tr>';
-		echo '<td colspan="6" class = "z-depth-2 orange"style="color: white;"><b>Corsi</b> </td>';
+		echo '<td colspan="6" class = "z-depth-2 orange" style="color: white;"><b>Corsi</b> </td>';
 		echo '</tr>';
 		
 		echo '<tr>';
@@ -383,7 +383,7 @@ function CaricaNomeById($id) {
 	$tutor = mysqli_query ( $mysqli, "SELECT nome AS nomeTutor, cognome AS Cognome, id FROM utente WHERE '$id' = id" );
 	if ($tutor) {
 		$nome = mysqli_fetch_object ( $tutor );
-		return $nome->nomeTutor . " " . $nome->Cognome;
+		return $nome->Cognome . " " . $nome->nomeTutor;
 	} else {
 		return $failed;
 	}
@@ -492,7 +492,7 @@ function AggiungiAssenza(){
 	$idStudente = $_POST['idS'];
 	$presente = $_POST['P'];
 	
-	$sql = "INSERT INTO presenze VALUES ('$idLezione', '$idStudente', '$presente')";
+	$sql = "INSERT INTO presenze VALUES (null, '$idLezione', '$idStudente', '$presente')";
 	
 	if ($carica = mysqli_query ( $mysqli, $sql )) {
 		echo $success;
@@ -508,7 +508,34 @@ function CaricaLezioni(){
 	
 	$idCorso = $_POST['idCorso'];
 	
-	$sql = "SELECT l.data, l.Argomento, p.idStudente, p.presente FROM presenze p, lezione l WHERE l.idCorso = '$idCorso' AND p.idLezione = l.id";
+	$sql = "SELECT data, Argomento AS Arg, id AS idL FROM lezione WHERE idCorso = '$idCorso' ORDER BY id DESC";
+	$carica = mysqli_query ( $mysqli, $sql );
+	
+	if($carica){
+		while ($res = mysqli_fetch_assoc ( $carica )) {
+			echo '<table class="centered striped">';
+			echo '<tr>';
+			echo '<td colspan="2" class = "z-depth-2 light-blue"><b>Lezione del ' .$res['data'] .'</b> </td>';
+			echo '</tr>';
+			echo '<tr><td>Argomento</td><td>' .$res['Arg'] .'</td></tr>';
+			
+			$idL = $res['idL'];
+			
+			$sqlD = "SELECT idStudente AS idS, presente AS stato FROM presenze WHERE idLezione = '$idL'";
+			$caricaD = mysqli_query ( $mysqli, $sqlD );
+			if($sqlD){
+				while ($resD = mysqli_fetch_assoc ( $caricaD )){
+					$stato = ($resD['stato']==1)?"Presente":"Assente";
+					echo '<tr><td>' .CaricaNomeById($resD['idS']) ."</td><td>" .$stato ."</td></tr>";
+				}
+				echo "</table><br>";
+			} else {
+				echo $failed;
+			}
+		}
+	} else {
+		echo $failed;
+	}
 }
 
 ?>
