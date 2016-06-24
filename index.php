@@ -1,17 +1,18 @@
 
 <?php
-	session_start ();
-	
-	if(isset($_SESSION ["user_id"]) && isset($_SESSION ["user_name"])){
-		header("Location: utente.php");
-	}
+session_start ();
+
+if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
+	header ( "Location: utente.php" );
+}
 ?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
 <script src="peer_Education/functionsJs.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 <title>Peer Education</title>
 
@@ -153,7 +154,8 @@
 		</div>
 	</nav>
 
-	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
+	<!-- Il div di registrazione che appare quando premi il tasto Registrati 
+		-->
 	<div id="registrazione" onkeydown="Invio('Reg')">
 		<div class="mask"></div>
 
@@ -197,82 +199,30 @@
 	</div>
 
 	<!-- pagina -->
-	<div>
-		<img src="img/peer-education1.png" class="brand-logo" />
-	</div>
 	<br />
 
 	<!-- da inserire nel database -->
-
-	<div class="row">
-		<div class="col s12 m4">
-			<div class="icon-block">
-				<p>
-					<img alt="freccia" src="img/freccia.png" height=52px>
-				</p>
-
-				<h5 class="center">Aumenta i tuoi voti</h5>
-
-				<p class="light" style="text-align: center;">
-					I tutor sono molto disponibili, cercano sempre di darti una mano<br />
-					Grazie per il tuo aiuto, mi è stato utile<br /> Si capiscono
-					meglio gli argomenti e tra tutor e "alunni" ci si aiuta
-					reciprocamente<br /> Sono soddisfatto di questa esperienza, sì,
-					aiutarsi tra alunni conviene (qualcuno ha scritto che è più
-					economico)<br /> E' andato tutto bene <br /> E' stato utile per
-					conoscere un po' le materie nelle quali avevo più difficoltà <br />
-					Ho avuto due tutor preparati e bravi<br /> Aiutando gli altri si
-					fanno anche nuove amicizie<br />
-				</p>
-			</div>
-		</div>
-
-		<div class="col s12 m4">
-			<div class="icon-block">
-				<p>
-					<img alt="ingranaggio" src="img/ingr.png" height=52px>
-				</p>
-				<h5 class="center">Impara nuovi metodi di studio</h5>
-
-				<p class="light" style="text-align: center;">
-					E' bello poter aiutare chi è in difficoltà <br />Sì dai, si
-					mangia al bar e poi si fa una cosa carina con gli amici imparando
-					assieme<br /> Sapeva tutti gli argomenti e anche quali compiti
-					erano stati assegnati <br /> E' stata un'esperienza nuova e
-					interessante (tutor)<br />Ha fatto un gran lavoro, si è dimostrato
-					professionale <br />Sono riuscita a capire quello che in classe non
-					era chiaro<br /> Ho capito un po' di più di quando ero in classe
-					con il prof<br /> Ho imparato nuove strategie di studio Il mio
-					tutor è simpatico, serio e competente<br /> Grazie per la
-					pazienza, la bravura, la serietà <br />
-				</p>
-			</div>
-		</div>
-
-		<div class="col s12 m4">
-			<div class="icon-block">
-
-				<p>
-					<img alt="gruppo" src="img/gruppo.png" height=52px
-						style="padding: 2;">
-				</p>
-
-				<h5 class="center">Lavora con i tuoi compagni</h5>
-
-				<p class="light" style="text-align: center;">
-					Sei stato molto d'aiuto<br /> Il mio tutor era proprio disponibile,
-					glielo farei rifare <br /> Utile anche al tutor per ripassare dando
-					una mano a chi ha bisogno (tutor)<br /> Mettersi alla prova come
-					insegnante (tutor) <br /> Ha saputo chiarirmi i dubbi che avevo <br />
-					Con un compagno si è più spontanei e si fanno quelle domande che
-					non si riesce a fare all'insegnante <br /> Mi è stato molto utile,
-					sono riuscito a recuperare<br />
-				</p>
-			</div>
-		</div>
-
-
+	<div id="mani">
+		<center>
+			<h1>Peer Education</h1>
+		</center>
 	</div>
+
+	<h1>
+		<center>VUOI PARTECIPARE?</center>
+	</h1>
+	
+	<div class="row">
+	
+	<div class="col s12">VUOI PARTECIPARE?</div>
+      <div class="col s6">CHI? 
+		Tutti gli studenti dell�IIS Einaudi Scarpa. 
+		I tutor aiutano i compagni che ne fanno richiesta.</div>
+      <div class="col s6">CHE COSA? 
+		Si studia in piccoli gruppi di due/tre persone. 
+		Lo studente tutor aiuta uno /due compagni in difficolt�.</div>
+	</div>
+
 	<div style="height: 130px; clear: both;">&nbsp;</div>
 
 	<footer id="footer" class="page-footer orange">

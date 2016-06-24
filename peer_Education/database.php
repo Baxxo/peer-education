@@ -4,7 +4,7 @@ session_start ();
 $success = "SUCCESS";
 $failed = "FAILED";
 
-if(isset($_POST ['request'])){
+if (isset ( $_POST ['request'] )) {
 	$request = $_POST ['request'];
 	switch ($request) {
 		case "caricaUtenti" :
@@ -41,13 +41,13 @@ if(isset($_POST ['request'])){
 			Iscriviti ();
 			break;
 		case "aggiungiLezione" :
-			AggiungiLezione();
+			AggiungiLezione ();
 			break;
 		case "caricaInformazioniCorso" :
-			CaricaInformazioniCorso();
+			CaricaInformazioniCorso ();
 			break;
 		case "caricaIscrittiCorso" :
-			GetIscrittiAssenze();
+			GetIscrittiAssenze ();
 			break;
 		case "aggiungiAssenza" :
 			AggiungiAssenza();
@@ -104,9 +104,9 @@ function Registrati() {
 	$cognome = ucwords ( $cognome );
 	$nome = ucwords ( $nome );
 	
-	if(!mysqli_query ( $mysqli, "SELECT email FROM Utente WHERE email = '$mail'" )){
+	if (! mysqli_query ( $mysqli, "SELECT email FROM Utente WHERE email = '$mail'" )) {
 		$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
-		if ( $carica = mysqli_query ( $mysqli, $sql )) {
+		if ($carica = mysqli_query ( $mysqli, $sql )) {
 			echo $success;
 		} else {
 			echo $failed;
@@ -193,7 +193,7 @@ function CaricaMieiCorsi() {
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
 			echo '<td>' . $res ['giorno'] . '</td>';
 			echo '<td>' . $res ['ora'] . '</td>';
-			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 light-blue" onclick = "GestisciCorso(' .$res ['cId'] .','. $res['mat'] .')">Gestisci corso</button>' . '</td>';
+			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 light-blue" onclick = "GestisciCorso(' . $res ['cId'] . ',' . $res ['mat'] . ')">Gestisci corso</button>' . '</td>';
 			echo '</tr>';
 		}
 		echo "</table><hr>";
@@ -383,7 +383,7 @@ function CaricaNomeById($id) {
 	$tutor = mysqli_query ( $mysqli, "SELECT nome AS nomeTutor, cognome AS Cognome, id FROM utente WHERE '$id' = id" );
 	if ($tutor) {
 		$nome = mysqli_fetch_object ( $tutor );
-		return $nome->nomeTutor ." " .$nome->Cognome;
+		return $nome->nomeTutor . " " . $nome->Cognome;
 	} else {
 		return $failed;
 	}
@@ -404,14 +404,13 @@ function Iscriviti() {
 		echo $failed;
 	}
 }
-
-function AggiungiLezione(){
+function AggiungiLezione() {
 	global $failed;
 	global $success;
 	
 	$idCorso = $_POST ["idCorsoP"];
-	$data = time();
-	$arg = $_POST['argomento'];
+	$data = time ();
+	$arg = $_POST ['argomento'];
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$sql = "INSERT INTO lezione VALUES (null, '$idCorso', NOW(), '$arg')";
@@ -422,25 +421,24 @@ function AggiungiLezione(){
 		echo $failed;
 	}
 }
-
-function GetIscritti($idCorso){
+function GetIscritti($idCorso) {
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	$carica = mysqli_query ( $mysqli, "SELECT idStudente AS Studente FROM iscrizioni WHERE idCorso = '$idCorso'" );
-	$arr = array();
+	$arr = array ();
 	if ($carica) {
 		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
-			array_push($arr, $res['Studente']);
+			array_push ( $arr, $res ['Studente'] );
 		}
 	}
 	return $arr;
 }
-
-function GetIscrittiAssenze(){
-	$idCorso = $_POST["idCorsoP"];
-	$arr = GetIscritti($idCorso);
+function GetIscrittiAssenze() {
+	$idCorso = $_POST ["idCorsoP"];
+	$arr = GetIscritti ( $idCorso );
 	
 	echo '<table class="centered bordered light-blue-text">';
 	echo '<tr> <td>Presenze</td> </tr>';
+
 	for($i = 0; $i < count($arr); $i++){
 		echo '<tr>' .'<td><form action="#"><p>
 						<input type="checkbox" class="assenze" value = "' .$arr[$i] .'" id="check' .$i .'" />
@@ -448,21 +446,19 @@ function GetIscrittiAssenze(){
 					</p></form>';
 	}
 }
-
-function GetIscittiNome($idCorso){
-	$arr = GetIscritti($idCorso);
+function GetIscittiNome($idCorso) {
+	$arr = GetIscritti ( $idCorso );
 	$nomi = "";
-	for($i = 0; $i < count($arr); $i++){
-		$nomi .= CaricaNomeById($arr[$i]) ."<br>";
+	for($i = 0; $i < count ( $arr ); $i ++) {
+		$nomi .= CaricaNomeById ( $arr [$i] ) . "<br>";
 	}
 	return $nomi;
 }
-
-function CaricaInformazioniCorso(){
+function CaricaInformazioniCorso() {
 	global $failed;
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
-	$idCorso = $_POST["idCorsoP"];
+	$idCorso = $_POST ["idCorsoP"];
 	
 	$carica = mysqli_query ( $mysqli, "SELECT scuola AS Scuola, giorno AS Giorno, ora AS Ora FROM corso WHERE id = '$idCorso'" );
 	
@@ -471,14 +467,14 @@ function CaricaInformazioniCorso(){
 		echo '<tr> <td colspan = "3">Informazioni sul corso</td> </tr>';
 		
 		$info = mysqli_fetch_object ( $carica );
-		$iscritti = GetIscittiNome($idCorso);
+		$iscritti = GetIscittiNome ( $idCorso );
 		
-		if($iscritti === "")
+		if ($iscritti === "")
 			$iscritti = "Non ci sono iscritti";
 		
-		echo '<tr> <td>Giorni:</td><td>' .$info->Giorno .'</td><td>' .$info->Ora ."</td></tr>";
-		echo '<tr> <td>Sede:</td><td colspan = "2">' .CaricaScuolaById($info->Scuola) .'</td> </tr>';
-		echo '<tr> <td>Iscritti:</td><td colspan = "2">' .$iscritti .'</td> </tr>';
+		echo '<tr> <td>Giorni:</td><td>' . $info->Giorno . '</td><td>' . $info->Ora . "</td></tr>";
+		echo '<tr> <td>Sede:</td><td colspan = "2">' . CaricaScuolaById ( $info->Scuola ) . '</td> </tr>';
+		echo '<tr> <td>Iscritti:</td><td colspan = "2">' . $iscritti . '</td> </tr>';
 		
 		echo "</table>";
 	} else {
@@ -513,8 +509,6 @@ function CaricaLezioni(){
 	$idCorso = $_POST['idCorso'];
 	
 	$sql = "SELECT l.data, l.Argomento, p.idStudente, p.presente FROM presenze p, lezione l WHERE l.idCorso = '$idCorso' AND p.idLezione = l.id";
-	
-	
 }
 
 ?>
