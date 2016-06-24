@@ -248,3 +248,14 @@ function AggiungiAssenza(dati){
 		}
 	});
 }
+
+function CaricaLezioni(){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaLezioni', idCorso:1 }),
+		success: function (response) {
+			alert(response);
+		}
+	});
+}

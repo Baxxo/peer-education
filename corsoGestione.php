@@ -36,6 +36,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	var params = <?php echo json_encode($_GET); ?>;
 	CaricaInformazioniCorso(params['corso_Id']);
 	CaricaGliIscritti(params['corso_Id']);
+	CaricaLezioni();
 	
 	function LezioneCreaOpen() {
 		$("#NewLezione").fadeIn(250);

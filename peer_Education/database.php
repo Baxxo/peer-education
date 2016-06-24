@@ -8,7 +8,7 @@ if(isset($_POST ['request'])){
 	$request = $_POST ['request'];
 	switch ($request) {
 		case "caricaUtenti" :
-			caricaUtenti ();
+			CaricaUtenti ();
 			break;
 		case "registrati" :
 			Registrati ();
@@ -52,6 +52,9 @@ if(isset($_POST ['request'])){
 		case "aggiungiAssenza" :
 			AggiungiAssenza();
 			break;
+		case "caricaLezioni" :
+			CaricaLezioni();
+			break;
 		default :
 			echo "Richiesta strana: " . $request;
 			break;
@@ -59,7 +62,7 @@ if(isset($_POST ['request'])){
 }
 
 /* Index functions */
-function caricaUtenti() {
+function CaricaUtenti() {
 	global $failed;
 	global $success;
 	
@@ -484,7 +487,6 @@ function CaricaInformazioniCorso(){
 }
 
 function AggiungiAssenza(){
-	
 	global $failed;
 	global $success;
 	
@@ -495,11 +497,23 @@ function AggiungiAssenza(){
 	$presente = $_POST['P'];
 	
 	$sql = "INSERT INTO presenze VALUES ('$idLezione', '$idStudente', '$presente')";
+	
 	if ($carica = mysqli_query ( $mysqli, $sql )) {
 		echo $success;
 	} else {
 		echo $failed;
 	}
+}
+
+function CaricaLezioni(){
+	global $failed;
+	
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	
+	$idCorso = $_POST['idCorso'];
+	
+	$sql = "SELECT l.data, l.Argomento, p.idStudente, p.presente FROM presenze p, lezione l WHERE l.idCorso = '$idCorso' AND p.idLezione = l.id";
+	
 	
 }
 
