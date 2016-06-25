@@ -148,9 +148,9 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 			<ul class="tabs">
 				<li class="tab col s3 active"><a class="light-blue-text"
 					href="#test1">I miei corsi</a></li>
-				<li class="tab col s3"><a class="light-blue-text" href="#test2">Crea
-						corso</a></li>
 				<li class="tab col s3"><a class="light-blue-text" href="#test3">Cerca
+					corso</a></li>
+				<li class="tab col s3"><a class="light-blue-text" href="#test2">Crea
 						corso</a></li>
 			</ul>
 		</div>
@@ -172,6 +172,24 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 			</div>
 		</div>
 
+		<!-- Cerca corso -->
+		<div id="test3" class="col s12">
+			<div id="cercaCorso">
+				<div class="col s6 offset-s3">
+					<select id="scuoleCerca">
+					</select> <select id="materiaCerca">
+					</select>
+					<button type="submit"
+						class="btn col s8 offset-s2 waves-effect light-blue"
+						onclick="getCorsoCerca()" style="position: static">
+						<i class="material-icons right">send</i>Cerca
+					</button>
+					<div id="corsiTrovati" class="col s12"></div>
+				</div>
+
+			</div>
+		</div>
+		
 		<!-- Crea corso -->
 		<div id="test2" class="col s12">
 			<!-- Cerca corso -->
@@ -201,24 +219,6 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 
 			</div>
 
-		</div>
-
-		<!-- Cerca corso -->
-		<div id="test3" class="col s12">
-			<div id="cercaCorso">
-				<div class="col s6 offset-s3">
-					<select id="scuoleCerca">
-					</select> <select id="materiaCerca">
-					</select>
-					<button type="submit"
-						class="btn col s8 offset-s2 waves-effect light-blue"
-						onclick="getCorsoCerca()" style="position: static">
-						<i class="material-icons right">send</i>Cerca
-					</button>
-					<div id="corsiTrovati" class="col s12"></div>
-				</div>
-
-			</div>
 		</div>
 
 	</div>

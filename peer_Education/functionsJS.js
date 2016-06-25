@@ -164,6 +164,8 @@ function Iscriviti(idCorso){
 				CaricaMieiCorsi();
 				Materialize.toast("Ti sei iscritto", 1500);
 			}
+			if(response == "No")
+				Materialize.toast("Sei gia iscritto a questo corso", 1500);
 		}
 	});
 }
@@ -211,7 +213,6 @@ function AggiungiLezione(idCorso, arg){
 			if (response == failed) {
 				Materialize.toast("Errore durante creazione della lezione", 1500);
 			} else if (response != success) {
-				
 				$(".assenze").each(function(){
 					var state;
 					if($(this).is(':checked')){ state = 1; }
@@ -225,9 +226,9 @@ function AggiungiLezione(idCorso, arg){
 						};
 					AggiungiAssenza(dati);
 					});
+				CaricaLezioni();
 				LezioneCreaClose();
-				Materialize.toast("La lezione è stata agiunta", 1500);
-				
+				Materialize.toast("La lezione è stata aggiunta", 1500);
 			}
 		}
 	});
@@ -243,6 +244,21 @@ function AggiungiAssenza(dati){
 				Materialize.toast("Errore durante 'Aggiungi assenza'", 1500);
 			} else if (response != success) {
 				Materialize.toast("Errore sconosciuto durante 'Aggiungi assenza'", 1500);
+			}
+			
+		}
+	});
+}
+
+function CaricaLezioni(){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaLezioni', idCorso:1 }),
+		success: function (response) {
+			if(response != failed){
+				$("#lezioniAll").empty();
+				$("#lezioniAll").append(response);
 			}
 			
 		}
