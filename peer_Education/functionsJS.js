@@ -164,6 +164,8 @@ function Iscriviti(idCorso){
 				CaricaMieiCorsi();
 				Materialize.toast("Ti sei iscritto", 1500);
 			}
+			if(response == "No")
+				Materialize.toast("Sei gia iscritto a questo corso", 1500);
 		}
 	});
 }
@@ -226,7 +228,7 @@ function AggiungiLezione(idCorso, arg){
 					});
 				CaricaLezioni();
 				LezioneCreaClose();
-				Materialize.toast("La lezione è stata agiunta", 1500);
+				Materialize.toast("La lezione è stata aggiunta", 1500);
 			}
 		}
 	});

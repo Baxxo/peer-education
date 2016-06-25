@@ -397,11 +397,16 @@ function Iscriviti() {
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
-	$sql = "INSERT INTO iscrizioni VALUES ('$idCorso', '$idUtente')";
-	if ($carica = mysqli_query ( $mysqli, $sql )) {
-		echo $success;
+	$carica = mysqli_query ( $mysqli, "SELECT * FROM iscrizioni WHERE idCorso = '$idCorso' AND idStudente = '$idUtente'");
+	if(!$carica){
+		$sql = "INSERT INTO iscrizioni VALUES ('$idCorso', '$idUtente')";
+		if ($carica = mysqli_query ( $mysqli, $sql )) {
+			echo $success;
+		} else {
+			echo $failed;
+		}
 	} else {
-		echo $failed;
+		echo "No";
 	}
 }
 function AggiungiLezione() {
