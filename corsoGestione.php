@@ -105,7 +105,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	
 	<hr class = "blue-grey lighten-3" style="width:90%; border: 0px; height: 1px;">
 	
-	<div class="row>
+	<div class="row">
 		<div class="col s4 offset-s4" id="lezioniAll">
 		
 		</div>
