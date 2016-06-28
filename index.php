@@ -134,7 +134,6 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
 </script>
 
 <body>
-	<div style="width: 100%">
 		<nav style="background-color: #24aac7" role="navigation">
 			<div class="nav-wrapper container">
 				<ul class="right hide-on-med-and-down">
@@ -268,7 +267,6 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
 				</div>
 			</div>
 		</footer>
-	</div>
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
