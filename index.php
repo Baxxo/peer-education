@@ -211,7 +211,7 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
 
 		</div>
 		<div class="row"
-			style="text-align: center; width: auto; margin-left: 8%">
+			style="text-align: center; width: auto; margin-left: 15%">
 			<div>&nbsp;</div>
 			<div class="col s2">
 				<h5 style="color: #b51345">CHI?</h5>
@@ -246,18 +246,19 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
 
 		</div>
 
-		<div style="height: 130px; clear: both;">&nbsp;</div>
+		<div style="height: 160px; clear: both;">&nbsp;</div>
 		<footer id="footer" class="page-footer orange">
 			<div class="container">
-				<div>
-					<div class="col l6 s12">
-						<ul>
-							<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
-									agli sviluppatori</a></li>
-							<li><a class="white-text"
-								href="#http://www.iiseinaudiscarpa.gov.it/">IIS Einaudi - Scarpa</a></li>
-						</ul>
-					</div>
+				<div class="col l6 s12">
+					<ul>
+						<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
+								agli sviluppatori</a></li>
+						<li><a class="white-text"
+							href="http://www.iiseinaudiscarpa.gov.it/">IIS Einaudi - Scarpa</a></li>
+						<li><a class="white-text"
+							href="http://www.iiseinaudiscarpa.gov.it/documentazione/circolari/">Circolari
+								della scuola</a></li>
+					</ul>
 				</div>
 			</div>
 			<div class="footer-copyright">

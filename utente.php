@@ -120,6 +120,10 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 		LoadPage("corsoGestione.php?corso_Id=" + id + "&mat=" + mat);
 	}
 
+	function reload() {
+	    location.reload();
+	}
+
 </script>
 
 <body>
@@ -209,7 +213,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 
 						<button type="submit"
 							class="btn col s8 offset-s2 waves-effect light-blue"
-							onclick="getCorso()" style="position: static">
+							onclick="getCorso(), reload()" style="position: static">
 							<i class="material-icons right">send</i>Crea
 						</button>
 
