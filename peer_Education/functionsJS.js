@@ -250,15 +250,29 @@ function AggiungiAssenza(dati){
 	});
 }
 
-function CaricaLezioni(){
+function CaricaLezioni(idCorso){
 	$.ajax({
 		type: 'post',
 		url: 'peer_Education/database.php',
-		data: ({ request:'caricaLezioni', idCorso:1 }),
+		data: ({ request:'caricaLezioni', idCorsoP:idCorso }),
 		success: function (response) {
 			if(response != failed){
 				$("#lezioniAll").empty();
 				$("#lezioniAll").append(response);
+			}
+			
+		}
+	});
+}
+
+function CaricaTutor(){
+	$.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaTutorAdmin'}),
+		success: function (response) {
+			if(response != failed){
+				$("#tutorAll").append(response);
 			}
 			
 		}
