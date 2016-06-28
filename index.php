@@ -211,7 +211,7 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
 
 		</div>
 		<div class="row"
-			style="text-align: center; width: 100%; margin-left: 8%">
+			style="text-align: center; width: auto; margin-left: 8%">
 			<div>&nbsp;</div>
 			<div class="col s2">
 				<h5 style="color: #b51345">CHI?</h5>
