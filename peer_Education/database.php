@@ -55,6 +55,9 @@ if (isset ( $_POST ['request'] )) {
 		case "caricaLezioni" :
 			CaricaLezioni();
 			break;
+		case "caricaTutorAdmin" :
+			CaricaTutor();
+			break;
 		default :
 			echo "Richiesta strana: " . $request;
 			break;
@@ -388,6 +391,17 @@ function CaricaNomeById($id) {
 		return $failed;
 	}
 }
+function CaricaClasseAllunoById($id) {
+	global $failed;
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	$tutor = mysqli_query ( $mysqli, "SELECT classe AS c, id FROM utente WHERE '$id' = id" );
+	if ($tutor) {
+		$classe = mysqli_fetch_object ( $tutor );
+		return $classe->c;
+	} else {
+		return $failed;
+	}
+}
 function Iscriviti() {
 	global $failed;
 	global $success;
@@ -511,8 +525,8 @@ function CaricaLezioni(){
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
-	$idCorso = $_POST['idCorso'];
-	
+	$idCorso = $_POST['idCorsoP'];
+
 	$sql = "SELECT data, Argomento AS Arg, id AS idL FROM lezione WHERE idCorso = '$idCorso' ORDER BY id DESC";
 	$carica = mysqli_query ( $mysqli, $sql );
 	
@@ -541,6 +555,31 @@ function CaricaLezioni(){
 	} else {
 		echo $failed;
 	}
+}
+
+function CaricaTutor(){
+	global $failed;
+	
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	$sql = "SELECT id AS idStudente FROM utente";
+	$carica = mysqli_query ( $mysqli, $sql );
+	if($carica){
+		echo '<table class="centered striped">';
+		echo '<tr>';
+		echo '<td>Tutor</td><td>Classe</td>';
+		echo '</tr>';
+		while ($res = mysqli_fetch_array($carica)){
+			$id = $res['idStudente'];
+			$sql2 = "SELECT COUNT(*) AS num FROM corso WHERE idTutor = '$id'";
+			$carica2 = mysqli_query ( $mysqli, $sql2 );
+			$num = mysqli_fetch_object($carica2)->num;
+			if($num > 0){
+				echo '<tr><td>' .CaricaNomeById($id) .'</td><td>' .CaricaClasseAllunoById($id) .'</td></tr>';
+			}
+		}
+		echo "</table><br>";
+	}
+	
 }
 
 ?>
