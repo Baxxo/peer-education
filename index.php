@@ -79,12 +79,6 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
                 utente['mail'] != "" && utente['tel'] != "" && utente['data'] != "" && utente['pass'] != ""){
             if(NumbersOnly(utente['tel'])){
 	        	registrati(utente);
-	        	/*var dati = {
-	                    'mail': utente['mail'],
-	                    'pass': utente['pass'],
-	                    'request':'login'
-	            };
-	        	Login(dati);*/
             } else {
             	Materialize.toast('Il numero di telefono deve contenere solo i numeri', 1500);
             }
@@ -134,139 +128,139 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
 </script>
 
 <body>
-		<nav style="background-color: #24aac7" role="navigation">
-			<div class="nav-wrapper container">
-				<ul class="right hide-on-med-and-down">
-					<li><a class="cyan lighten-1 btn" onclick="LoginOpen()"
-						style="margin-top: 6%;">Login</a></li>
-					<li><a class="cyan lighten-1 btn" onclick="RegOpen()"
-						style="margin-top: 5%;">Registrati</a></li>
+	<nav style="background-color: #24aac7" role="navigation">
+		<div class="nav-wrapper container">
+			<ul class="right hide-on-med-and-down">
+				<li><a class="cyan lighten-1 btn" onclick="LoginOpen()"
+					style="margin-top: 6%;">Login</a></li>
+				<li><a class="cyan lighten-1 btn" onclick="RegOpen()"
+					style="margin-top: 5%;">Registrati</a></li>
 
-					<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
+				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 
-				</ul>
+			</ul>
 
-				<ul id="nav-mobile" class="side-nav">
-					<li><a class="waves-effect cyan lighten-1 btn" onclick="LoginOpen()">Login</a></li>
-					<li><a class="waves-effect cyan lighten-1 btn" onclick="RegOpen()">Registrati</a></li>
-				</ul>
-				<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
-					class="material-icons">menu</i></a>
-			</div>
-		</nav>
+			<ul id="nav-mobile" class="side-nav">
+				<li><a class="waves-effect cyan lighten-1 btn" onclick="LoginOpen()">Login</a></li>
+				<li><a class="waves-effect cyan lighten-1 btn" onclick="RegOpen()">Registrati</a></li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
+				class="material-icons">menu</i></a>
+		</div>
+	</nav>
 
-		<!-- Il div di registrazione che appare quando premi il tasto Registrati 
+	<!-- Il div di registrazione che appare quando premi il tasto Registrati 
 		-->
-		<div id="registrazione" onkeydown="Invio('Reg')">
-			<div class="mask"></div>
+	<div id="registrazione" onkeydown="Invio('Reg')">
+		<div class="mask"></div>
 
-			<div class="LogReg col l3 s24">
+		<div class="LogReg col l3 s24">
 
-				Nome: <input id="nomeR" type="text"><br> Cognome: <input
-					id="cognomeR" type="text"><br> Classe: <input id="classeR"
-					type="text"><br>
-				<div class="input-field col s12">
-					<select id="scuolaR">
-					</select>
-				</div>
-				<br> E-mail: <input id="mailR" type="text"><br> Telefono: <input
-					id="telR" type="text"><br> Data nascita: <input id="dataR"
-					type="date"><br> Password: <input id="passR" type="password"><br>
-
-				<button type="submit" class="btn waves-effect light-blue"
-					onclick="GetUtenteReg()">
-					<i class="material-icons right">send</i>Registrati
-				</button>
-				<button type="submit" class="btn waves-effect light-blue"
-					onclick="TogliReg()">Annulla</button>
+			Nome: <input id="nomeR" type="text"><br> Cognome: <input
+				id="cognomeR" type="text"><br> Classe: <input id="classeR"
+				type="text"><br>
+			<div class="input-field col s12">
+				<select id="scuolaR">
+				</select>
 			</div>
+			<br> E-mail: <input id="mailR" type="text"><br> Telefono: <input
+				id="telR" type="text"><br> Data nascita: <input id="dataR"
+				type="date"><br> Password: <input id="passR" type="password"><br>
+
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="GetUtenteReg()">
+				<i class="material-icons right">send</i>Registrati
+			</button>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="TogliReg()">Annulla</button>
+		</div>
+	</div>
+
+	<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
+	<div id="login" onkeydown="Invio('Log')">
+		<div class="mask"></div>
+		<div class="LogReg col l3 s12">
+			E-mail: <input id="mailLog" type="text"><br> Password: <input
+				id="passLog" type="password"><br>
+
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="GetUtenteLog()">
+
+				<i class="material-icons right">send</i>Login
+			</button>
+			<button type="submit" class="btn waves-effect light-blue"
+				onclick="TogliLogin()">Annulla</button>
+		</div>
+	</div>
+
+	<img alt="sfondo" src="img/header_peer_education_2.png"
+		style="margin: 0; width: 100%">
+
+	<div class="row" style="text-align: center">
+
+		<div class="col s12">
+			<h3>VUOI PARTECIPARE?</h3>
 		</div>
 
-		<!-- Il div di registrazione che appare quando premi il tasto Registrati -->
-		<div id="login" onkeydown="Invio('Log')">
-			<div class="mask"></div>
-			<div class="LogReg col l3 s12">
-				E-mail: <input id="mailLog" type="text"><br> Password: <input
-					id="passLog" type="password"><br>
-
-				<button type="submit" class="btn waves-effect light-blue"
-					onclick="GetUtenteLog()">
-
-					<i class="material-icons right">send</i>Login
-				</button>
-				<button type="submit" class="btn waves-effect light-blue"
-					onclick="TogliLogin()">Annulla</button>
-			</div>
+	</div>
+	<div class="row"
+		style="text-align: center; width: auto; margin-left: 15%">
+		<div>&nbsp;</div>
+		<div class="col s2">
+			<h5 style="color: #b51345">CHI?</h5>
+			<hr>
+			Tutti gli studenti dell'IIS Einaudi Scarpa.<br>I tutor aiutano i
+			compagni che ne fanno richiesta.
+		</div>
+		<div class="col s2">
+			<h5 style="color: #8d87eb">CHE COSA?</h5>
+			<hr>
+			Si studia in piccoli gruppi di due/tre persone.<br>Lo studente tutor
+			aiuta uno /due compagni in difficoltà
+		</div>
+		<div class="col s2">
+			<h5 style="color: #69c5c4">DOVE?</h5>
+			<hr>
+			Presso la sede Einaudi.
+		</div>
+		<div class="col s2">
+			<h5 style="color: #ff5b86">QUANDO?</h5>
+			<hr>
+			Due pomeriggi alla settimana: lunedì e giovedì, dalle 13:45 alle
+			16:00,<br>dal 16/11/15 al 22/12/15
+		</div>
+		<div class="col s2">
+			<h5 style="color: #efde76">COME?</h5>
+			<hr>
+			Ritira il modulo di partecipazione presso il Punto Orientamento
+			(atrio a piano terra),<br>compilalo e inseriscilo nell'apposito
+			contenitore.
 		</div>
 
-		<img alt="sfondo" src="img/header_peer_education_2.png"
-			style="margin: 0; width: 100%">
+	</div>
 
-		<div class="row" style="text-align: center">
-
-			<div class="col s12">
-				<h3>VUOI PARTECIPARE?</h3>
+	<div style="height: 160px; clear: both;">&nbsp;</div>
+	<footer id="footer" class="page-footer orange">
+		<div class="container">
+			<div class="col l6 s12">
+				<ul>
+					<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
+							agli sviluppatori</a></li>
+					<li><a class="white-text"
+						href="http://www.iiseinaudiscarpa.gov.it/">IIS Einaudi - Scarpa</a></li>
+					<li><a class="white-text"
+						href="http://www.iiseinaudiscarpa.gov.it/documentazione/circolari/">Circolari
+							della scuola</a></li>
+				</ul>
 			</div>
-
 		</div>
-		<div class="row"
-			style="text-align: center; width: auto; margin-left: 15%">
-			<div>&nbsp;</div>
-			<div class="col s2">
-				<h5 style="color: #b51345">CHI?</h5>
-				<hr>
-				Tutti gli studenti dell'IIS Einaudi Scarpa.<br>I tutor aiutano i
-				compagni che ne fanno richiesta.
-			</div>
-			<div class="col s2">
-				<h5 style="color: #8d87eb">CHE COSA?</h5>
-				<hr>
-				Si studia in piccoli gruppi di due/tre persone.<br>Lo studente tutor
-				aiuta uno /due compagni in difficoltà
-			</div>
-			<div class="col s2">
-				<h5 style="color: #69c5c4">DOVE?</h5>
-				<hr>
-				Presso la sede Einaudi.
-			</div>
-			<div class="col s2">
-				<h5 style="color: #ff5b86">QUANDO?</h5>
-				<hr>
-				Due pomeriggi alla settimana: lunedì e giovedì, dalle 13:45 alle
-				16:00,<br>dal 16/11/15 al 22/12/15
-			</div>
-			<div class="col s2">
-				<h5 style="color: #efde76">COME?</h5>
-				<hr>
-				Ritira il modulo di partecipazione presso il Punto Orientamento
-				(atrio a piano terra),<br>compilalo e inseriscilo nell'apposito
-				contenitore.
-			</div>
-
-		</div>
-
-		<div style="height: 160px; clear: both;">&nbsp;</div>
-		<footer id="footer" class="page-footer orange">
+		<div class="footer-copyright">
 			<div class="container">
-				<div class="col l6 s12">
-					<ul>
-						<li><a class="white-text" href="mailto:matteobasso9@gmail.com">Scrivi
-								agli sviluppatori</a></li>
-						<li><a class="white-text"
-							href="http://www.iiseinaudiscarpa.gov.it/">IIS Einaudi - Scarpa</a></li>
-						<li><a class="white-text"
-							href="http://www.iiseinaudiscarpa.gov.it/documentazione/circolari/">Circolari
-								della scuola</a></li>
-					</ul>
-				</div>
+				Made by <a class="orange-text text-lighten-3">Basso Matteo e
+					Oleksandr Demian</a>
 			</div>
-			<div class="footer-copyright">
-				<div class="container">
-					Made by <a class="orange-text text-lighten-3">Basso Matteo e
-						Oleksandr Demian</a>
-				</div>
-			</div>
-		</footer>
+		</div>
+	</footer>
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

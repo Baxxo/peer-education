@@ -107,7 +107,10 @@ function Registrati() {
 	$cognome = ucwords ( $cognome );
 	$nome = ucwords ( $nome );
 	
-	if (! mysqli_query ( $mysqli, "SELECT email FROM Utente WHERE email = '$mail'" )) {
+	$control = mysqli_query ( $mysqli, "SELECT COUNT(email) AS Num FROM Utente WHERE email = '$mail'");
+	$num = mysqli_fetch_object($control)->Num;
+	
+	if ($num < 1) {
 		$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
 		if ($carica = mysqli_query ( $mysqli, $sql )) {
 			echo $success;
@@ -411,8 +414,8 @@ function Iscriviti() {
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
-	$carica = mysqli_query ( $mysqli, "SELECT * FROM iscrizioni WHERE idCorso = '$idCorso' AND idStudente = '$idUtente'");
-	if(!$carica){
+	$carica = mysqli_query ( $mysqli, "SELECT COUNT(*) AS Num FROM iscrizioni WHERE idCorso = '$idCorso' AND idStudente = '$idUtente'");
+	if(mysqli_fetch_object($carica)->Num < 1){
 		$sql = "INSERT INTO iscrizioni VALUES ('$idCorso', '$idUtente')";
 		if ($carica = mysqli_query ( $mysqli, $sql )) {
 			echo $success;
@@ -566,7 +569,7 @@ function CaricaTutor(){
 	if($carica){
 		echo '<table class="centered striped">';
 		echo '<tr>';
-		echo '<td>Tutor</td><td>Classe</td>';
+		echo '<td>Tutor</td><td>Classe</td><td>Lezioni</td>';
 		echo '</tr>';
 		while ($res = mysqli_fetch_array($carica)){
 			$id = $res['idStudente'];
@@ -574,12 +577,31 @@ function CaricaTutor(){
 			$carica2 = mysqli_query ( $mysqli, $sql2 );
 			$num = mysqli_fetch_object($carica2)->num;
 			if($num > 0){
-				echo '<tr><td>' .CaricaNomeById($id) .'</td><td>' .CaricaClasseAllunoById($id) .'</td></tr>';
+				echo '<tr><td>' .CaricaNomeById($id) .'</td><td>' .CaricaClasseAllunoById($id) .'</td><td>' .CaricaLezioniTutor($id) .'</td></tr>';
 			}
 		}
 		echo "</table><br>";
 	}
 	
+}
+
+function CaricaLezioniTutor($idTutor){
+	global $failed;
+	
+	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+	$sql = "SELECT id AS idCorso FROM corso WHERE idTutor = '$idTutor'";
+	$carica = mysqli_query ( $mysqli, $sql );
+	if($carica){
+		$lez = 0;
+		while ($res = mysqli_fetch_assoc($carica)){
+			$idCorso = $res['idCorso'];
+			$sql2 = "SELECT COUNT(*) AS qta FROM lezione WHERE idCorso = '$idCorso'";
+			$carica2 = mysqli_query($mysqli, $sql2);
+			$lez +=mysqli_fetch_object($carica2)->qta;
+		}
+		return $lez;
+	}
+	return $failed;
 }
 
 ?>

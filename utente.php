@@ -184,7 +184,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 					</select> <select id="materiaCerca">
 					</select>
 					<button type="submit"
-						class="btn col s8 offset-s2 waves-effect light-blue"
+						class="btn col s8 offset-s2 light-blue"
 						onclick="getCorsoCerca()" style="position: static">
 						<i class="material-icons right">send</i>Cerca
 					</button>
@@ -212,7 +212,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 						<div id="giorni" class="col s8 offset-s2"></div>
 
 						<button type="submit"
-							class="btn col s8 offset-s2 waves-effect light-blue"
+							class="btn col s8 offset-s2 light-blue"
 							onclick="getCorso(), reload()" style="position: static">
 							<i class="material-icons right">send</i>Crea
 						</button>
