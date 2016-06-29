@@ -58,7 +58,7 @@ function registrati(utente){
 			} else if (response == failed) {
 				Materialize.toast('Registrazione fallita', 1500);
 			} else if (response == 'mail') {
-				Materialize.toast("Questa l'email è gia in uso", 1500);
+				Materialize.toast("E-mail gia in uso", 1500);
 			} else {
 				Materialize.toast("C'è qualcosa che non va", 1500);
 			}

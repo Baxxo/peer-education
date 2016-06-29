@@ -107,7 +107,10 @@ function Registrati() {
 	$cognome = ucwords ( $cognome );
 	$nome = ucwords ( $nome );
 	
-	if (! mysqli_query ( $mysqli, "SELECT email FROM Utente WHERE email = '$mail'" )) {
+	$control = mysqli_query ( $mysqli, "SELECT COUNT(email) AS Num FROM Utente WHERE email = '$mail'");
+	$num = mysqli_fetch_object($control)->Num;
+	
+	if ($num < 1) {
 		$sql = "INSERT INTO Utente VALUES (null, '$nome', '$cognome', '$classe', '$scuola', '$mail', '$tel', '$data', '$pass')";
 		if ($carica = mysqli_query ( $mysqli, $sql )) {
 			echo $success;
@@ -411,8 +414,8 @@ function Iscriviti() {
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
 	
-	$carica = mysqli_query ( $mysqli, "SELECT * FROM iscrizioni WHERE idCorso = '$idCorso' AND idStudente = '$idUtente'");
-	if(!$carica){
+	$carica = mysqli_query ( $mysqli, "SELECT COUNT(*) AS Num FROM iscrizioni WHERE idCorso = '$idCorso' AND idStudente = '$idUtente'");
+	if(mysqli_fetch_object($carica)->Num < 1){
 		$sql = "INSERT INTO iscrizioni VALUES ('$idCorso', '$idUtente')";
 		if ($carica = mysqli_query ( $mysqli, $sql )) {
 			echo $success;
