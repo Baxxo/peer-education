@@ -93,8 +93,10 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 			'ora': ore,
 			'request':'creaCorso'
 			};
-		if(corso['scuola'] != "" && corso['scuola'] != "0" && corso['materia'] != "" && corso['materia'] != "0" && corso['giorno'] != "" && corso['ora'] != ""){
-			CreaCorso(corso);
+		alert($("#main").val());
+		$("#main").addClass("active");
+		if(corso['scuola'] != "" && corso['scuola'] != "0" && corso['materia'] != "" && corso['materia'] != "0" && corso['giorno'] != "" && corso['giorno'] != "<br>" && corso['ora'] != "" && corso['ora'] != "<br>"){
+			//CreaCorso(corso);
 		}
         else
         	Materialize.toast('Non hai compilato tutti i campi!', 1500);
@@ -121,7 +123,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	}
 
 	function reload() {
-	    location.reload();
+	    //location.reload();
 	}
 
 </script>
@@ -150,7 +152,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3 active"><a class="light-blue-text"
+				<li class="tab col s3 active" id = "main" value = "Ciao"><a class="light-blue-text"
 					href="#test1">I miei corsi</a></li>
 				<li class="tab col s3"><a class="light-blue-text" href="#test3">Cerca
 					corso</a></li>
@@ -210,13 +212,13 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 							<option value="3">3</option>
 						</select>
 						<div id="giorni" class="col s8 offset-s2"></div>
-
+						
 						<button type="submit"
 							class="btn col s8 offset-s2 light-blue"
-							onclick="getCorso(), reload()" style="position: static">
+							onclick="getCorso(), reload()" style="position: static;">
 							<i class="material-icons right">send</i>Crea
 						</button>
-
+						
 
 					</div>
 				</div>
