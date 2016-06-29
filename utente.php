@@ -93,7 +93,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 			'ora': ore,
 			'request':'creaCorso'
 			};
-		alert($("#main").val());
+		$(".active").removeClass("active");
 		$("#main").addClass("active");
 		if(corso['scuola'] != "" && corso['scuola'] != "0" && corso['materia'] != "" && corso['materia'] != "0" && corso['giorno'] != "" && corso['giorno'] != "<br>" && corso['ora'] != "" && corso['ora'] != "<br>"){
 			//CreaCorso(corso);
@@ -152,7 +152,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	<div class="row">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3 active" id = "main" value = "Ciao"><a class="light-blue-text"
+				<li class="tab col s3 active" id = "main"><a class="light-blue-text"
 					href="#test1">I miei corsi</a></li>
 				<li class="tab col s3"><a class="light-blue-text" href="#test3">Cerca
 					corso</a></li>
