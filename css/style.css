@@ -45,6 +45,10 @@ article {
 	display: none;
 }
 
+#TabellaM button:first-of-type {
+    margin-bottom: 2%;
+}
+
 .LogReg {
 	background-color: white;
 	z-index: 1001;

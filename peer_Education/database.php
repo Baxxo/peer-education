@@ -58,6 +58,12 @@ if (isset ( $_POST ['request'] )) {
 		case "caricaTutorAdmin" :
 			CaricaTutor();
 			break;
+        case "caricaNonAutorizati":
+            CaricaNonAutorizati();
+            break;
+        case "autorizza":
+            Autorizza();
+            break;
 		default :
 			echo "Richiesta strana: " . $request;
 			break;
@@ -133,9 +139,10 @@ function Login() {
 	
 	$res = mysqli_fetch_object ( $carica );
 	if ($res) {
-		$_SESSION ["user_id"] = $res->id;
-		$_SESSION ["user_name"] = $res->Nome;
-		echo $success;
+        $id = $res->id;
+        $_SESSION ["user_id"] = $id;
+        $_SESSION ["user_name"] = $res->Nome;
+        echo $id;
 	} else {
 		echo $failed;
 	}
@@ -163,7 +170,7 @@ function CreaCorso() {
 	$giorno = $_POST ['giorno'];
 	$ora = $_POST ['ora'];
 	
-	$sql = "INSERT INTO corso VALUES (null, '$idTutor', '$scuola', '$mat', '$giorno', '$ora')";
+	$sql = "INSERT INTO corso VALUES (null, '$idTutor', '$scuola', '$mat', '$giorno', '$ora', '0')";
 	if ($carica = mysqli_query ( $mysqli, $sql )) {
 		echo $success;
 	} else {
@@ -178,7 +185,8 @@ function CaricaMieiCorsi() {
 										c.scuola AS idScuola, 
 										c.idMateria AS mat, 
 										c.giorno AS giorno, 
-										c.ora AS ora 
+										c.ora AS ora ,
+                                        c.permesso AS permesso
 										FROM corso c
 										WHERE c.idTutor = '$idTutor'" );
 	
@@ -197,9 +205,13 @@ function CaricaMieiCorsi() {
 			echo '<tr>';
 			echo '<td>' . CaricaScuolaById ( $res ['idScuola'] ) . '</td>';
 			echo '<td>' . CaricaMateriaById ( $res ['mat'] ) . '</td>';
-			echo '<td>' . $res ['giorno'] . '</td>';
-			echo '<td>' . $res ['ora'] . '</td>';
-			echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 light-blue" onclick = "GestisciCorso(' . $res ['cId'] . ',' . $res ['mat'] . ')">Gestisci corso</button>' . '</td>';
+            echo '<td>' . $res ['giorno'] . '</td>';
+            echo '<td>' . $res ['ora'] . '</td>';
+            if($res['permesso'] == "1"){
+                echo '<td>' . '<button style="position: static" class="btn col s8 offset-s2 light-blue" onclick = "GestisciCorso(' . $res ['cId'] . ',' . $res ['mat'] . ')">Gestisci corso</button>' . '</td>';
+            } else {
+                echo '<td colspan = "2">' . "Non ancora autorizzatto" . '</td>';
+            }
 			echo '</tr>';
 		}
 		echo "</table><hr>";
@@ -537,7 +549,7 @@ function CaricaLezioni(){
 		while ($res = mysqli_fetch_assoc ( $carica )) {
 			echo '<table class="centered striped">';
 			echo '<tr>';
-			echo '<td colspan="2" class = "z-depth-2 light-blue"><b>Lezione del ' .$res['data'] .'</b> </td>';
+			echo '<td colspan="2" style="color: white;" class = "z-depth-2 light-blue"><b>Lezione del ' .$res['data'] .'</b> </td>';
 			echo '</tr>';
 			echo '<tr><td>Argomento</td><td>' .$res['Arg'] .'</td></tr>';
 			
@@ -564,10 +576,13 @@ function CaricaTutor(){
 	global $failed;
 	
 	$mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
-	$sql = "SELECT id AS idStudente FROM utente";
+	$sql = "SELECT id AS idStudente FROM utente ORDER BY cognome ASC, nome ASC";
 	$carica = mysqli_query ( $mysqli, $sql );
 	if($carica){
 		echo '<table class="centered striped">';
+        echo '<tr>';
+        echo '<td colspan = "3" class = "z-depth-2 light-blue" style="color: white;"> <b>Tutti i tutor</b> </td>';
+        echo '</tr>';
 		echo '<tr>';
 		echo '<td>Tutor</td><td>Classe</td><td>Lezioni</td>';
 		echo '</tr>';
@@ -602,6 +617,69 @@ function CaricaLezioniTutor($idTutor){
 		return $lez;
 	}
 	return $failed;
+}
+
+function CaricaNonAutorizati(){
+    global $failed;
+    $mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+    
+    $sql = "SELECT * FROM corso WHERE permesso = 0";
+    $carica = mysqli_query ( $mysqli, $sql );
+    if($carica){
+        echo '<table class="centered striped" id = "TabellaM">';
+		
+		echo '<tr>';
+		echo '<td colspan="6" class = "z-depth-2 light-blue" style="color: white;"><b>I corsi da autorizzare</b> </td>';
+		echo '</tr>';
+		
+		echo '<tr>';
+		echo '<td> Studente </td><td> Scuola </td><td> Materia </td><td> Giorno </td><td> Ora </td><td>Azione</td>';
+		echo '</tr>';
+		
+		while ( $res = mysqli_fetch_assoc ( $carica ) ) {
+			echo '<tr>';
+            echo '<td>' . CaricaNomeById ( $res ['idTutor'] ) . '</td>';
+			echo '<td>' . CaricaScuolaById ( $res ['scuola'] ) . '</td>';
+			echo '<td>' . CaricaMateriaById ( $res ['idMateria'] ) . '</td>';
+            echo '<td>' . $res ['giorno'] . '</td>';
+            echo '<td>' . $res ['ora'] . '</td>';
+            echo '<td>' . "<button style='position: static' class='btn col s8 offset-s2 light-blue' onclick = 'Autorizza( {$res ["id"]} ,1)'>Autorizza</button>" .'';
+            echo '' . "<button style='position: static' class='btn col s8 offset-s2 light-blue' onclick = 'Autorizza( {$res ["id"]},0)'>Elimina</button>" . '</td>';
+			echo '</tr>';
+		}
+		echo "</table><hr>";
+    } else {
+        echo $failed;
+    }
+    
+}
+
+function Autorizza(){
+    global $failed;
+    $mysqli = mysqli_connect ( '127.0.0.1', 'root', '', 'peer' );
+    
+    $idCorso = $_POST['idCorsoP'];
+    $state = $_POST['stateP'];
+    echo "Dati: " .$state .", " .$idCorso; 
+    
+    if($state == "1")
+        $sql = "UPDATE corso SET permesso = 1 WHERE id = '$idCorso'";
+    else if($state == "0")
+        $sql = "DELETE FROM corso WHERE id = '$idCorso'";
+    else{
+        echo $failed;
+        return;
+    }
+    
+    $carica = mysqli_query ( $mysqli, $sql );
+    if($carica){
+        if($state == 1)
+            echo "Autorizzato";
+        if($state == 0)
+            echo "Eliminato";
+        else
+            echo "Fatto qualcosa";
+    }
 }
 
 ?>

@@ -1,3 +1,13 @@
+
+<?php
+session_start ();
+
+if (!isset ( $_SESSION ["user_id"] ) || ( isset ( $_SESSION ["user_id"] ) && $_SESSION ["user_id"] != "0")) {
+    header ( "Location: index.php" );
+}
+?>
+
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport"
@@ -26,8 +36,8 @@
 </style>
 
 <script>
-	CaricaTutor();
-
+    CaricaNonAutorizati();
+    
 	function ExportToExcel(){
 	       var htmltable= document.getElementById('tutorAll');
 	       var html = htmltable.outerHTML;
@@ -40,14 +50,15 @@
 	<nav style="background-color: #24aac7" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
-				<li><a class="cyan lighten-1 btn" onclick="ExportToExcel()"
-					style="margin-top: 6%;">Esporta la tabella(Exel)</a></li>
-				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
-
+                <li><a onclick="CaricaTutor()" class="cyan lighten-1 btn">Visualizza tutti i tutor</a></li>
+				<li><a class="cyan lighten-1 btn" onclick="ExportToExcel()">Esporta la tabella(Exel)</a></li>
+				<li><a class="cyan lighten-1 btn" onclick="LogOut()">Logout</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
-				<li><a class="waves-effect cyan lighten-1 btn" onclick="ExportToExcel()">Esporta la tabella(Exel)</a></li>
+				<li><a class="cyan lighten-1 btn" onclick="ExportToExcel()">Esporta la tabella(Exel)</a></li>
+                <li><a class="cyan lighten-1 btn" onclick="LogOut()">Logout</a></li>
+                <li><a onclick="CaricaTutor()" class="cyan lighten-1 btn">Visualizza tutti i tutor</a></li>
 			</ul>
 			<a href="#" data-activates="nav-mobile" class="button-collapse"> <i
 				class="material-icons">menu</i></a>
@@ -57,6 +68,10 @@
 	<div class = "row">
 		<div id="tutorAll" class="col s6 offset-s3"></div>
 	</div>
+    
+    <div class="row">
+        <div class="col s6 offset-s3" id = "autorizzazione"></div>
+    </div>
 
 	<div style="height: 160px; clear: both;">&nbsp;</div>
 		<footer id="footer" class="page-footer orange">

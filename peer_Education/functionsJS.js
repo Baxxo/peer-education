@@ -1,16 +1,18 @@
+'use strict';
+
 var success = "SUCCESS";
 var failed = "FAILED";
 
-function LoadPage(dir){
+function LoadPage(dir) {
 	window.location.href = dir;
 }
 
-function CaricaMaterie(id, all){
+function CaricaMaterie(id, all) {
 	$.ajax({
 		type : 'post',
 		url : 'peer_Education/database.php',
-		data : ({ request:'caricaMaterie' }),
-		success : function(response) {
+		data : ({ request: 'caricaMaterie' }),
+		success : function (response) {
 			if(all)
 				$(id).append('<option value="0" selected>Tutte le materie</option>');
 			else
@@ -75,8 +77,11 @@ function Login(dati) {
 			if (response == failed) {
 				Materialize.toast("L'email e/o la password sono sbagliati", 1500);
 			}
-			if (response == success) {
-				LoadPage("utente.php");
+			if (response != failed) {
+				if(response == "0")
+					LoadPage("admin.php");
+				else
+					LoadPage("utente.php");
 			}
 		}
 	});
@@ -272,9 +277,35 @@ function CaricaTutor(){
 		data: ({ request:'caricaTutorAdmin'}),
 		success: function (response) {
 			if(response != failed){
+                $("#tutorAll").empty();
 				$("#tutorAll").append(response);
 			}
 			
 		}
 	});
+}
+
+function CaricaNonAutorizati(){
+    $.ajax({
+		type: 'post',
+		url: 'peer_Education/database.php',
+		data: ({ request:'caricaNonAutorizati'}),
+		success: function (response) {
+			if(response != failed){
+				$("#autorizzazione").append(response);
+			}
+			
+		}
+	});
+}
+
+function Autorizza(idCorso, state){
+    $.ajax({
+        type: 'post',
+        url: 'peer_Education/database.php',
+        data: ({ request:'autorizza', idCorsoP: idCorso, stateP: state }),
+        success: function (response){
+            Materialize.toast(response, 1500);
+        }
+    });
 }

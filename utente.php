@@ -134,8 +134,7 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 		<div class="nav-wrapper container">
 
 			<ul class="right hide-on-med-and-down">
-				<li><a class="light-blue btn" onclick="LogOut()"
-					style="margin-top: 6%;">Logout</a></li>
+				<li><a class="light-blue btn" onclick="LogOut()">Logout</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">

@@ -1,9 +1,11 @@
-
 <?php
 session_start ();
 
 if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
-	header ( "Location: utente.php" );
+    if($_SESSION ["user_id"] == "0")
+	   header ( "Location: admin.php" );
+    else
+        header ( "Location: utente.php" );
 }
 ?>
 <head>
@@ -131,10 +133,8 @@ if (isset ( $_SESSION ["user_id"] ) && isset ( $_SESSION ["user_name"] )) {
 	<nav style="background-color: #24aac7" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
-				<li><a class="cyan lighten-1 btn" onclick="LoginOpen()"
-					style="margin-top: 6%;">Login</a></li>
-				<li><a class="cyan lighten-1 btn" onclick="RegOpen()"
-					style="margin-top: 5%;">Registrati</a></li>
+				<li><a class="cyan lighten-1 btn" onclick="LoginOpen()">Login</a></li>
+				<li><a class="cyan lighten-1 btn" onclick="RegOpen()">Registrati</a></li>
 
 				<!-- <li><a class="light-blue btn" onclick="caricaDataTabella()">Utenti</a></li> -->
 

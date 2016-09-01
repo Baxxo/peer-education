@@ -64,10 +64,8 @@ if (! isset ( $_SESSION ["user_id"] ) && ! isset ( $_SESSION ["user_name"] )) {
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="nav-wrapper container">
 			<ul class="right hide-on-med-and-down">
-				<li><a class="light-blue btn" style="margin-top: 15px;"
-					onclick="LezioneCreaOpen()">Aggiungi nuova lezione</a></li>
-				<li><a class="light-blue btn" onclick="LoadPage('utente.php')"
-					style="margin-top: 15px;">Torna indietro</a></li>
+				<li><a class="light-blue btn" onclick="LezioneCreaOpen()">Aggiungi nuova lezione</a></li>
+				<li><a class="light-blue btn" onclick="LoadPage('utente.php')">Torna indietro</a></li>
 			</ul>
 
 			<ul id="nav-mobile" class="side-nav">
